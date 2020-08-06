@@ -50,7 +50,7 @@ const SocialmediaWrapper = styled.div`
 const BlogIndex = ({ location }) => {
   return (
     <Layout location={location} title='Strona w budowie'>
-      <SEO title='All posts' />
+      <SEO title='All posts' description='Site in progress..' />
       <Wrapper>
         <h3>Strona w budowie..</h3>
         <p>
