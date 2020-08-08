@@ -1,64 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 
-import { rhythm, scale } from '../utils/typography';
+import GlobalStyles from '../theme/globalStyles';
 
 const TemporaryMain = styled.main`
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   background-image: radial-gradient(rebeccapurple, black);
 `;
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
-  let header;
 
-  if (location.pathname === rootPath) {
-    header = (
-      <h1
-        style={{
-          ...scale(1.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h1>
-    );
-  } else {
-    header = (
-      <h3
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h3>
-    );
-  }
   return (
-    <TemporaryMain>{children}</TemporaryMain>
+    <>
+      <GlobalStyles />
+      <TemporaryMain>{children}</TemporaryMain>
+    </>
     // <div
     //   style={{
     //     marginLeft: `auto`,
