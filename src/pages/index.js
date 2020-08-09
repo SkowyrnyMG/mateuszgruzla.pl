@@ -172,11 +172,7 @@ const BlogIndex = ({ location }) => {
   });
   return (
     <Layout location={location} title='Strona w budowie'>
-<<<<<<< HEAD
-      {/* <SEO title='All posts' description='Site in progress..' /> */}
-=======
       {/* <SEO title='All posts' /> */}
->>>>>>> maintenance
       <Wrapper>
         <SvgWrapper ref={svgWrapper}>
           <SiteBuildSvg />
