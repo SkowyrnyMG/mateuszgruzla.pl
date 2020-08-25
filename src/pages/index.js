@@ -2,11 +2,12 @@ import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
 
-import Layout from '../components/layout';
+import SEO from 'components/seo';
+import Layout from 'components/layout';
 
-import GithubIcon from '../assets/svg/gh.svg';
-import LinkedinIcon from '../assets/svg/linkedin-icon.svg';
-import SiteBuildSvg from '../assets/svg/siteBuild.svg';
+import GithubIcon from 'assets/svg/gh.svg';
+import LinkedinIcon from 'assets/svg/linkedin-icon.svg';
+import SiteBuildSvg from 'assets/svg/siteBuild.svg';
 
 const Wrapper = styled.div`
   position: relative;
@@ -23,7 +24,7 @@ const Wrapper = styled.div`
   z-index: 10;
 
   h3 {
-    font-family: inherit;
+    font-family: 'Changa One', cursive;
     font-size: 2.5rem;
   }
 
@@ -129,8 +130,6 @@ const BlogIndex = ({ location }) => {
     const character = elms.getElementById('character');
     const preview = elms.getElementById('preview');
 
-    console.log(background);
-
     gsap.set(
       [
         background,
@@ -172,7 +171,7 @@ const BlogIndex = ({ location }) => {
   });
   return (
     <Layout location={location} title='Strona w budowie'>
-      {/* <SEO title='All posts' /> */}
+      <SEO title='Home' />
       <Wrapper>
         <SvgWrapper ref={svgWrapper}>
           <SiteBuildSvg />

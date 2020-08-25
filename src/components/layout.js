@@ -13,8 +13,8 @@ const TemporaryMain = styled.main`
   background-image: radial-gradient(rebeccapurple, black);
 `;
 
-const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`;
+const Layout = ({ children }) => {
+  // const rootPath = `${__PATH_PREFIX__}/`;
 
   return (
     <>
