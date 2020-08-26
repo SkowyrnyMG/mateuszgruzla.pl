@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import GlobalStyles from '../theme/globalStyles';
+import { ThemeContextProvider } from 'context/theme-context';
+
+import RootStylesWrapper from 'utils/root-styles-wrapper';
+import GridView from 'utils/grid-view';
+import MainMenu from 'components/main-menu/main-menu';
 
 const TemporaryMain = styled.main`
   min-height: 100vh;
@@ -10,17 +14,20 @@ const TemporaryMain = styled.main`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-image: radial-gradient(rebeccapurple, black);
 `;
 
 const Layout = ({ children }) => {
   // const rootPath = `${__PATH_PREFIX__}/`;
 
   return (
-    <>
-      <GlobalStyles />
-      <TemporaryMain>{children}</TemporaryMain>
-    </>
+    <ThemeContextProvider>
+      <RootStylesWrapper>
+        <MainMenu />
+        <GridView>
+          <TemporaryMain>{children}</TemporaryMain>
+        </GridView>
+      </RootStylesWrapper>
+    </ThemeContextProvider>
     // <div
     //   style={{
     //     marginLeft: `auto`,
