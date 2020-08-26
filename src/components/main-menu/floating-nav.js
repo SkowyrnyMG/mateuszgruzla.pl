@@ -28,7 +28,6 @@ const StyledButton = styled.button`
   * {
     transition: 0.25s fill !important;
   }
-  /* tutaj */
 
   &:first-of-type {
     border-bottom-left-radius: 3rem;
@@ -48,7 +47,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const FloatingNav = () => {
+const FloatingNav = ({ toggleMenu }) => {
   const { setIsDarkTheme } = useContext(ThemeContext);
 
   const handleToggleTheme = () => {
@@ -62,7 +61,7 @@ const FloatingNav = () => {
       <StyledButton>
         <SearchIcon />
       </StyledButton>
-      <StyledButton>
+      <StyledButton onClick={toggleMenu}>
         <MenuIcon />
       </StyledButton>
     </Wrapper>

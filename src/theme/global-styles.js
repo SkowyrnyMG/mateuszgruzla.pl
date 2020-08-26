@@ -30,6 +30,14 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  footer {
+    background: ${({ theme: { color } }) => color.secondary};
+  }
+
+  input {
+    background: ${({ theme: { color } }) => color.input};
+  }
+
   * + * {
     margin-top: 1rem;
   }
@@ -43,6 +51,8 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.1.%;
     color: ${({ theme: { color } }) => color.header};
     transition: all .5s;
+
+
 
     + * {
       margin-top: 0.5rem;

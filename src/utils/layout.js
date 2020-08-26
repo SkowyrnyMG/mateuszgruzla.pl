@@ -26,6 +26,11 @@ const Layout = ({ children }) => {
         <GridView>
           <TemporaryMain>{children}</TemporaryMain>
         </GridView>
+        <footer>
+          © {new Date().getFullYear()}, Built with
+          {` `}
+          <a href='https://www.gatsbyjs.org'>Gatsby</a>
+        </footer>
       </RootStylesWrapper>
     </ThemeContextProvider>
     // <div
@@ -36,11 +41,6 @@ const Layout = ({ children }) => {
     //     padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
     //   }}
     // >
-    //   {/* <footer>
-    //     © {new Date().getFullYear()}, Built with
-    //     {` `}
-    //     <a href="https://www.gatsbyjs.org">Gatsby</a>
-    //   </footer> */}
     // </div>
   );
 };
