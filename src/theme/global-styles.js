@@ -35,7 +35,19 @@ const GlobalStyles = createGlobalStyle`
   }
 
   input {
+    padding-left: 2rem;
+    height: 5rem;
+    width: 30rem;
+    font-size: 20px;
+    font-family: inherit;
+    color: ${({ theme: { color } }) => color.content};
     background: ${({ theme: { color } }) => color.input};
+    border-radius: 5px;
+
+    ::placeholder {
+      color: ${({ theme: { color } }) => color.content};
+    }
+
   }
 
   * + * {
@@ -59,6 +71,11 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  h1 {
+    font-family: 'Changa One', cursive !important;
+    text-transform: uppercase;
+  }
+
   h1,
   h2 {
     font-size: 9.6rem;
@@ -74,6 +91,7 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     text-decoration: none;
+    color: ${({ theme: { color } }) => color.content};
   }
 `;
 

@@ -3,11 +3,11 @@ import React from 'react';
 import Layout from 'utils/layout';
 import SEO from 'utils/seo';
 
-const About = () => (
+const Contact = () => (
   <Layout>
-    <SEO title='About' />
-    <h1>About works!</h1>
+    <SEO title='Contact' />
+    <h1>Contact works</h1>
   </Layout>
 );
 
-export default About;
+export default Contact;

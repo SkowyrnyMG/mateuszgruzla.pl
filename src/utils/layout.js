@@ -5,15 +5,13 @@ import { ThemeContextProvider } from 'context/theme-context';
 
 import RootStylesWrapper from 'utils/root-styles-wrapper';
 import GridView from 'utils/grid-view';
-import MainMenu from 'components/main-menu/main-menu';
+import MainMenu from 'components/organisms/main-menu/main-menu';
+import Footer from 'components/organisms/footer/footer';
 
 const TemporaryMain = styled.main`
+  margin-top: 12rem;
   min-height: 100vh;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 `;
 
 const Layout = ({ children }) => {
@@ -26,11 +24,7 @@ const Layout = ({ children }) => {
         <GridView>
           <TemporaryMain>{children}</TemporaryMain>
         </GridView>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href='https://www.gatsbyjs.org'>Gatsby</a>
-        </footer>
+        <Footer />
       </RootStylesWrapper>
     </ThemeContextProvider>
     // <div

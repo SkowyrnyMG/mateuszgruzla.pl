@@ -1,11 +1,5 @@
 module.exports = {
-  extends: [
-    'airbnb',
-    'prettier',
-    'prettier/react',
-    'eslint:recommended',
-    'plugin:react/recommended',
-  ],
+  extends: ['airbnb', 'prettier', 'prettier/react', 'eslint:recommended', 'plugin:react/recommended'],
   plugins: ['babel', 'react-hooks'],
   parser: 'babel-eslint',
   // env: {
@@ -20,6 +14,7 @@ module.exports = {
     'import/no-absolute-path': 0,
     'global-require': 0,
     'no-useless-catch': 0,
+    'no-unneeded-ternary': 0,
     'lines-between-class-members': 0,
     'eol-last': 'error',
     'react/prop-types': 0,
