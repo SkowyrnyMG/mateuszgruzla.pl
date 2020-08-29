@@ -93,6 +93,10 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: ${({ theme: { color } }) => color.content};
   }
+
+  p {
+    line-height: 1.6;
+  }
 `;
 
 export default GlobalStyles;

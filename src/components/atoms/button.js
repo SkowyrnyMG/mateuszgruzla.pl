@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.button`
   position: relative;
   margin-top: 2rem;
-  padding: 2rem 4rem;
+  padding: ${({ isLink }) => (isLink === 'true' ? '2rem 0' : '2rem 4rem')};
   font-family: inherit;
   font-size: 20px;
   font-weight: ${({ theme: { base } }) => base.fontWeight.bold};
@@ -46,9 +47,22 @@ const ButtonText = styled.span`
   z-index: 10;
 `;
 
-const Button = ({ children, btnColor }) => (
-  <Wrapper btnColor={btnColor}>
-    <ButtonText>{children}</ButtonText>
+const StyledLink = styled(Link)`
+  padding: 2rem 4rem;
+  height: 100%;
+  width: 100%;
+  color: inherit;
+`;
+
+const Button = ({ children, btnColor, isLink, path }) => (
+  <Wrapper btnColor={btnColor} isLink={isLink}>
+    {isLink === 'true' ? (
+      <StyledLink to={path}>
+        <ButtonText>{children}</ButtonText>
+      </StyledLink>
+    ) : (
+      <ButtonText>{children}</ButtonText>
+    )}
   </Wrapper>
 );
 

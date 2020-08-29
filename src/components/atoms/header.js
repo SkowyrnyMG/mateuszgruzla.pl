@@ -7,6 +7,10 @@ const StyledHeader = styled.header`
   justify-content: center;
   width: 100%;
   min-height: 58rem;
+
+  & * {
+    margin-top: 0;
+  }
 `;
 
 const Header = ({ children }) => <StyledHeader>{children}</StyledHeader>;

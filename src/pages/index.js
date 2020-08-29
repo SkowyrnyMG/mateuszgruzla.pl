@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import SEO from 'utils/seo';
 import Layout from 'utils/layout';
 
-import Header from 'components/atoms/header';
+import Devider from 'components/modules/devider/devider';
+import HomePageHeader from 'components/organisms/home-page/header/home-page-header';
+import HomePageAbout from 'components/organisms/home-page/about/home-page-about';
 
 const Wrapper = styled.div`
   position: relative;
@@ -15,17 +17,18 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const BlogIndex = ({ location }) => {
+const Home = ({ location }) => {
   return (
-    <Layout location={location} title='Strona w budowie'>
+    <Layout location={location} title='Home'>
       <SEO title='Home' />
       <Wrapper>
-        <Header>
-          <h1>Home page</h1>
-        </Header>
+        <HomePageHeader />
+        <Devider title='bio.' highlightEnd='2' highlightColor={({ theme }) => theme.base.accent.primary} />
+        <HomePageAbout />
+        <Devider title='technology.' highlightEnd='4' highlightColor={({ theme }) => theme.base.accent.secondary} />
       </Wrapper>
     </Layout>
   );
 };
 
-export default BlogIndex;
+export default Home;
