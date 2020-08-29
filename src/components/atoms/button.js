@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.button`
@@ -8,37 +9,35 @@ const Wrapper = styled.button`
   font-family: inherit;
   font-size: 20px;
   font-weight: ${({ theme: { base } }) => base.fontWeight.bold};
-  color: ${({ theme: { base } }) => base.accent.tertiary};
+  color: ${({ btnColor }) => btnColor};
   text-transform: uppercase;
   background: none;
-  border: 1px solid currentColor;
+  border: 1px solid ${({ btnColor }) => btnColor};
   border-radius: 5px;
   cursor: pointer;
+  overflow: hidden;
 
-  :hover div {
+  ::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    transform: translate(0, 0);
+    background: ${({ btnColor }) => btnColor};
+    transform-origin: 100% 0;
+    transform: scale3d(0, 1, 1);
+    transition: transform 300ms;
+  }
+
+  :hover::before {
+    transform-origin: 0 100%;
+    transform: scale3d(1, 1, 1);
   }
 
   :hover {
     color: ${({ theme: { color } }) => color.bg} !important;
   }
-`;
-
-const EffectBox = styled.div`
-  margin-top: 0;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  background: ${({ theme: { base } }) => base.accent.tertiary};
-  transform: translate(-10%, -50%) scaleX(0.2) scaleY(0.6);
-  transform-origin: left;
-  transition: all 0.25s;
-  z-index: 5;
 `;
 
 const ButtonText = styled.span`
@@ -47,11 +46,20 @@ const ButtonText = styled.span`
   z-index: 10;
 `;
 
-const Button = ({ children }) => (
-  <Wrapper>
+const Button = ({ children, btnColor }) => (
+  <Wrapper btnColor={btnColor}>
     <ButtonText>{children}</ButtonText>
-    <EffectBox />
   </Wrapper>
 );
+
+Button.defaultProps = {
+  children: 'Click me',
+  btnColor: ({ theme }) => theme.base.accent.primary,
+};
+
+Button.propTypes = {
+  children: PropTypes.string,
+  btnColor: PropTypes.func,
+};
 
 export default Button;

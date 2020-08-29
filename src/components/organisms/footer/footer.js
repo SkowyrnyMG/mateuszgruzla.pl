@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { routes } from 'utils/routes';
+
 import GridView from 'utils/grid-view';
 import NavList from 'components/modules/nav-list/nav-list';
 import SocialList from 'components/modules/social-list/social-list';
 import SubscribeForm from 'components/modules/subscirbe-form/subscribe-form';
+import InnerLink from 'components/atoms/inner-link';
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -39,7 +42,7 @@ const Footer = () => (
       </FooterContentWrapper>
       <InfoBox>
         <p>Coded by Mateusz Gruźla</p>
-        <p>Privacy policy</p>
+        <InnerLink to={routes.privacyPolicy}>Privacy policy</InnerLink>
       </InfoBox>
     </GridView>
   </StyledFooter>

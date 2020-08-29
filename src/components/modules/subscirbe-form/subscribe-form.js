@@ -13,6 +13,7 @@ const StyledForm = styled.form`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* background: ${({ theme }) => theme.base.accent.tertiary}; */
 `;
 
 const StyledInput = styled.input`
@@ -20,15 +21,17 @@ const StyledInput = styled.input`
   margin-bottom: 1rem;
 `;
 
-const SubscribeForm = () => (
-  <Wrapper>
-    <NavHeading>Subscribe to newsletter</NavHeading>
-    <StyledForm action=''>
-      <StyledInput type='email' placeholder='email.' />
-      <StyledInput type='text' placeholder='name.' />
-      <Button>SUBSCRIBE</Button>
-    </StyledForm>
-  </Wrapper>
-);
+const SubscribeForm = () => {
+  return (
+    <Wrapper>
+      <NavHeading>Subscribe to newsletter</NavHeading>
+      <StyledForm action=''>
+        <StyledInput type='email' placeholder='email.' />
+        <StyledInput type='text' placeholder='name.' />
+        <Button btnColor={({ theme }) => theme.base.accent.tertiary}>SUBSCRIBE</Button>
+      </StyledForm>
+    </Wrapper>
+  );
+};
 
 export default SubscribeForm;

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 import { routes } from 'utils/routes';
 
+import InnerLink from 'components/atoms/inner-link';
 import NavHeading from 'components/atoms/nav-heading';
 
 const StyledList = styled.ul`
@@ -14,6 +14,11 @@ const StyledList = styled.ul`
   grid-column-gap: 4rem;
   justify-items: center;
   align-items: center;
+
+  .activeLink {
+    font-weight: ${({ theme: { base } }) => base.fontWeight.bold};
+    pointer-events: none;
+  }
 `;
 
 const StyledListItem = styled.li`
@@ -28,19 +33,29 @@ const NavList = ({ isFooter }) => {
       <NavHeading>Site Map</NavHeading>
       <StyledList isFooter={isFooter}>
         <StyledListItem>
-          <Link to={home}>Home</Link>
+          <InnerLink to={home} activeClassName='activeLink'>
+            Home
+          </InnerLink>
         </StyledListItem>
         <StyledListItem>
-          <Link to={about}>About</Link>
+          <InnerLink to={about} activeClassName='activeLink'>
+            About
+          </InnerLink>
         </StyledListItem>
         <StyledListItem>
-          <Link to={portfolio}>Portfolio</Link>
+          <InnerLink to={portfolio} activeClassName='activeLink'>
+            Portfolio
+          </InnerLink>
         </StyledListItem>
         <StyledListItem>
-          <Link to={blog}>Blog</Link>
+          <InnerLink to={blog} activeClassName='activeLink'>
+            Blog
+          </InnerLink>
         </StyledListItem>
         <StyledListItem>
-          <Link to={contact}>Contact</Link>
+          <InnerLink to={contact} activeClassName='activeLink'>
+            Contact
+          </InnerLink>
         </StyledListItem>
       </StyledList>
     </div>
