@@ -21,6 +21,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.4;
     color: ${({ theme: { color } }) => color.content};
     background: ${({ theme: { color } }) => color.bg};
+    overflow-x: hidden;
 
     transition: all .5s;
 
