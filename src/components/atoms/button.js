@@ -3,17 +3,24 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Wrapper = styled.button`
+const WrapperLink = styled(Link)`
   position: relative;
+`;
+
+const ButtonText = styled.span`
   margin-top: 2rem;
-  padding: ${({ isLink }) => (isLink === 'true' ? '2rem 0' : '2rem 4rem')};
+  position: relative;
+  transition: color 0.25s;
+  z-index: 10;
+
+  padding: ${({ isLink }) => (isLink === 'true' ? '2rem 4rem' : '2rem 4rem')};
   font-family: inherit;
   font-size: 20px;
   font-weight: ${({ theme: { base } }) => base.fontWeight.bold};
-  color: ${({ btnColor }) => btnColor};
+  color: ${({ btncolor }) => btncolor};
   text-transform: uppercase;
   background: none;
-  border: 1px solid ${({ btnColor }) => btnColor};
+  border: 1px solid ${({ btncolor }) => btncolor};
   border-radius: 5px;
   cursor: pointer;
   overflow: hidden;
@@ -25,10 +32,11 @@ const Wrapper = styled.button`
     left: 0;
     width: 100%;
     height: 100%;
-    background: ${({ btnColor }) => btnColor};
+    background: ${({ btncolor }) => btncolor};
     transform-origin: 100% 0;
     transform: scale3d(0, 1, 1);
     transition: transform 300ms;
+    z-index: -1;
   }
 
   :hover::before {
@@ -41,39 +49,36 @@ const Wrapper = styled.button`
   }
 `;
 
-const ButtonText = styled.span`
-  position: relative;
-  transition: color 0.25s;
-  z-index: 10;
-`;
+const WrapperBtn = ButtonText.withComponent('button');
 
-const StyledLink = styled(Link)`
-  padding: 2rem 4rem;
-  height: 100%;
-  width: 100%;
-  color: inherit;
-`;
-
-const Button = ({ children, btnColor, isLink, path }) => (
-  <Wrapper btnColor={btnColor} isLink={isLink}>
+const Button = ({ children, btncolor, isLink, path }) => (
+  <>
     {isLink === 'true' ? (
-      <StyledLink to={path}>
-        <ButtonText>{children}</ButtonText>
-      </StyledLink>
+      <WrapperLink to={path}>
+        <ButtonText isLink={isLink} btncolor={btncolor}>
+          {children}
+        </ButtonText>
+      </WrapperLink>
     ) : (
-      <ButtonText>{children}</ButtonText>
+      <WrapperBtn isLink={isLink} btncolor={btncolor}>
+        <span>{children}</span>
+      </WrapperBtn>
     )}
-  </Wrapper>
+  </>
 );
 
 Button.defaultProps = {
   children: 'Click me',
-  btnColor: ({ theme }) => theme.base.accent.primary,
+  btncolor: ({ theme }) => theme.base.accent.primary,
+  path: '/',
+  isLink: 'false',
 };
 
 Button.propTypes = {
   children: PropTypes.string,
-  btnColor: PropTypes.func,
+  btncolor: PropTypes.func,
+  path: PropTypes.string,
+  isLink: PropTypes.string,
 };
 
 export default Button;

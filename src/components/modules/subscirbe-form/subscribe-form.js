@@ -28,7 +28,7 @@ const SubscribeForm = () => {
       <StyledForm action=''>
         <StyledInput type='email' placeholder='email.' />
         <StyledInput type='text' placeholder='name.' />
-        <Button btnColor={({ theme }) => theme.base.accent.tertiary}>SUBSCRIBE</Button>
+        <Button btncolor={({ theme }) => theme.base.accent.tertiary}>SUBSCRIBE</Button>
       </StyledForm>
     </Wrapper>
   );

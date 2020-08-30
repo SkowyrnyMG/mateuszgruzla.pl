@@ -32,7 +32,7 @@ const HomePageAbout = () => (
       Bielawa, placed 70 kms from Wroclaw. Since June 2019 after I wrote my first lines of CSS I immediately fell in love with code and right now I spend amlost all of my free time after work on
       coding with short brakes to play with my dog or spend some time with my lovely fiance.
     </StyledParagraph>
-    <Button isLink='true' path={routes.about}>
+    <Button isLink='true' path={routes.about} btncolor={({ theme }) => theme.base.accent.primary}>
       FULL STORY
     </Button>
   </Wrapper>

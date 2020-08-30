@@ -6,16 +6,23 @@ import { ThemeContext } from 'context/theme-context';
 
 import LogoIcon from 'assets/svg/logo-icon.svg';
 
-const StyledLogoIcon = styled(LogoIcon)`
-  height: ${({ height }) => height};
-  * {
+const Wrapper = styled.div`
+  svg * {
     fill: ${({ theme, isDarkTheme }) => (isDarkTheme ? theme.base.accent.primary : theme.color.header)};
   }
 `;
 
+const StyledLogoIcon = styled(LogoIcon)`
+  height: ${({ height }) => height};
+`;
+
 const LogoSvg = ({ height }) => {
   const { isDarkTheme } = useContext(ThemeContext);
-  return <StyledLogoIcon height={height} isDarkTheme={isDarkTheme} />;
+  return (
+    <Wrapper isDarkTheme={isDarkTheme}>
+      <StyledLogoIcon height={height} />
+    </Wrapper>
+  );
 };
 
 LogoSvg.defaultProps = {
