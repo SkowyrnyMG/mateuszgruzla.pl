@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useIcon } from 'hooks/useIcon';
 
 import Skillbox from 'components/organisms/home-page/technology/skillbox';
+import OtherTechCarousel from 'components/organisms/home-page/technology/other-tech-carousel';
 
 const Wrapper = styled.section`
   display: flex;
@@ -21,7 +22,7 @@ const StyledHeading = styled.h2`
   margin-top: 7rem;
 `;
 
-const pathAppear = (trigger, animTarget, duration, delay, direction = 'to top') => {
+const pathAppear = (trigger, animTarget, duration, delay, direction = 'to bottom') => {
   gsap.fromTo(
     animTarget,
     {
@@ -84,10 +85,15 @@ const HomePageTechnology = () => {
       const pathOrder = index === 0 ? 0 : index * 2;
       const elseOrder = index === 0 ? 0 : index;
 
-      pathAppear(skillbox[elseOrder], pathLine[pathOrder + 1], 0.25, 0);
       boxAppear(skillbox[elseOrder], checkpoint[elseOrder], 0.5, 0.25);
-      pathAppear(skillbox[elseOrder], pathLine[pathOrder], 0.25, 0.3, 'to left');
-      skillAppear(skillbox[elseOrder], skill[elseOrder], 0.25, 0.55);
+      pathAppear(skillbox[elseOrder], pathLine[pathOrder + 1], 0.5, 0.75);
+      pathAppear(skillbox[elseOrder], pathLine[pathOrder], 0.5, 0.75, 'to left');
+      skillAppear(skillbox[elseOrder], skill[elseOrder], 0.5, 0.75);
+
+      // pathAppear(skillbox[elseOrder], pathLine[pathOrder + 1], 0.25, 0);
+      // boxAppear(skillbox[elseOrder], checkpoint[elseOrder], 0.5, 0.25);
+      // pathAppear(skillbox[elseOrder], pathLine[pathOrder], 0.25, 0.3, 'to left');
+      // skillAppear(skillbox[elseOrder], skill[elseOrder], 0.25, 0.55);
     });
   });
   return (
@@ -108,6 +114,7 @@ const HomePageTechnology = () => {
         This is my favorite animation library. I can use timelines, scrolltrigers etc. to put some live into my webapps
       </Skillbox>
       <StyledHeading>other tools</StyledHeading>
+      <OtherTechCarousel />
     </Wrapper>
   );
 };

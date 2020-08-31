@@ -28,6 +28,7 @@ const Home = ({ location }) => {
         <HomePageAbout />
         <Devider title='technology.' highlightEnd='4' highlightColor={({ theme }) => theme.base.accent.secondary} />
         <HomePageTechnology />
+        <Devider title='projects.' highlightEnd='3' highlightColor={({ theme }) => theme.base.accent.primary} />
       </Wrapper>
     </Layout>
   );
