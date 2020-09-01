@@ -20,7 +20,7 @@ const ButtonText = styled.span`
   color: ${({ btncolor }) => btncolor};
   text-transform: uppercase;
   background: none;
-  border: 1px solid ${({ btncolor }) => btncolor};
+  border: 2px solid ${({ btncolor }) => btncolor};
   border-radius: 5px;
   cursor: pointer;
   overflow: hidden;
@@ -31,7 +31,7 @@ const ButtonText = styled.span`
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 101%;
     background: ${({ btncolor }) => btncolor};
     transform-origin: 100% 0;
     transform: scale3d(0, 1, 1);

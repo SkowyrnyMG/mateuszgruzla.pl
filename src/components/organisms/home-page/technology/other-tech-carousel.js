@@ -20,7 +20,6 @@ const IconContainer = styled.div`
   width: 1800px;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
 `;
 
 const ImgBox = styled.div.attrs(() => ({ className: 'carousel-icon' }))`

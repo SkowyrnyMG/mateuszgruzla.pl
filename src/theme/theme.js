@@ -5,6 +5,7 @@ const constTheme = {
     tertiary: '#FF593D',
   },
   fontSize: {
+    massive: '4.5rem',
     xl: '28.5px',
     l: '24px',
     ml: '20px',
