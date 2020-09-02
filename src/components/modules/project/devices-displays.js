@@ -81,6 +81,7 @@ const MobileDisplay = styled.div`
   background: #000;
   border: 5px solid ${({ theme: { base }, side }) => (side === 'left' ? base.accent.secondary : base.accent.primary)};
   border-radius: 1.5rem;
+  box-shadow: 0 0 10px black;
   overflow: hidden;
 `;
 

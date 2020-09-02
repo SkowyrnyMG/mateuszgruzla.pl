@@ -7,13 +7,17 @@ const WrapperLink = styled(Link)`
   position: relative;
 `;
 
+const WrapperOuterLink = styled.a`
+  position: relative;
+`;
+
 const ButtonText = styled.span`
   margin-top: 2rem;
   position: relative;
   transition: color 0.25s;
   z-index: 10;
 
-  padding: ${({ isLink }) => (isLink === 'true' ? '2rem 4rem' : '2rem 4rem')};
+  padding: ${({ btnType }) => (btnType === 'inner' || btnType === 'outer' ? '2rem 4rem' : '2rem 4rem')};
   font-family: inherit;
   font-size: 20px;
   font-weight: ${({ theme: { base } }) => base.fontWeight.bold};
@@ -51,16 +55,24 @@ const ButtonText = styled.span`
 
 const WrapperBtn = ButtonText.withComponent('button');
 
-const Button = ({ children, btncolor, isLink, path }) => (
+const Button = ({ children, btncolor, btnType, path }) => (
   <>
-    {isLink === 'true' ? (
+    {btnType === 'inner' && (
       <WrapperLink to={path}>
-        <ButtonText isLink={isLink} btncolor={btncolor}>
+        <ButtonText btnType={btnType} btncolor={btncolor}>
           {children}
         </ButtonText>
       </WrapperLink>
-    ) : (
-      <WrapperBtn isLink={isLink} btncolor={btncolor}>
+    )}
+    {btnType === 'outer' && (
+      <WrapperOuterLink href={path} target='_blank' rel='noreferrer'>
+        <ButtonText btnType={btnType} btncolor={btncolor}>
+          {children}
+        </ButtonText>
+      </WrapperOuterLink>
+    )}
+    {btnType === 'button' && (
+      <WrapperBtn btnType={btnType} btncolor={btncolor}>
         <span>{children}</span>
       </WrapperBtn>
     )}
@@ -71,14 +83,14 @@ Button.defaultProps = {
   children: 'Click me',
   btncolor: ({ theme }) => theme.base.accent.primary,
   path: '/',
-  isLink: 'false',
+  btnType: 'button',
 };
 
 Button.propTypes = {
   children: PropTypes.string,
   btncolor: PropTypes.func,
   path: PropTypes.string,
-  isLink: PropTypes.string,
+  btnType: PropTypes.string,
 };
 
 export default Button;

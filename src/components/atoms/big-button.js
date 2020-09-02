@@ -17,10 +17,15 @@ const StyledBtnText = styled.span`
   }
 `;
 
+const StyledLink = styled(Link)`
+  grid-column: 1 / -1;
+  text-align: center;
+`;
+
 const BigButton = ({ children, btnColor, path }) => (
-  <Link to={path}>
+  <StyledLink to={path}>
     <StyledBtnText btnColor={btnColor}>{children}</StyledBtnText>
-  </Link>
+  </StyledLink>
 );
 
 export default BigButton;

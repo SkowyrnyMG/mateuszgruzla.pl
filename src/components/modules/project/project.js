@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { routes } from 'utils/routes';
-
 import TechList from 'components/modules/tech-list/tech-list';
 import Button from 'components/atoms/button';
 
@@ -32,16 +30,34 @@ const Content = styled.div`
   order: ${({ side }) => (side === 'left' ? 1 : 0)};
 `;
 
-const Project = ({ title, children, technologies, side, bigScreen, tabletDevice, mobileDevice }) => (
+const ButtonWrapper = styled.div`
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > * {
+    margin-top: 0;
+  }
+`;
+
+const Project = ({ title, children, technologies, side, bigScreen, tabletDevice, mobileDevice, projectLink, codeLink }) => (
   <Wrapper>
     <Content side={side}>
       <h3>{title}</h3>
       <p>{children}</p>
       <h4>Stack</h4>
       <TechList technologies={technologies} />
-      <Button isLink='true' path={routes.portfolio}>
-        VIEW PROJECTS
-      </Button>
+      <ButtonWrapper>
+        <Button btnType='outer' btncolor={({ theme: { base } }) => (side === 'left' ? base.accent.secondary : base.accent.primary)} path={projectLink}>
+          VIEW PROJECT
+        </Button>
+        {codeLink && (
+          <Button btnType='outer' btncolor={({ theme: { base } }) => (side === 'left' ? base.accent.primary : base.accent.secondary)} path={codeLink}>
+            CODE
+          </Button>
+        )}
+      </ButtonWrapper>
     </Content>
     <DevicesDisplays side={side} bigScreen={bigScreen} tabletDevice={tabletDevice} mobileDevice={mobileDevice} />
   </Wrapper>

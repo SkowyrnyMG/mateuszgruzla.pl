@@ -9,6 +9,7 @@ import HomePageHeader from 'components/organisms/home-page/header/home-page-head
 import HomePageAbout from 'components/organisms/home-page/about/home-page-about';
 import HomePageTechnology from 'components/organisms/home-page/technology/home-page-technology';
 import HomePageProjects from 'components/organisms/home-page/projects/home-page-projects';
+import HomePageBlog from 'components/organisms/home-page/blog/home-page-blog';
 
 const Wrapper = styled.div`
   position: relative;
@@ -32,6 +33,7 @@ const Home = ({ location }) => {
         <Devider title='projects.' highlightEnd='3' highlightColor={({ theme }) => theme.base.accent.primary} />
         <HomePageProjects />
         <Devider title='blog.' highlightEnd='2' highlightColor={({ theme }) => theme.base.accent.secondary} />
+        <HomePageBlog />
       </Wrapper>
     </Layout>
   );
