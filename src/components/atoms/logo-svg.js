@@ -18,6 +18,7 @@ const StyledLogoIcon = styled(LogoIcon)`
 
 const LogoSvg = ({ height }) => {
   const { isDarkTheme } = useContext(ThemeContext);
+
   return (
     <Wrapper isDarkTheme={isDarkTheme}>
       <StyledLogoIcon height={height} />

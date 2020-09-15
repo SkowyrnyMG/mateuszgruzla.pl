@@ -8,6 +8,7 @@ import GlobalStyles from '../theme/global-styles';
 
 const RootStylesWrapper = ({ children }) => {
   const { isDarkTheme } = useContext(ThemeContext);
+
   return (
     <div>
       <ThemeProvider theme={isDarkTheme === true ? darkTheme : lightTheme}>

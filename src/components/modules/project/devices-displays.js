@@ -35,7 +35,7 @@ const BigScreenDisplay = styled.div`
   border: 0.5rem solid ${({ theme: { base }, side }) => (side === 'left' ? base.accent.secondary : base.accent.primary)};
   border-radius: 1.5rem;
   background: black;
-  box-shadow: 0 0 10px black;
+  box-shadow: ${({ theme: { base } }) => base.shadow.darkSmall};
 `;
 
 const BigScreenStand = styled.div`
@@ -67,7 +67,7 @@ const TabletDisplay = styled.div`
   background: #000;
   border: 5px solid ${({ theme: { base }, side }) => (side === 'left' ? base.accent.secondary : base.accent.primary)};
   border-radius: 1.5rem;
-  box-shadow: 0 0 10px black;
+  box-shadow: ${({ theme: { base } }) => base.shadow.darkSmall};
   overflow: hidden;
 `;
 
@@ -81,7 +81,7 @@ const MobileDisplay = styled.div`
   background: #000;
   border: 5px solid ${({ theme: { base }, side }) => (side === 'left' ? base.accent.secondary : base.accent.primary)};
   border-radius: 1.5rem;
-  box-shadow: 0 0 10px black;
+  box-shadow: ${({ theme: { base } }) => base.shadow.darkSmall};
   overflow: hidden;
 `;
 
