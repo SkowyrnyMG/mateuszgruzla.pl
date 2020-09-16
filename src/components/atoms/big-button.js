@@ -9,6 +9,7 @@ const StyledBtnText = styled.span`
   color: ${({ btnColor }) => btnColor};
   border: 2px solid ${({ btnColor }) => btnColor};
   border-radius: 0.5rem;
+  box-shadow: ${({ theme: { base } }) => base.shadow.contrast};
   transition: all 0.25s;
 
   :hover {

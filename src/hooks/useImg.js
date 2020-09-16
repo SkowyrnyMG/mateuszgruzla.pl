@@ -25,5 +25,9 @@ export const useImg = () => {
     knsTablet: images[2].node.childImageSharp.fluid,
     aboutComodore: images[3].node.childImageSharp.fluid,
     aboutHelloroman: images[4].node.childImageSharp.fluid,
+    invoicingAppBigScreen: images[5].node.childImageSharp.fluid,
+    invoicingAppTablet: images[6].node.childImageSharp.fluid,
+    invoicingAppMobile: images[7].node.childImageSharp.fluid,
+    livesessionLogo: images[8].node.childImageSharp.fluid,
   };
 };

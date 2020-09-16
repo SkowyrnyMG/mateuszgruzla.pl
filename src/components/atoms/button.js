@@ -26,6 +26,7 @@ const ButtonText = styled.span`
   background: none;
   border: 2px solid ${({ btncolor }) => btncolor};
   border-radius: 5px;
+  box-shadow: ${({ theme: { base } }) => base.shadow.contrast};
   cursor: pointer;
   overflow: hidden;
 

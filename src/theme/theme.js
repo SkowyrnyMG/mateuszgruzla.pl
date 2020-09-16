@@ -29,6 +29,7 @@ const constTheme = {
   },
   shadow: {
     darkSmall: '0 0 1.5rem -.6rem #12181B',
+    contrast: '0 0 .8rem -.4rem #12181B',
   },
 };
 

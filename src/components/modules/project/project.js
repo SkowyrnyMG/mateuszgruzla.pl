@@ -49,9 +49,11 @@ const Project = ({ title, children, technologies, side, bigScreen, tabletDevice,
       <h4>Stack</h4>
       <TechList technologies={technologies} />
       <ButtonWrapper>
-        <Button btnType='outer' btncolor={({ theme: { base } }) => (side === 'left' ? base.accent.secondary : base.accent.primary)} path={projectLink}>
-          VIEW PROJECT
-        </Button>
+        {projectLink && (
+          <Button btnType='outer' btncolor={({ theme: { base } }) => (side === 'left' ? base.accent.secondary : base.accent.primary)} path={projectLink}>
+            VIEW PROJECT
+          </Button>
+        )}
         {codeLink && (
           <Button btnType='outer' btncolor={({ theme: { base } }) => (side === 'left' ? base.accent.primary : base.accent.secondary)} path={codeLink}>
             CODE
