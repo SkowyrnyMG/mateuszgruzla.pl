@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import { routes } from 'utils/routes';
@@ -6,7 +6,9 @@ import { routes } from 'utils/routes';
 import Button from 'components/atoms/button';
 import LogoIcon from 'assets/svg/logo-icon.svg';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs(() => ({
+  className: 'closePopup',
+}))`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +18,13 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   top: 0;
+  left: 0;
   background: rgba(0, 0, 0, 0.9);
+
+  opacity: ${({ isPopupActive }) => (isPopupActive ? 1 : 0)};
+  pointer-events: ${({ isPopupActive }) => (isPopupActive ? 'auto' : 'none')};
+
+  transition: opacity 0.25s;
 `;
 
 const PopupBox = styled.div`
@@ -29,6 +37,8 @@ const PopupBox = styled.div`
   min-height: 54rem;
   border-radius: 0.5rem;
   background: ${({ theme: { color } }) => color.secondary};
+  transform: ${({ isPopupActive }) => (isPopupActive ? 'translateY(0)' : 'translateY(150px)')};
+  transition: transform 0.25s;
 `;
 
 const Content = styled.div`
@@ -46,10 +56,16 @@ const StyledHeading = styled.h3`
 
 const StyledParagraph = styled.p`
   margin-bottom: 6rem;
+  font-size: ${({ theme: { base } }) => base.fontSize.m};
 `;
 
 const StyledLogo = styled(LogoIcon)`
   width: 19.6rem;
+  pointer-events: none;
+
+  * {
+    fill: ${({ theme: { base } }) => base.accent.secondary};
+  }
 `;
 
 const CloseButton = styled.button`
@@ -82,24 +98,38 @@ const CloseButton = styled.button`
   }
 `;
 
-const Popup = () => (
-  <Wrapper>
-    <PopupBox>
-      <CloseButton />
-      <Content>
-        <StyledHeading>OPEN TO WORK</StyledHeading>
-        <StyledParagraph>
-          If your Company is looking for creative, open minded, passionate Frontend developer, which is just about to start his coding career then you are in right place! I am
-          ready to start my path as Javascript/React/Gatsby dev. I would like to be part of a team which would help me to develop my skills even further to become better porgrammer
-          and person.
-        </StyledParagraph>
-        <Button path={routes.contact} btnType='inner'>
-          CONTACT WITH ME!
-        </Button>
-      </Content>
-      <StyledLogo />
-    </PopupBox>
-  </Wrapper>
-);
+const Popup = ({ isPopupActive, handleClosePopup }) => {
+  const popupWrapper = useRef(null);
+
+  const watchClick = (e) => {
+    if (e.target.className.includes('closePopup')) handleClosePopup();
+  };
+
+  useEffect(() => {
+    const wrapperDOM = popupWrapper.current;
+    wrapperDOM.addEventListener('click', watchClick);
+    return () => wrapperDOM.removeEventListener('click', watchClick);
+  });
+  return (
+    <Wrapper ref={popupWrapper} isPopupActive={isPopupActive}>
+      <PopupBox isPopupActive={isPopupActive}>
+        <CloseButton onClick={handleClosePopup} />
+        <Content>
+          <StyledHeading>OPEN TO WORK</StyledHeading>
+          <StyledParagraph>
+            If your Company is looking for creative, open minded, passionate Frontend developer, which is just about to start his coding career then you are in right place! <br />
+            <br />
+            <b>I am ready to start my path</b> as Javascript/React/Gatsby dev. <br />
+            <br />I would like to be part of a team which would help me to develop my skills even further to become better porgrammer and person.
+          </StyledParagraph>
+          <Button path={routes.contact} btnType='inner' btncolor={({ theme: { base } }) => base.accent.secondary}>
+            CONTACT WITH ME!
+          </Button>
+        </Content>
+        <StyledLogo />
+      </PopupBox>
+    </Wrapper>
+  );
+};
 
 export default Popup;

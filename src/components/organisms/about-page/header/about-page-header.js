@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Header from 'components/atoms/header';
@@ -92,6 +92,16 @@ const CTA = styled.button`
 `;
 
 const AboutPageHeader = () => {
+  const [isPopupActive, setIsPopupActive] = useState(false);
+
+  const handleOpenPopup = () => {
+    setIsPopupActive(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupActive(false);
+  };
+
   return (
     <Header>
       <Content>
@@ -107,7 +117,7 @@ const AboutPageHeader = () => {
         </ContentFourthLine>{' '}
       </Content>
       <CTAWrapper>
-        <CTA>
+        <CTA onClick={handleOpenPopup}>
           <span>CLICK TO PLACE</span>
           <span>
             LOGO <br />
@@ -115,7 +125,7 @@ const AboutPageHeader = () => {
           </span>
         </CTA>
       </CTAWrapper>
-      <Popup />
+      <Popup isPopupActive={isPopupActive} handleClosePopup={handleClosePopup} />
     </Header>
   );
 };
