@@ -8,6 +8,7 @@ import SEO from 'utils/seo';
 import Devider from 'components/modules/devider/devider';
 import BlogPageHeader from 'components/organisms/blog-page/header/blog-page-header';
 import BlogPagePosts from 'components/organisms/blog-page/posts/blog-page-posts';
+import BlogPageIndex from 'components/organisms/blog-page/index/blog-page-index';
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,7 +18,7 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const Blog = ({ data }) => {
+const Blog = ({ data, pageContext }) => {
   const {
     allMdx: { posts },
   } = data;
@@ -29,14 +30,15 @@ const Blog = ({ data }) => {
         <BlogPageHeader />
         <Devider highlightEnd='3' highlightColor={({ theme: { base } }) => base.accent.primary} title='posts.' />
         <BlogPagePosts posts={posts} />
+        <BlogPageIndex pageContext={pageContext} />
       </Wrapper>
     </Layout>
   );
 };
 
 export const query = graphql`
-  query {
-    allMdx {
+  query($skip: Int!, $limit: Int!) {
+    allMdx(skip: $skip, limit: $limit) {
       posts: edges {
         node {
           frontmatter {
