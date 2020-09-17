@@ -29,5 +29,6 @@ export const useImg = () => {
     invoicingAppTablet: images[6].node.childImageSharp.fluid,
     invoicingAppMobile: images[7].node.childImageSharp.fluid,
     livesessionLogo: images[8].node.childImageSharp.fluid,
+    defaultImg: images[9].node.childImageSharp.fluid,
   };
 };

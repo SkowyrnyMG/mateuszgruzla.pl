@@ -106,6 +106,28 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        extensions: ['.md', '.mdx'],
+        defaultLayouts: {
+          default: require.resolve('./src/utils/layout.js'),
+        },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-transformer-remark',
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+        ],
+      },
+    },
+
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

@@ -49,11 +49,11 @@ const Tag = styled.span`
 `;
 
 const Post = ({ postImg, title, excerpt, tags }) => {
-  const { knsBigScreen } = useImg();
+  const { defaultImg } = useImg();
   return (
     <Wrapper>
       {/* img */}
-      <StyledImg fluid={knsBigScreen} />
+      <StyledImg fluid={postImg ? postImg : defaultImg} />
       <StyledHeading>{title}</StyledHeading>
       <Excerpt>{excerpt}</Excerpt>
       <TagBox>
