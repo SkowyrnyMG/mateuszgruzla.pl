@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Cookies from 'js-cookie';
 
 import { ThemeContext } from 'context/theme-context';
 
@@ -26,7 +27,7 @@ const StyledButton = styled.button`
   overflow: hidden;
   cursor: pointer;
 
-  transition: 0.25s transform;
+  transition: 0.25s all;
 
   svg {
     height: 35px;
@@ -81,7 +82,7 @@ const FloatingNav = ({ toggleMenu }) => {
 
   const handleToggleTheme = () => {
     setIsDarkTheme((state) => !state);
-    localStorage.setItem('theme', !isDarkTheme === true ? 'dark' : 'light');
+    Cookies.set('theme', !isDarkTheme === true ? 'dark' : 'light');
   };
   return (
     <Wrapper>

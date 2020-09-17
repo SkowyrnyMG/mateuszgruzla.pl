@@ -1,0 +1,37 @@
+backend:
+  name: git-gateway
+  repo: SkowyrnyMG/mateuszgruzla.pl
+  branch: master
+
+media_folder: static/img
+public_folder: /img
+publish_mode: editorial_workflow
+
+collections:
+  - name: 'blog'
+    label: 'Blog'
+    folder: 'content/blog'
+    create: true
+    slug: 'index'
+    media_folder: ''
+    public_folder: ''
+    path: '{{title}}/index'
+    editor:
+      preview: true
+    fields:
+      - { label: 'Ważne', name: 'important', widget: 'string', default: 'nie' }
+      - { label: 'Data publikacji', name: 'date', widget: 'datetime' }
+      - label: 'Autorzy'
+        name: 'authors'
+        collapsed: false
+        widget: 'list'
+        fields:
+          - { label: Autor, name: author, widget: string, default: 'Mateusz Gruźla' }
+      - label: 'Tagi'
+        name: 'tags'
+        widget: 'list'
+        default: ['news', 'biznes']
+      - { label: 'Tytuł', name: 'title', widget: 'string' }
+      - { label: 'Zdjęcie nagówkowe', name: 'image', widget: 'image' }
+      - { label: 'Opis posta', name: 'description', widget: 'string' }
+      - { label: 'Treść', name: 'body', widget: 'markdown' }
