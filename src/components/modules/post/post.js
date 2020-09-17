@@ -53,14 +53,15 @@ const Post = ({ postImg, title, excerpt, tags }) => {
   return (
     <Wrapper>
       {/* img */}
-      <StyledImg fluid={postImg ? postImg : defaultImg} />
+      {/* <StyledImg fluid={postImg ? postImg : defaultImg} /> */}
+      <StyledImg fluid={defaultImg} />
       <StyledHeading>{title}</StyledHeading>
       <Excerpt>{excerpt}</Excerpt>
-      <TagBox>
+      {/* <TagBox>
         {tags.map((tag) => (
           <Tag key={tag}>{tag}</Tag>
         ))}
-      </TagBox>
+      </TagBox> */}
     </Wrapper>
   );
 };
