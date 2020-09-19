@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { routes } from 'utils/routes';
+import { useLastPosts } from 'hooks/useLastPosts';
 
 import Post from 'components/modules/post/post';
 import BigButton from 'components/atoms/big-button';
@@ -27,30 +28,20 @@ const StyledBigButton = styled(BigButton)`
   margin: 12rem 0;
 `;
 
-const HomePageBlog = () => (
-  <Wrapper>
-    <PostWrapper>
-      <Post
-        title='First test post'
-        excerpt='Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium temporibus explicabo commodi suscipit deleniti molestiae error nobis eligendi voluptatum magni.'
-        tags={['JavaScript']}
-      />
-      <Post
-        title='Second test post'
-        excerpt='Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium temporibus explicabo commodi suscipit deleniti molestiae error nobis eligendiror nobis eligendi voluptatum magni.'
-        tags={['JavaScript', 'React']}
-      />
-      <Post title='Third test post' excerpt='Lorem ipsum dolor sit amet consectetur adtatum magni.' tags={['Gatsby', 'DatoCms']} />
-      <Post
-        title='Fourth test post'
-        excerpt='Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium temporibus explicabo commodi suscipit deleniti molestiae error atum magni.'
-        tags={['JavaScript']}
-      />
-    </PostWrapper>
-    <StyledBigButton path={routes.blog} btnColor={({ theme: { base } }) => base.accent.secondary}>
-      GO TO BLOG PAGE
-    </StyledBigButton>
-  </Wrapper>
-);
+const HomePageBlog = () => {
+  const lastPosts = useLastPosts();
+  return (
+    <Wrapper>
+      <PostWrapper>
+        {lastPosts.map(({ node: { id }, node: { slug }, node: { frontmatter: { title } }, node: { frontmatter: { description } } }) => (
+          <Post title={title} excerpt={description} tags={['JavaScript']} key={id} slug={slug} />
+        ))}
+      </PostWrapper>
+      <StyledBigButton path={routes.blog} btnColor={({ theme: { base } }) => base.accent.secondary}>
+        GO TO BLOG PAGE
+      </StyledBigButton>
+    </Wrapper>
+  );
+};
 
 export default HomePageBlog;

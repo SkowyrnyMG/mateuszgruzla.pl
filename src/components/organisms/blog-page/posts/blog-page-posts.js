@@ -17,10 +17,20 @@ const Wrapper = styled.div`
 
 const BlogPagePosts = ({ posts }) => (
   <Wrapper>
-    {posts.map((post) => {
-      const { node } = post;
-      return <Post title={node.frontmatter.title} excerpt={node.frontmatter.description} key={node.id} />;
-    })}
+    {posts.map(
+      ({
+        node: { id },
+        node: { slug },
+        node: {
+          frontmatter: { title },
+        },
+        node: {
+          frontmatter: { description },
+        },
+      }) => {
+        return <Post title={title} excerpt={description} key={id} slug={slug} />;
+      },
+    )}
   </Wrapper>
 );
 

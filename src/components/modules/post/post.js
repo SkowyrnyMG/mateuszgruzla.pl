@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import { Link } from 'gatsby';
 
 import { useImg } from 'hooks/useImg';
 
-const Wrapper = styled.article`
+const StyledLink = styled(Link)`
   margin-top: 0;
   display: grid;
   grid-template-rows: minmax(20rem, 30rem) minmax(3.5rem, min-content) minmax(7.5rem, min-content) 3rem 1rem;
   grid-gap: 2rem;
-  width: auto;
+  width: 100%;
   min-height: 54rem;
   font-size: ${({ theme: { base } }) => base.fontSize.m};
   background: ${({ theme: { color } }) => color.secondary};
@@ -48,10 +49,10 @@ const Tag = styled.span`
   }
 `;
 
-const Post = ({ postImg, title, excerpt, tags }) => {
+const Post = ({ postImg, title, excerpt, tags, slug }) => {
   const { defaultImg } = useImg();
   return (
-    <Wrapper>
+    <StyledLink to={`/blog/${slug}`}>
       {/* img */}
       {/* <StyledImg fluid={postImg ? postImg : defaultImg} /> */}
       <StyledImg fluid={defaultImg} />
@@ -62,7 +63,7 @@ const Post = ({ postImg, title, excerpt, tags }) => {
           <Tag key={tag}>{tag}</Tag>
         ))}
       </TagBox> */}
-    </Wrapper>
+    </StyledLink>
   );
 };
 
