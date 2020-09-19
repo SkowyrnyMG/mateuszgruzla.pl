@@ -31,6 +31,10 @@ const constTheme = {
     darkSmall: '0 0 1.5rem -.6rem #12181B',
     contrast: '0 0 .8rem -.4rem #12181B',
   },
+  fontFamily: {
+    main: '"Montserrat", sans-serif',
+    secondary: '"Changa One", cursive',
+  },
 };
 
 export const lightTheme = {

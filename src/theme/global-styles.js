@@ -36,7 +36,8 @@ const GlobalStyles = createGlobalStyle`
     background: ${({ theme: { color } }) => color.secondary};
   }
 
-  input {
+  input,
+  textarea {
     padding-left: 2rem;
     height: 5rem;
     width: 30rem;
@@ -50,6 +51,10 @@ const GlobalStyles = createGlobalStyle`
       color: ${({ theme: { color } }) => color.content};
     }
 
+  }
+
+  textarea {
+    min-height: 25rem;
   }
 
   * + * {

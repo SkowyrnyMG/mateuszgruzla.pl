@@ -19,10 +19,10 @@ const Wrapper = styled.div`
 
 const SocialMediaWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, min-content);
+  grid-template-columns: ${({ vertical }) => (vertical ? 1 : 'repeat(2, min-content)')};
   grid-row-gap: 2.5rem;
   grid-column-gap: 3rem;
-  justify-items: center;
+  /* justify-items: center; */
   align-items: center;
   svg {
     margin-top: 0;
@@ -30,33 +30,41 @@ const SocialMediaWrapper = styled.div`
     height: 4rem;
     fill: ${({ theme: { color } }) => color.content};
   }
+
+  > *:not(:last-child) {
+    margin-bottom: ${({ vertical }) => (vertical ? '6rem' : 0)};
+  }
 `;
 
-const SocialList = ({ fbLink, linkedinLink, githubLink, twitterLink }) => (
+const SocialInfoText = styled.span`
+  font-weight: ${({ theme: { base } }) => base.fontWeight.bold};
+`;
+
+const SocialList = ({ fbLink, linkedinLink, githubLink, twitterLink, vertical }) => (
   <Wrapper>
-    <NavHeading>Reach me on</NavHeading>
-    <SocialMediaWrapper>
+    {vertical ? null : <NavHeading>Reach me on</NavHeading>}
+    <SocialMediaWrapper vertical={vertical}>
       <ExternalLink link={fbLink}>
-        <FacebookIcon />
+        <FacebookIcon /> {vertical ? <SocialInfoText>facebook.</SocialInfoText> : null}
       </ExternalLink>
       <ExternalLink link={linkedinLink}>
-        <LinkedinIcon />
+        <LinkedinIcon /> {vertical ? <SocialInfoText>linkedin.</SocialInfoText> : null}
       </ExternalLink>
       <ExternalLink link={githubLink}>
-        <GithubIcon />
+        <GithubIcon /> {vertical ? <SocialInfoText>github.</SocialInfoText> : null}
       </ExternalLink>
       <ExternalLink link={twitterLink}>
-        <TwitterIcon />
+        <TwitterIcon /> {vertical ? <SocialInfoText>twitter.</SocialInfoText> : null}
       </ExternalLink>
     </SocialMediaWrapper>
   </Wrapper>
 );
 
 SocialList.defaultProps = {
-  fbLink: 'https://facebook.com',
-  linkedinLink: 'https://linkedin.com',
-  githubLink: 'https://gatsby.com',
-  twitterLink: 'https://twitter.com',
+  fbLink: 'https://www.facebook.com/mateusz.gruzla.3/',
+  linkedinLink: 'https://www.linkedin.com/in/mateusz-gru%C5%BAla-99b0ab18b/',
+  githubLink: 'https://github.com/SkowyrnyMG',
+  twitterLink: 'https://twitter.com/GruzlaMateusz',
 };
 
 SocialList.propTypes = {

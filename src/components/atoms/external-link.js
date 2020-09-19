@@ -4,6 +4,11 @@ import styled from 'styled-components';
 
 const StyledLink = styled.a`
   margin-top: 0;
+  display: flex;
+
+  > *:nth-child(2) {
+    margin-left: 1rem;
+  }
 `;
 
 const ExternalLink = ({ children, link }) => (
