@@ -1,6 +1,6 @@
 ---
 title: New Beginnings
-date: "2015-05-28T22:40:32.169Z"
+date: '2015-05-28T22:40:32.169Z'
 description: This is a custom description for SEO and Open Graph purposes, rather than the default generated excerpt. Simply add a description field to the frontmatter.
 ---
 
@@ -44,7 +44,7 @@ mouth. Even the all-powerful Pointing has no control about the blind texts it is
 an almost unorthographic life One day however a small line of blind text by the
 name of Lorem Ipsum decided to leave for the far World of Grammar.
 
-### According a funnily until pre-set or arrogant well cheerful
+## According a funnily until pre-set or arrogant well cheerful
 
 The Big Oxmox advised her not to do so, because there were thousands of bad
 Commas, wild Question Marks and devious Semikoli, but the Little Blind Text
@@ -75,7 +75,7 @@ again and again. And if she hasn’t been rewritten, then they are still using
 her. Far far away, behind the word mountains, far from the countries Vokalia and
 Consonantia, there live the blind texts.
 
-#### Silent delightfully including because before one up barring chameleon
+### Silent delightfully including because before one up barring chameleon
 
 Separated they live in Bookmarksgrove right at the coast of the Semantics, a
 large language ocean. A small river named Duden flows by their place and
