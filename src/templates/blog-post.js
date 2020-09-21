@@ -3,12 +3,20 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import gsap from 'gsap';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+// import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 import Layout from 'utils/layout';
 import SEO from 'utils/seo';
 
 import Devider from 'components/modules/devider/devider';
+import TableOfContent from 'components/organisms/post-page/table-of-content/table-of-content';
+import PostPageArticleHeader from 'components/organisms/post-page/article-header/post-page-article-header';
+
+const Wrapper = styled.article`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
 const MainPostHeading = styled.h1`
   margin-bottom: 7rem;
@@ -19,6 +27,7 @@ const MainPostHeading = styled.h1`
 
 const StyledPostBody = styled.div`
   display: flex;
+  height: 100%;
 `;
 
 const PostBodyContainer = styled.div`
@@ -26,16 +35,9 @@ const PostBodyContainer = styled.div`
 `;
 
 const TableOfContentWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+  position: relative !important;
+  display: block;
   flex-basis: calc(100% - 70rem);
-`;
-
-const TableOfContent = styled.aside`
-  padding: 2rem;
-  min-width: 35rem;
-  height: fit-content;
-  background: ${({ theme: { color } }) => color.secondary};
 `;
 
 const BlogPost = ({ data, pageContext }) => {
@@ -43,67 +45,42 @@ const BlogPost = ({ data, pageContext }) => {
     mdx: {
       frontmatter: { title, date, description },
       body,
+      timeToRead,
+    },
+    site: {
+      siteMetadata: {
+        author: { name },
+      },
     },
   } = data;
 
+  // Here we are creating table of content regarding heading tags in MDX body, croll animation logic is implemented in table-of-content.js file
   const [headings, setHeadings] = useState('');
   const PostBodyDOM = useRef(null);
   const TableOfContentDOM = useRef(null);
   useEffect(() => {
-    gsap.registerPlugin(ScrollToPlugin);
     const allHeadings = PostBodyDOM.current.querySelectorAll('h1, h2, h3, h4, h5, h6');
     allHeadings.forEach((heading, index) => heading.setAttribute('id', `heading-index-${index}`));
-    // const headingsList = [...allHeadings].map(({ textContent, tagName }) => {
-    //   return <span key={textContent}>tagName</span>;
-    // });
-    // setHeadings(allHeadings);
+    setHeadings(allHeadings);
+  }, []);
 
-    const TOCButtons = TableOfContentDOM.current.querySelectorAll('button');
-
-    [...TOCButtons].forEach((content) =>
-      content.addEventListener('click', (e) => {
-        console.log(e.target);
-        gsap.to(window, { duration: 1, scrollTo: `#${e.target.className}` });
-      }),
-    );
-    console.log(TableOfContentDOM.current);
-
-    return () =>
-      [...TOCButtons].forEach((content) =>
-        content.removeEventListener('click', (e) => {
-          gsap.to(window, { duration: 1, scrollTo: `#${e.target.className}` });
-        }),
-      );
-  });
-
-  // const handleTOCClick = ({ headingId }) => {
-  //   gsap.registerPlugin(ScrollToPlugin);
-  //   gsap.to(window, { duration: 2, scrollTo: `#${headingId}` });
-  // };
   return (
     <Layout>
       <SEO title='blogpost' />
-      <article>
+      <Wrapper>
         <MainPostHeading>{title}</MainPostHeading>
         <Devider title=' ' />
-        <p>{description}</p>
+        {/* <p>{description}</p> */}
         <StyledPostBody>
           <PostBodyContainer ref={PostBodyDOM}>
+            <PostPageArticleHeader description={description} author={name} publishDate={date} timeToRead={timeToRead} />
             <MDXRenderer>{body}</MDXRenderer>
           </PostBodyContainer>
-          <TableOfContentWrapper>
-            <TableOfContent ref={TableOfContentDOM}>
-              {[...headings].map(({ textContent, tagName, id }) => {
-                return (
-                  <button className={id} key={textContent}>
-                    {textContent}
-                  </button>
-                );
-              })}
-            </TableOfContent>
+          <TableOfContentWrapper ref={TableOfContentDOM}>
+            <TableOfContent headings={headings} />
           </TableOfContentWrapper>
         </StyledPostBody>
-      </article>
+      </Wrapper>
     </Layout>
   );
 };
@@ -113,6 +90,9 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        author {
+          name
+        }
       }
     }
 
@@ -121,10 +101,11 @@ export const query = graphql`
       slug
       frontmatter {
         title
-        date
+        date(formatString: "MMMM DD, YYYY")
         description
       }
       body
+      timeToRead
     }
   }
 `;

@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     font-size: 62.5%;
     font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
   }
   body {
     margin: 0;
