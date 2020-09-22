@@ -14,8 +14,10 @@ const constTheme = {
     quaternary: '#FF00E5',
   },
   fontSize: {
+    postMainHeading: '6rem',
     massive: '4.5rem',
     big: '46px',
+    postBigHeading: '30px',
     xl: '28.5px',
     l: '24px',
     ml: '20px',

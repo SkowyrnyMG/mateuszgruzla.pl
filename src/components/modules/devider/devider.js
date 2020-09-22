@@ -6,14 +6,16 @@ const Wrapper = styled.div`
   margin-bottom: 12rem;
   width: 100%;
   z-index: 10;
+  grid-column: 1 / -1 !important;
 
   ::before {
     content: '';
     position: absolute;
     bottom: 0;
-    left: -500%;
-    width: 1000%;
+    left: 0%;
+    right: 0%;
     border-bottom: 1px solid ${({ theme: { color } }) => color.content};
+    transform: scaleX(1);
     z-index: -1;
   }
 `;
@@ -21,6 +23,7 @@ const Wrapper = styled.div`
 const StyledHeading = styled.h2`
   text-align: left;
   margin-bottom: -4.1rem;
+  margin-left: calc((100% - 1180px) / 2);
 `;
 
 const Highlight = styled.span`

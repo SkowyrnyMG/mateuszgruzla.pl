@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Layout from 'utils/layout';
 import SEO from 'utils/seo';
+import GridView from 'utils/grid-view';
 
 import Devider from 'components/modules/devider/devider';
 import BlogPageHeader from 'components/organisms/blog-page/header/blog-page-header';
@@ -27,10 +28,12 @@ const Blog = ({ data, pageContext }) => {
     <Layout>
       <SEO title='Blog' />
       <Wrapper>
-        <BlogPageHeader />
-        <Devider highlightEnd='3' highlightColor={({ theme: { base } }) => base.accent.primary} title='posts.' />
-        <BlogPagePosts posts={posts} />
-        <BlogPageIndex pageContext={pageContext} />
+        <GridView>
+          <BlogPageHeader />
+          <Devider highlightEnd='3' highlightColor={({ theme: { base } }) => base.accent.primary} title='posts.' />
+          <BlogPagePosts posts={posts} />
+          <BlogPageIndex pageContext={pageContext} />
+        </GridView>
       </Wrapper>
     </Layout>
   );

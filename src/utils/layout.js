@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { ThemeContextProvider } from 'context/theme-context';
 
 import RootStylesWrapper from 'utils/root-styles-wrapper';
-import GridView from 'utils/grid-view';
 import MainMenu from 'components/organisms/main-menu/main-menu';
 import Footer from 'components/organisms/footer/footer';
 
@@ -21,9 +20,9 @@ const Layout = ({ children }) => {
     <ThemeContextProvider>
       <RootStylesWrapper>
         <MainMenu />
-        <GridView>
-          <TemporaryMain>{children}</TemporaryMain>
-        </GridView>
+
+        <TemporaryMain>{children}</TemporaryMain>
+
         <Footer />
       </RootStylesWrapper>
     </ThemeContextProvider>

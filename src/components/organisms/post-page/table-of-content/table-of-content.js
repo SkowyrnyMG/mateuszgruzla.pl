@@ -17,6 +17,7 @@ const Wrapper = styled.aside`
   button {
     background: none;
     border: none;
+    outline: none;
     text-align: left;
     cursor: pointer;
 

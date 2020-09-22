@@ -18,6 +18,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    width: 100%;
     font-size: 2rem;
     line-height: 1.4;
     color: ${({ theme: { color } }) => color.content};

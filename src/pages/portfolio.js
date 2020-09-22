@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Layout from 'utils/layout';
 import SEO from 'utils/seo';
+import GridView from 'utils/grid-view';
 
 import Devider from 'components/modules/devider/devider';
 import PortfolioPageHeader from 'components/organisms/portfolio-page/header/portfolio-page-header';
@@ -21,11 +22,13 @@ const Portfolio = () => (
   <Layout>
     <SEO title='Portfolio' />
     <Wrapper>
-      <PortfolioPageHeader />
-      <Devider title='projects' highlightEnd='3' highlightColor={({ theme: { base } }) => base.accent.primary} />
-      <PortfolioPageProjects />
-      <Devider title='contributions' highlightEnd='4' highlightColor={({ theme: { base } }) => base.accent.secondary} />
-      <PortfolioPageContributions />
+      <GridView>
+        <PortfolioPageHeader />
+        <Devider title='projects' highlightEnd='3' highlightColor={({ theme: { base } }) => base.accent.primary} />
+        <PortfolioPageProjects />
+        <Devider title='contributions' highlightEnd='4' highlightColor={({ theme: { base } }) => base.accent.secondary} />
+        <PortfolioPageContributions />
+      </GridView>
     </Wrapper>
   </Layout>
 );

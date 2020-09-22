@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Layout from 'utils/layout';
 import SEO from 'utils/seo';
+import GridView from 'utils/grid-view';
 
 import Devider from 'components/modules/devider/devider';
 import AboutPageHeader from 'components/organisms/about-page/header/about-page-header';
@@ -22,10 +23,12 @@ const About = () => (
   <Layout>
     <SEO title='About' />
     <Wrapper>
-      <AboutPageHeader />
-      <Devider title='mystory.' highlightEnd='2' highlightColor={({ theme: { base } }) => base.accent.secondary} />
-      <AboutPageStory />
-      <BottomSite />
+      <GridView>
+        <AboutPageHeader />
+        <Devider title='mystory.' highlightEnd='2' highlightColor={({ theme: { base } }) => base.accent.secondary} />
+        <AboutPageStory />
+        <BottomSite />
+      </GridView>
     </Wrapper>
   </Layout>
 );

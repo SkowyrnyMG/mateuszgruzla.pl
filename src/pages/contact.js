@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Layout from 'utils/layout';
 import SEO from 'utils/seo';
+import GridView from 'utils/grid-view';
 
 import Devider from 'components/modules/devider/devider';
 import ContactSection from 'components/organisms/contact-page/contact-section/contact-section';
@@ -21,9 +22,11 @@ const Contact = () => (
     <SEO title='Contact' />
 
     <Wrapper>
-      <ContactPageHeader />
-      <Devider highlightEnd='7' highlightColor={({ theme: { base } }) => base.accent.primary} title='messageme.' />
-      <ContactSection />
+      <GridView>
+        <ContactPageHeader />
+        <Devider highlightEnd='7' highlightColor={({ theme: { base } }) => base.accent.primary} title='messageme.' />
+        <ContactSection />
+      </GridView>
     </Wrapper>
   </Layout>
 );

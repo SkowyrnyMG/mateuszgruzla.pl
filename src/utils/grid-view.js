@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const GridWrapper = styled.div`
   margin: 0;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr [content-start] 1170px [content-end] 1fr;
 
