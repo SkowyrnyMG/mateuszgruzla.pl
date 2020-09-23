@@ -74,6 +74,20 @@ const StyledPostBody = styled.div`
       margin-bottom: 0;
     }
   }
+
+  span {
+    border-radius: 0.5rem;
+
+    img {
+      border-radius: 0.5rem;
+    }
+  }
+
+  pre {
+    padding: 2rem;
+    background: ${({ theme: { color } }) => color.menu};
+    border-radius: 0.5rem;
+  }
 `;
 
 const PostBodyContainer = styled.div`
@@ -119,7 +133,6 @@ const NavButton = styled(Link)`
   width: 12rem;
   margin: 0;
   display: flex;
-  /* justify-content: space-between; */
   color: ${({ theme: { color } }) => color.header};
   font-size: ${({ theme: { base } }) => base.fontSize.ml};
   background: none;

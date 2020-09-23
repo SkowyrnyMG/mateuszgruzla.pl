@@ -41,7 +41,7 @@ const Blog = ({ data, pageContext }) => {
 
 export const query = graphql`
   query($skip: Int!, $limit: Int!) {
-    allMdx(skip: $skip, limit: $limit) {
+    allMdx(skip: $skip, limit: $limit, sort: { order: DESC, fields: frontmatter___date }) {
       posts: edges {
         node {
           frontmatter {

@@ -5,8 +5,9 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 const Wrapper = styled.aside`
   position: sticky;
+  display: flex;
+  flex-direction: column;
   top: 6rem;
-  display: block;
   margin-left: 5rem;
   padding: 2rem;
   min-width: 35rem;

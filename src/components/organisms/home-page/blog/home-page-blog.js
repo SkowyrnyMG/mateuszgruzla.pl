@@ -32,6 +32,7 @@ const HomePageBlog = () => {
   const lastPosts = useLastPosts();
   return (
     <Wrapper>
+      <h3>Latest posts</h3>
       <PostWrapper>
         {lastPosts.map(({ node: { id }, node: { slug }, node: { frontmatter: { title } }, node: { frontmatter: { description } } }) => (
           <Post title={title} excerpt={description} tags={['JavaScript']} key={id} slug={slug} />
