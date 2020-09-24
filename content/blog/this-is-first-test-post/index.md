@@ -53,6 +53,18 @@ const sayHi = (name, surname) => {
 sayHi(myName, mySurname);
 ```
 
+```scss
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+```
+
 Etiam enim nibh, maximus at nisi ac, pellentesque suscipit nibh. Nulla varius ligula in sapien condimentum, eget maximus massa luctus. Sed faucibus luctus mi. Sed ut orci felis. Nulla nec risus nec tortor congue pellentesque ut vel urna. Etiam enim nibh,
 
 > maximus at nisi ac, pellentesque suscipit nibh. Nulla varius ligula in sapien condimentum, eget maximus massa luctus. Sed faucibus luctus mi. Sed ut orci felis. Nulla nec risus nec tortor congue pellentesque ut vel urna.

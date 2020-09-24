@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Layout from 'utils/layout';
 import SEO from 'utils/seo';
 import GridView from 'utils/grid-view';
+import MdxRenderer from 'components/organisms/post-page/mdx-renderer/mdx-renderer';
 
 import Devider from 'components/modules/devider/devider';
 import FbIcon from 'assets/svg/fb-icon.svg';
@@ -190,7 +190,7 @@ const BlogPost = ({ data, pageContext }) => {
           <StyledPostBody>
             <PostBodyContainer ref={PostBodyDOM}>
               <PostPageArticleHeader description={description} author={name} publishDate={date} timeToRead={timeToRead} />
-              <MDXRenderer>{body}</MDXRenderer>
+              <MdxRenderer>{body}</MdxRenderer>
             </PostBodyContainer>
             <TableOfContentWrapper ref={TableOfContentDOM}>
               <TableOfContent headings={headings} />

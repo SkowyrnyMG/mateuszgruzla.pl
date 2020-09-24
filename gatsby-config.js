@@ -72,7 +72,7 @@ module.exports = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /svg/, // See below to configure properly
+          include: /svg/,
         },
       },
     },
@@ -124,7 +124,6 @@ module.exports = {
               maxWidth: 590,
             },
           },
-          `gatsby-remark-prismjs`,
         ],
       },
     },
