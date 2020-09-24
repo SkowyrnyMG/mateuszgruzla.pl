@@ -8,7 +8,7 @@ import { useImg } from 'hooks/useImg';
 const StyledLink = styled(Link)`
   margin-top: 0;
   display: grid;
-  grid-template-rows: minmax(20rem, 30rem) minmax(3.5rem, min-content) minmax(7.5rem, min-content) 3rem 1rem;
+  grid-template-rows: minmax(20rem, 30rem) minmax(3.5rem, min-content) minmax(7.5rem, min-content) 3rem min-content 1rem;
   grid-gap: 2rem;
   width: 100%;
   min-height: 54rem;
@@ -41,7 +41,7 @@ const Tag = styled.span`
   padding: 0.2rem 1rem;
   color: ${({ theme: { color } }) => color.bg};
   font-weight: ${({ theme: { base } }) => base.fontWeight.bold};
-  background-color: ${({ theme: { base } }) => base.accent.primary};
+  background-color: ${({ theme: { base } }) => base.accent.secondary};
   border-radius: 5px;
 
   &:not(:last-child) {
@@ -49,20 +49,25 @@ const Tag = styled.span`
   }
 `;
 
-const Post = ({ postImg, title, excerpt, tags, slug }) => {
+const PublishDate = styled.span`
+  margin-left: auto;
+  padding-right: 4rem;
+`;
+
+const Post = ({ postImg, title, excerpt, tags, slug, publishDate }) => {
   const { defaultImg } = useImg();
   return (
     <StyledLink to={`/blog/${slug}`}>
       {/* img */}
-      {/* <StyledImg fluid={postImg ? postImg : defaultImg} /> */}
-      <StyledImg fluid={defaultImg} />
+      <StyledImg fluid={postImg.childImageSharp ? postImg.childImageSharp.fluid : defaultImg} />
       <StyledHeading>{title}</StyledHeading>
       <Excerpt>{excerpt}</Excerpt>
-      {/* <TagBox>
+      <TagBox>
         {tags.map((tag) => (
           <Tag key={tag}>{tag}</Tag>
         ))}
-      </TagBox> */}
+      </TagBox>
+      <PublishDate>{publishDate}</PublishDate>
     </StyledLink>
   );
 };

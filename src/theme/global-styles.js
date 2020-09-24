@@ -19,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     width: 100%;
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 1.4;
     color: ${({ theme: { color } }) => color.content};
     background: ${({ theme: { color } }) => color.bg};

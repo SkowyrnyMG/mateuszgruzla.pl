@@ -16,7 +16,7 @@ const PortfolioPageContributions = () => {
   const { livesessionLogo } = useImg();
   return (
     <Wrapper>
-      <Contribution companyLogo={livesessionLogo} />
+      <Contribution companyLogo={livesessionLogo} link='https://www.npmjs.com/package/@livesession/sdk' />
     </Wrapper>
   );
 };

@@ -18,8 +18,8 @@ const StyledImg = styled(Img)`
   margin-right: 5rem;
 `;
 
-const Contribution = ({ companyLogo }) => (
-  <Wrapper href='https://livesession.io/' target='_blank' rel='noreferrer'>
+const Contribution = ({ companyLogo, link }) => (
+  <Wrapper href={link} target='_blank' rel='noreferrer'>
     <StyledImg fluid={companyLogo} />
     <p>
       I’ve contributed to <b>livesession SDK plugin</b>. I’ve figured out how to install and run their package on Angular apps. It is nothing big tho, but everytime when I think

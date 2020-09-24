@@ -31,6 +31,7 @@ const StyledButton = styled.button`
 
   svg {
     height: 35px;
+    pointer-events: none;
   }
 
   * {
@@ -67,6 +68,7 @@ const ThemeIconsWrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    pointer-events: none;
 
     :nth-child(1) {
       opacity: ${({ isDarkTheme }) => (isDarkTheme === true ? 1 : 0)};

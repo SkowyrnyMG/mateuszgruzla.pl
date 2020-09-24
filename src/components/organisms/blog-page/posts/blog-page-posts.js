@@ -19,16 +19,13 @@ const BlogPagePosts = ({ posts }) => (
   <Wrapper>
     {posts.map(
       ({
-        node: { id },
-        node: { slug },
         node: {
-          frontmatter: { title },
-        },
-        node: {
-          frontmatter: { description },
+          id,
+          slug,
+          frontmatter: { title, description, image, tags, date },
         },
       }) => {
-        return <Post title={title} excerpt={description} key={id} slug={slug} />;
+        return <Post key={id} postImg={image} title={title} excerpt={description} tags={tags} slug={slug} publishDate={date} />;
       },
     )}
   </Wrapper>

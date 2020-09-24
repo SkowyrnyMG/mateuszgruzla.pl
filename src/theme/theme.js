@@ -20,7 +20,7 @@ const constTheme = {
     postBigHeading: '30px',
     xl: '28.5px',
     l: '24px',
-    ml: '20px',
+    ml: '18px',
     m: '18px',
     ms: '15px',
   },

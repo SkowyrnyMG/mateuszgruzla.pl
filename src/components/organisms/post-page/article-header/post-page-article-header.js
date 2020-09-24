@@ -69,26 +69,34 @@ const PublishDate = styled.span`
 const Tags = styled.div`
   grid-column: 3 / -1;
   justify-self: end;
+  display: flex;
+
+  > * {
+    margin: 0;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
 `;
 
-const Tag = styled.div`
+const Tag = styled.span`
+  padding: 0.25rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2.5rem;
-  min-width: 8rem;
   color: ${({ theme: { color } }) => color.bg};
-  background: ${({ theme: { base } }) => base.accent.primary};
+  background: ${({ theme: { base } }) => base.accent.secondary};
   border-radius: 0.5rem;
 `;
 
-const PostPageArticleHeader = ({ description, timeToRead, author, publishDate, tags }) => {
+const PostPageArticleHeader = ({ postImg, description, timeToRead, author, publishDate, tags }) => {
   const { defaultImg } = useImg();
 
   return (
     // tags needs to be implemented
     <Wrapper>
-      <StyledImg fluid={defaultImg} />
+      <StyledImg fluid={postImg.childImageSharp ? postImg.childImageSharp.fluid : defaultImg} />
       <ContentWrapper>
         <StyledDescription>{description}</StyledDescription>
         <TimeToRead>Time to read {timeToRead} min.</TimeToRead>
@@ -96,9 +104,11 @@ const PostPageArticleHeader = ({ description, timeToRead, author, publishDate, t
           <StyledAuthorLogo />
           <span>By {author}</span>
         </AuthorInfo>
-        <PublishDate>Created {publishDate}</PublishDate>
+        <PublishDate>Published {publishDate}</PublishDate>
         <Tags>
-          <Tag>react</Tag>
+          {tags.map((tag) => (
+            <Tag key={tag}>{tag}</Tag>
+          ))}
         </Tags>
       </ContentWrapper>
     </Wrapper>

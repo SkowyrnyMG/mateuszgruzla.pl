@@ -11,6 +11,15 @@ export const useLastPosts = () => {
             frontmatter {
               title
               description
+              tags
+              date(formatString: "MMMM DD, YYYY")
+              image {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
             }
             slug
             id

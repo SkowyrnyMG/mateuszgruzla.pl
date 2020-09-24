@@ -23,8 +23,8 @@ const Wrapper = styled.article`
 `;
 
 const MainPostHeading = styled.h1`
-  margin-bottom: 7rem;
-  padding-bottom: 7rem;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
   font-family: ${({ theme: { base } }) => base.fontFamily.main} !important;
   font-size: ${({ theme: { base } }) => base.fontSize.postMainHeading};
   text-transform: none;
@@ -36,58 +36,6 @@ const StyledPostBody = styled.div`
   height: 100%;
   line-height: 1.6;
   border-bottom: 1px solid ${({ theme: { color } }) => color.secondary};
-
-  p {
-    margin-bottom: 2rem;
-    font-size: ${({ theme: { base } }) => base.fontSize.m};
-  }
-
-  h2 {
-    margin-top: 5rem;
-    margin-bottom: 2rem;
-    font-size: ${({ theme: { base } }) => base.fontSize.postBigHeading} !important;
-  }
-
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 2rem 0;
-    font-size: ${({ theme: { base } }) => base.fontSize.ml};
-  }
-
-  ul,
-  ol {
-    margin-bottom: 2rem;
-    margin-left: 4rem;
-    font-size: ${({ theme: { base } }) => base.fontSize.m};
-  }
-
-  blockquote {
-    margin-bottom: 2rem;
-    padding: 2rem;
-    font-style: italic;
-    background: ${({ theme: { color } }) => color.secondary};
-    border-radius: 0.5rem;
-
-    p {
-      margin-bottom: 0;
-    }
-  }
-
-  span {
-    border-radius: 0.5rem;
-
-    img {
-      border-radius: 0.5rem;
-    }
-  }
-
-  pre {
-    padding: 2rem;
-    background: ${({ theme: { color } }) => color.menu};
-    border-radius: 0.5rem;
-  }
 `;
 
 const PostBodyContainer = styled.div`
@@ -159,7 +107,7 @@ const NavButton = styled(Link)`
 const BlogPost = ({ data, pageContext }) => {
   const {
     mdx: {
-      frontmatter: { title, date, description },
+      frontmatter: { title, date, description, tags, image },
       body,
       timeToRead,
     },
@@ -189,7 +137,7 @@ const BlogPost = ({ data, pageContext }) => {
           <Devider title=' ' />
           <StyledPostBody>
             <PostBodyContainer ref={PostBodyDOM}>
-              <PostPageArticleHeader description={description} author={name} publishDate={date} timeToRead={timeToRead} />
+              <PostPageArticleHeader postImg={image} description={description} author={name} publishDate={date} timeToRead={timeToRead} tags={tags} />
               <MdxRenderer>{body}</MdxRenderer>
             </PostBodyContainer>
             <TableOfContentWrapper ref={TableOfContentDOM}>
@@ -198,10 +146,10 @@ const BlogPost = ({ data, pageContext }) => {
           </StyledPostBody>
           <ShareWrapper>
             <span>Share</span>
-            <a href='https://facebook.com/'>
+            <a href='https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/mateusz.gruzla.3/'>
               <FbIcon />
             </a>
-            <a href='https://twitter.com/'>
+            <a href='https://twitter.com/home?status=https://twitter.com/GruzlaMateusz'>
               <TwitterIcon />
             </a>
           </ShareWrapper>
@@ -244,6 +192,14 @@ export const query = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
+        image {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       body
       timeToRead

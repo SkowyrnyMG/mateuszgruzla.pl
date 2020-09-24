@@ -16,14 +16,14 @@ const Wrapper = styled.div`
   a {
     padding: 1.5rem 2rem;
     color: ${({ theme: { color } }) => color.content};
-    background-color: transparent;
-    border: 2px dashed ${({ theme: { base } }) => base.accent.primary};
+    border: 1px dashed ${({ theme: { base } }) => base.accent.primary};
     :focus,
     :active {
-      border: 2px solid ${({ theme: { base } }) => base.accent.secondary} !important;
+      border: 2px dashed ${({ theme: { base } }) => base.accent.primary} !important;
     }
-    &:not(:last-child) {
-      border-right: 1px solid #00223311;
+
+    a:not(:first-child) {
+      border-left: none;
     }
   }
 `;
@@ -43,14 +43,14 @@ const StyledIndexNav = styled.nav`
 const PrevButton = styled(Link)`
   position: relative;
   border: none !important;
-  border-right: 2px dashed ${({ theme: { base } }) => base.accent.primary} !important;
+  /* border-right: 2px dashed ${({ theme: { base } }) => base.accent.primary} !important; */
   pointer-events: ${({ pagenumber }) => (pagenumber === 1 ? `none` : ` auto`)};
   color: ${({ pagenumber, theme }) => (pagenumber === 1 ? `gray` : theme.color.active)};
 `;
 const NextButton = styled(Link)`
   position: relative;
   border: none !important;
-  border-left: 2px dashed ${({ theme: { base } }) => base.accent.primary} !important;
+  /* border-left: 2px dashed ${({ theme: { base } }) => base.accent.primary} !important; */
   pointer-events: ${({ pagenumber, numberofpages }) => (pagenumber === numberofpages ? `none` : ` auto`)};
   color: ${({ pagenumber, numberofpages, theme }) => (pagenumber === numberofpages ? `gray` : theme.color.active)};
 `;

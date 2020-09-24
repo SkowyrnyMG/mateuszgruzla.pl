@@ -15,6 +15,10 @@ const Wrapper = styled.section`
   margin-bottom: 12rem;
 `;
 
+const StyledHeading = styled.h3`
+  margin-bottom: 5rem;
+`;
+
 const PostWrapper = styled.div`
   display: grid;
   margin-bottom: 12rem;
@@ -32,10 +36,10 @@ const HomePageBlog = () => {
   const lastPosts = useLastPosts();
   return (
     <Wrapper>
-      <h3>Latest posts</h3>
+      <StyledHeading>Latest posts</StyledHeading>
       <PostWrapper>
-        {lastPosts.map(({ node: { id }, node: { slug }, node: { frontmatter: { title } }, node: { frontmatter: { description } } }) => (
-          <Post title={title} excerpt={description} tags={['JavaScript']} key={id} slug={slug} />
+        {lastPosts.map(({ node: { id, slug, frontmatter: { title, description, image, tags, date } } }) => (
+          <Post postImg={image} title={title} excerpt={description} tags={tags} key={id} slug={slug} publishDate={date} />
         ))}
       </PostWrapper>
       <StyledBigButton path={routes.blog} btnColor={({ theme: { base } }) => base.accent.secondary}>

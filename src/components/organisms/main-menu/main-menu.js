@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 
@@ -20,7 +20,9 @@ const Wrapper = styled.div`
   pointer-events: none;
 `;
 
-const StyledNav = styled.div`
+const StyledNav = styled.div.attrs(() => ({
+  className: 'nav-box',
+}))`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,12 +58,38 @@ const NavContentWrapper = styled.nav`
   }
 `;
 
+const OutterField = styled.div.attrs(() => ({
+  className: 'outer-field',
+}))`
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  visibility: ${({ isMenuOpen }) => (isMenuOpen ? 'visible' : 'hidden')};
+  pointer-events: auto;
+`;
+
 const MainMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { privacyPolicy } = routes;
 
+  const wrapper = useRef(null);
+
+  const handleOutMenuClick = (e) => {
+    if (e.target.className.includes('outer-field')) setIsMenuOpen(false);
+  };
+
+  useEffect(() => {
+    wrapper.current.addEventListener('click', handleOutMenuClick);
+
+    return () => wrapper.current.removeEventListener('click', handleOutMenuClick);
+  });
+
   return (
-    <Wrapper>
+    <Wrapper ref={wrapper}>
+      <OutterField isMenuOpen={isMenuOpen} />
       <FloatingNav toggleMenu={() => setIsMenuOpen((state) => !state)} />
       <StyledNav isMenuOpen={isMenuOpen}>
         <NavContentWrapper>
