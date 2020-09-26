@@ -1,5 +1,39 @@
 const path = require('path');
-require('dotenv').config();
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
+const algoliaBlogQuery = `
+{
+  allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
+    edges {
+      node {
+        frontmatter {
+          title
+          description
+          date
+          authors {
+            author
+          }
+        }
+        slug
+      }
+    }
+  }
+}
+`;
+
+const queries = [
+  {
+    query: algoliaBlogQuery,
+    transformer: ({ data }) => data.allSitePage.edges.map(({ node }) => node), // optional
+    indexName: 'index name to target', // overrides main index name, optional
+    settings: {
+      // optional, any index settings
+    },
+    matchFields: ['slug', 'modified'], // Array<String> overrides main match fields, optional
+  },
+];
 
 module.exports = {
   siteMetadata: {
@@ -149,6 +183,21 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-netlify-cms',
+
+    {
+      // This plugin must be placed last in your list of plugins to ensure that it can query all the GraphQL data
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_API_KEY,
+        indexName: process.env.ALGOLIA_INDEX_NAME,
+        queries,
+        chunkSize: 10000,
+        settings: {},
+        enablePartialUpdates: false, // default: false
+        matchFields: ['slug', 'modified'], // Array<String> default: ['modified']
+      },
+    },
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

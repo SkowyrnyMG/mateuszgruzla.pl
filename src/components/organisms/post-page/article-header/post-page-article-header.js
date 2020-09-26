@@ -96,7 +96,7 @@ const PostPageArticleHeader = ({ postImg, description, timeToRead, author, publi
   return (
     // tags needs to be implemented
     <Wrapper>
-      <StyledImg fluid={postImg.childImageSharp ? postImg.childImageSharp.fluid : defaultImg} />
+      <StyledImg fluid={postImg ? postImg.childImageSharp.fluid : defaultImg} />
       <ContentWrapper>
         <StyledDescription>{description}</StyledDescription>
         <TimeToRead>Time to read {timeToRead} min.</TimeToRead>
