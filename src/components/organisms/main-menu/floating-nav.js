@@ -79,7 +79,7 @@ const ThemeIconsWrapper = styled.div`
   }
 `;
 
-const FloatingNav = ({ toggleMenu }) => {
+const FloatingNav = ({ toggleMenu, toggleSearch }) => {
   const { isDarkTheme, setIsDarkTheme } = useContext(ThemeContext);
 
   const handleToggleTheme = () => {
@@ -94,7 +94,7 @@ const FloatingNav = ({ toggleMenu }) => {
           <DarkThemeIcon />
         </ThemeIconsWrapper>
       </StyledButton>
-      <StyledButton>
+      <StyledButton onClick={toggleSearch}>
         <SearchIcon />
       </StyledButton>
       <StyledButton onClick={toggleMenu}>

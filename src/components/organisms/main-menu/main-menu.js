@@ -7,6 +7,7 @@ import { routes } from 'utils/routes';
 import FloatingNav from 'components/organisms/main-menu/floating-nav';
 import NavList from 'components/modules/nav-list/nav-list';
 import SocialList from 'components/modules/social-list/social-list';
+import SearchMenu from 'components/organisms/main-menu/search-menu';
 
 const Wrapper = styled.div`
   display: flex;
@@ -73,6 +74,7 @@ const OutterField = styled.div.attrs(() => ({
 
 const MainMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { privacyPolicy } = routes;
 
   const wrapper = useRef(null);
@@ -90,7 +92,8 @@ const MainMenu = () => {
   return (
     <Wrapper ref={wrapper}>
       <OutterField isMenuOpen={isMenuOpen} />
-      <FloatingNav toggleMenu={() => setIsMenuOpen((state) => !state)} />
+      <FloatingNav toggleMenu={() => setIsMenuOpen((state) => !state)} toggleSearch={() => setIsSearchOpen((state) => !state)} />
+      <SearchMenu isSearchOpen={isSearchOpen} setIsSearchOpen={() => setIsSearchOpen(false)} />
       <StyledNav isMenuOpen={isMenuOpen}>
         <NavContentWrapper>
           <NavList />
