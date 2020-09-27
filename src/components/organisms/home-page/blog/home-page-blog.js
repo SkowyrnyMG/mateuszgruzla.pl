@@ -38,9 +38,13 @@ const HomePageBlog = () => {
     <Wrapper>
       <StyledHeading>Latest posts</StyledHeading>
       <PostWrapper>
-        {lastPosts.map(({ node: { id, slug, frontmatter: { title, description, image, tags, date } } }) => (
-          <Post postImg={image} title={title} excerpt={description} tags={tags} key={id} slug={slug} publishDate={date} />
-        ))}
+        {lastPosts ? (
+          lastPosts.map(({ node: { id, slug, frontmatter: { title, description, image, tags, date } } }) => (
+            <Post postImg={image} title={title} excerpt={description} tags={tags} key={id} slug={slug} publishDate={date} />
+          ))
+        ) : (
+          <span>Sorry, there&lsquo;s nothing here yet!</span>
+        )}
       </PostWrapper>
       <StyledBigButton path={routes.blog} btnColor={({ theme: { base } }) => base.accent.secondary}>
         GO TO BLOG PAGE

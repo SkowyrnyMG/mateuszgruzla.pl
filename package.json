@@ -13,6 +13,8 @@
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",
     "@mdx-js/mdx": "^1.6.18",
     "@mdx-js/react": "^1.6.18",
+    "@styled-icons/fa-solid": "^10.18.0",
+    "algoliasearch": "^4.5.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-remove-graphql-queries": "^2.9.17",
@@ -56,6 +58,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-instantsearch-dom": "^6.7.0",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {

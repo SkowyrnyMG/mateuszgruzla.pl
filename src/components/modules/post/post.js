@@ -59,14 +59,10 @@ const Post = ({ postImg, title, excerpt, tags, slug, publishDate }) => {
   return (
     <StyledLink to={`/blog/${slug}`}>
       {/* img */}
-      <StyledImg fluid={postImg.childImageSharp ? postImg.childImageSharp.fluid : defaultImg} />
+      <StyledImg fluid={postImg ? postImg.childImageSharp.fluid : defaultImg} />
       <StyledHeading>{title}</StyledHeading>
       <Excerpt>{excerpt}</Excerpt>
-      <TagBox>
-        {tags.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
-        ))}
-      </TagBox>
+      <TagBox>{tags ? tags.map((tag) => <Tag key={tag}>{tag}</Tag>) : 'news'}</TagBox>
       <PublishDate>{publishDate}</PublishDate>
     </StyledLink>
   );

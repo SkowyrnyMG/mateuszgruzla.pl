@@ -3,18 +3,20 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const algoliaBlogQuery = `
-{
+const myQuery = `
+query {
   allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
     edges {
       node {
+        objectID: id
         frontmatter {
           title
           description
-          date
+          date(formatString: "MMMM DD, YYYY")
           authors {
             author
           }
+          tags
         }
         slug
       }
@@ -25,13 +27,9 @@ const algoliaBlogQuery = `
 
 const queries = [
   {
-    query: algoliaBlogQuery,
-    transformer: ({ data }) => data.allSitePage.edges.map(({ node }) => node), // optional
-    indexName: 'index name to target', // overrides main index name, optional
-    settings: {
-      // optional, any index settings
-    },
-    matchFields: ['slug', 'modified'], // Array<String> overrides main match fields, optional
+    query: myQuery,
+    transformer: ({ data }) => data.allMdx.edges.map((edge) => edge.node),
+    indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
   },
 ];
 
@@ -185,17 +183,16 @@ module.exports = {
     'gatsby-plugin-netlify-cms',
 
     {
-      // This plugin must be placed last in your list of plugins to ensure that it can query all the GraphQL data
       resolve: `gatsby-plugin-algolia`,
       options: {
-        appId: process.env.ALGOLIA_APP_ID,
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_API_KEY,
-        indexName: process.env.ALGOLIA_INDEX_NAME,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         queries,
         chunkSize: 10000,
         settings: {},
-        enablePartialUpdates: false, // default: false
-        matchFields: ['slug', 'modified'], // Array<String> default: ['modified']
+        enablePartialUpdates: true,
+        matchFields: ['slug', 'modified'],
       },
     },
 

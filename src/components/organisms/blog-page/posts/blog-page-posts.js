@@ -17,16 +17,20 @@ const Wrapper = styled.div`
 
 const BlogPagePosts = ({ posts }) => (
   <Wrapper>
-    {posts.map(
-      ({
-        node: {
-          id,
-          slug,
-          frontmatter: { title, description, image, tags, date },
+    {posts ? (
+      posts.map(
+        ({
+          node: {
+            id,
+            slug,
+            frontmatter: { title, description, image, tags, date },
+          },
+        }) => {
+          return <Post key={id} postImg={image} title={title} excerpt={description} tags={tags} slug={slug} publishDate={date} />;
         },
-      }) => {
-        return <Post key={id} postImg={image} title={title} excerpt={description} tags={tags} slug={slug} publishDate={date} />;
-      },
+      )
+    ) : (
+      <span>Sorry, there&lsquo;s nothing here yet!</span>
     )}
   </Wrapper>
 );

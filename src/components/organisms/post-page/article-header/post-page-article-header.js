@@ -105,11 +105,7 @@ const PostPageArticleHeader = ({ postImg, description, timeToRead, author, publi
           <span>By {author}</span>
         </AuthorInfo>
         <PublishDate>Published {publishDate}</PublishDate>
-        <Tags>
-          {tags.map((tag) => (
-            <Tag key={tag}>{tag}</Tag>
-          ))}
-        </Tags>
+        <Tags>{tags ? tags.map((tag) => <Tag key={tag}>{tag}</Tag>) : 'news'}</Tags>
       </ContentWrapper>
     </Wrapper>
   );
