@@ -48,7 +48,7 @@ export const lightTheme = {
     menu: '#ebf0ff',
     input: '#fff',
     bg: '#FAFDFF',
-    fadedBg: `#FAFDFFdd`,
+    fadedBg: `#FAFDFFef`,
   },
   base: constTheme,
 };
@@ -62,7 +62,7 @@ export const darkTheme = {
     menu: '#2A2E35',
     input: '#445B66',
     bg: '#12181B',
-    fadedBg: `#12181Bdd`,
+    fadedBg: `#12181Bef`,
   },
   base: constTheme,
 };

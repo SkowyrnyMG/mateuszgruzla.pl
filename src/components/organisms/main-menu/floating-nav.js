@@ -35,6 +35,7 @@ const StyledButton = styled.button`
   }
 
   * {
+    fill: ${({ theme: { color } }) => color.content};
     transition: 0.25s fill !important;
   }
 
@@ -59,8 +60,6 @@ const StyledButton = styled.button`
 const ThemeIconsWrapper = styled.div`
   position: relative;
   margin-top: 0;
-  /* width: 100%;
-  height: 100%; */
 
   svg {
     margin-top: 0;
@@ -69,6 +68,7 @@ const ThemeIconsWrapper = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
+    fill: ${({ theme: { color } }) => color.content};
 
     :nth-child(1) {
       opacity: ${({ isDarkTheme }) => (isDarkTheme === true ? 1 : 0)};

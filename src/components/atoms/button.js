@@ -56,7 +56,7 @@ const ButtonText = styled.span`
 
 const WrapperBtn = ButtonText.withComponent('button');
 
-const Button = ({ children, btncolor, btnType, path, handleClick }) => (
+const Button = ({ children, btncolor, btnType, path, handleClick, btnAction }) => (
   <>
     {btnType === 'inner' && (
       <WrapperLink to={path}>
@@ -73,7 +73,7 @@ const Button = ({ children, btncolor, btnType, path, handleClick }) => (
       </WrapperOuterLink>
     )}
     {btnType === 'button' && (
-      <WrapperBtn btnType={btnType} btncolor={btncolor} onClick={handleClick}>
+      <WrapperBtn btnType={btnType} btncolor={btncolor} onClick={handleClick} type={btnAction}>
         <span>{children}</span>
       </WrapperBtn>
     )}

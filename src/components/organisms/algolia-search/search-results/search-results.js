@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import { connectStateResults, Highlight, Hits, Index, Snippet, PoweredBy } from 'react-instantsearch-dom';
+import { connectStateResults, Highlight, Hits, Index, PoweredBy } from 'react-instantsearch-dom';
 
 const HitCount = connectStateResults(({ searchState, searchResults }) => {
   const hitCount = searchResults && searchResults.nbHits;
@@ -19,15 +19,29 @@ const HitCount = connectStateResults(({ searchState, searchResults }) => {
   );
 });
 
+const StyledHit = styled.div`
+  padding: 3rem;
+  border-bottom: 1px solid ${({ theme: { color } }) => color.content};
+
+  :hover {
+    background: ${({ theme: { color } }) => color.secondary};
+  }
+`;
+
 const ArticleHit = ({ hit }) => (
-  <div>
-    <Link to={`blog/${hit.slug}`}>
+  <StyledHit>
+    <Link to={`/blog/${hit.slug}`}>
       <h4>
         <Highlight attribute='frontmatter.title' hit={hit} tagName='mark' />
       </h4>
+      <p>
+        <Highlight attribute='frontmatter.description' hit={hit} tagName='mark' />
+      </p>
+      <p>
+        <Highlight attribute='frontmatter.date' hit={hit} tagName='mark' />
+      </p>
     </Link>
-    <Snippet attribute='excerpt' hit={hit} tagName='mark' />
-  </div>
+  </StyledHit>
 );
 
 const HitsInIndex = ({ index }) => (
@@ -38,6 +52,22 @@ const HitsInIndex = ({ index }) => (
 );
 
 const StyledResult = styled.div`
+  width: 100%;
+  max-height: 50vh;
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: 1.5rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${({ theme: { color } }) => color.contentFaded};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${({ theme: { base } }) => base.accent.secondary};
+  }
+
   mark {
     color: ${({ theme: { color } }) => color.bg} !important;
     background: ${({ theme: { base } }) => base.accent.secondary};
@@ -45,6 +75,7 @@ const StyledResult = styled.div`
 
   * {
     color: ${({ theme: { color } }) => color.header} !important;
+    margin: 0;
   }
 `;
 

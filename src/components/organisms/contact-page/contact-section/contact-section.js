@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import SocialList from 'components/modules/social-list/social-list';
@@ -69,32 +69,45 @@ const ActivePlaceholder = styled.div`
   transition: opacity 0.25s, background-color 0.3s, 0.25s transform;
 `;
 
-const ContactSection = () => (
-  <Wrapper>
-    <ContactInfo>
-      <StyledParagraph>If you want to chat with me you can use contact form or just simply write to me on my social profiles.</StyledParagraph>
-      <SocialList vertical />
-    </ContactInfo>
-    <FormWrapper>
-      <StyledForm action=''>
-        <label htmlFor='name'>
-          <input type='text' id='name' placeholder='name.' />
-          <ActivePlaceholder>name.</ActivePlaceholder>
-        </label>
-        <label htmlFor='email'>
-          <input type='text' id='email' placeholder='email.' />
-          <ActivePlaceholder>email.</ActivePlaceholder>
-        </label>
-        <label htmlFor='message'>
-          <textarea type='text' id='message' placeholder='message.' />
-          <ActivePlaceholder>message.</ActivePlaceholder>
-        </label>
-        <Button btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary}>
-          Send
-        </Button>
-      </StyledForm>
-    </FormWrapper>
-  </Wrapper>
-);
+const ContactSection = () => {
+  const [inputValue, setInputValue] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    setInputValue({ ...inputValue, [e.target.id]: e.target.value });
+  };
+
+  return (
+    <Wrapper>
+      <ContactInfo>
+        <StyledParagraph>If you want to chat with me you can use contact form or just simply write to me on my social profiles.</StyledParagraph>
+        <SocialList vertical />
+      </ContactInfo>
+      <FormWrapper>
+        <StyledForm name='contact' method='POST' action='/success' netlify-honeypot='bot-field' data-netlify-recaptcha='true' data-netlify='true'>
+          <input type='hidden' name='form-name' value='contact' />
+          <label htmlFor='name'>
+            <input type='text' id='name' placeholder='name.' onChange={handleChange} value={inputValue.name} required minLength='3' />
+            <ActivePlaceholder>name.</ActivePlaceholder>
+          </label>
+          <label htmlFor='email'>
+            <input type='text' id='email' placeholder='email.' onChange={handleChange} value={inputValue.email} required />
+            <ActivePlaceholder>email.</ActivePlaceholder>
+          </label>
+          <label htmlFor='message'>
+            <textarea type='text' id='message' placeholder='message.' onChange={handleChange} value={inputValue.message} required minLength='15' />
+            <ActivePlaceholder>message.</ActivePlaceholder>
+          </label>
+          <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary}>
+            Send
+          </Button>
+        </StyledForm>
+      </FormWrapper>
+    </Wrapper>
+  );
+};
 
 export default ContactSection;
