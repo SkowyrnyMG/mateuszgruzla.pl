@@ -73,7 +73,7 @@ const Form = () => {
       </label>
 
       {/* <div data-netlify-recaptcha='true' /> */}
-      <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_RECAPTCHA_API_KEY_CLIENT_SIDE} />
+      <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} />
       <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary}>
         Send
       </Button>
