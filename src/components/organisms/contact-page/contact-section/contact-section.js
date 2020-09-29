@@ -88,7 +88,7 @@ const ContactSection = () => {
         <SocialList vertical />
       </ContactInfo>
       <FormWrapper>
-        <StyledForm name='contact' method='POST' action='/success' netlify-honeypot='bot-field' data-netlify='true'>
+        <StyledForm name='contact' method='POST' action='/success' netlify-honeypot='bot-field' data-netlify='true' data-netlify-recaptcha='true'>
           <input type='hidden' name='form-name' value='contact' />
 
           <label htmlFor='name'>
@@ -107,7 +107,7 @@ const ContactSection = () => {
           </label>
 
           {/* <div data-netlify-recaptcha='true' /> */}
-          {/* <ReCAPTCHA sitekey={process.env.GATSBY_RECAPTCHA_API_KEY_CLIENT_SIDE} /> */}
+          <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_RECAPTCHA_API_KEY_CLIENT_SIDE} />
           {/* <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary}>
             Send
           </Button> */}
