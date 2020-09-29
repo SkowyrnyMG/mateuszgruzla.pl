@@ -12,6 +12,7 @@ const constTheme = {
     // tertiary: '#FF593D',
 
     quaternary: '#FF00E5',
+    success: '#157f1f',
   },
   fontSize: {
     postMainHeading: '6rem',
