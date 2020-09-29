@@ -102,7 +102,7 @@ const ContactSection = () => {
             <textarea type='text' id='message' name='message' placeholder='message.' onChange={handleChange} value={inputValue.message} required minLength='15' />
             <ActivePlaceholder>message.</ActivePlaceholder>
           </label>
-          <div data-netlify-recaptcha='true' />
+          {/* <div data-netlify-recaptcha='true' /> */}
           {/* <ReCAPTCHA sitekey={process.env.GATSBY_RECAPTCHA_API_KEY_CLIENT_SIDE} /> */}
           {/* <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary}>
             Send
