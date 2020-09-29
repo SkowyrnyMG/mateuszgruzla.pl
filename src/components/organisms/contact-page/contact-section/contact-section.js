@@ -88,20 +88,24 @@ const ContactSection = () => {
         <SocialList vertical />
       </ContactInfo>
       <FormWrapper>
-        <StyledForm name='contact' method='POST' action='/success' netlify-honeypot='bot-field' data-netlify-recaptcha='true' data-netlify='true'>
+        <StyledForm name='contact' method='POST' action='/success' netlify-honeypot='bot-field' data-netlify='true'>
           <input type='hidden' name='form-name' value='contact' />
+
           <label htmlFor='name'>
             <input type='text' id='name' name='name' placeholder='name.' onChange={handleChange} value={inputValue.name} required minLength='3' />
             <ActivePlaceholder>name.</ActivePlaceholder>
           </label>
+
           <label htmlFor='email'>
             <input type='email' id='email' name='email' placeholder='email.' onChange={handleChange} value={inputValue.email} required />
             <ActivePlaceholder>email.</ActivePlaceholder>
           </label>
+
           <label htmlFor='message'>
             <textarea type='text' id='message' name='message' placeholder='message.' onChange={handleChange} value={inputValue.message} required minLength='15' />
             <ActivePlaceholder>message.</ActivePlaceholder>
           </label>
+
           {/* <div data-netlify-recaptcha='true' /> */}
           {/* <ReCAPTCHA sitekey={process.env.GATSBY_RECAPTCHA_API_KEY_CLIENT_SIDE} /> */}
           {/* <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary}>
