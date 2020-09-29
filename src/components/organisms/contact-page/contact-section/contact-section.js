@@ -94,7 +94,7 @@ const ContactSection = () => {
             <ActivePlaceholder>name.</ActivePlaceholder>
           </label>
           <label htmlFor='email'>
-            <input type='text' id='email' placeholder='email.' onChange={handleChange} value={inputValue.email} required />
+            <input type='email' id='email' placeholder='email.' onChange={handleChange} value={inputValue.email} required />
             <ActivePlaceholder>email.</ActivePlaceholder>
           </label>
           <label htmlFor='message'>
