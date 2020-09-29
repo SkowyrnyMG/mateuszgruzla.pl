@@ -105,7 +105,7 @@ const ContactSection = () => {
           <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary}>
             Send
           </Button>
-          <ReCaptcha data-netlify-recaptcha='true' siteke={process.env.GATSBY_RECAPTCHA_API_KEY_CLIENT_SIDE} />
+          <ReCaptcha data-netlify-recaptcha='true' sitekey={process.env.GATSBY_RECAPTCHA_API_KEY} />
         </StyledForm>
       </FormWrapper>
     </Wrapper>
