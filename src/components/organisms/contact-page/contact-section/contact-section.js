@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { ReCaptcha } from 'react-google-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import SocialList from 'components/modules/social-list/social-list';
 import Button from 'components/atoms/button';
@@ -105,7 +105,7 @@ const ContactSection = () => {
           <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary}>
             Send
           </Button>
-          <ReCaptcha data-netlify-recaptcha='true' sitekey={process.env.GATSBY_RECAPTCHA_API_KEY} />
+          <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_RECAPTCHA_API_KEY} />
         </StyledForm>
       </FormWrapper>
     </Wrapper>
