@@ -56,7 +56,7 @@ const ButtonText = styled.span`
 
 const WrapperBtn = ButtonText.withComponent('button');
 
-const Button = ({ children, btncolor, btnType, path, handleClick, btnAction, error, isSubmiting }) => (
+const Button = ({ children, btncolor, btnType, path, handleClick, btnAction, isSubmiting }) => (
   <>
     {btnType === 'inner' && (
       <WrapperLink to={path}>

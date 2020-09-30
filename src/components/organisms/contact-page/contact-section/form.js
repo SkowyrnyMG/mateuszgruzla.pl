@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
 import qs from 'qs';
 
+import FormikControl from 'components/organisms/contact-page/contact-section/formik-control';
 import ErrorMSG from 'components/organisms/contact-page/contact-section/ErrorMSG';
 import Button from 'components/atoms/button';
 
@@ -68,33 +69,6 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const StyledField = styled(Field)`
-  margin-bottom: 2rem;
-  background: transparent !important;
-  border: 1px solid ${({ theme: { color } }) => color.content};
-  width: 100%;
-  border-color: ${({ theme, errors }) => (errors ? 'red' : theme.color.content)};
-`;
-
-const MessageField = styled(Field)`
-  height: 10rem;
-  display: flex;
-  flex-wrap: wrap;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  overflow-y: scroll;
-`;
-
-const ActivePlaceholder = styled.div`
-  position: absolute;
-  top: -25px;
-  left: 2rem;
-  padding-right: 0.2rem;
-  font-size: ${({ theme: { base } }) => base.fontSize.ms};
-  background-color: ${({ theme: { color } }) => color.bg};
-  transition: opacity 0.25s, background-color 0.3s, 0.25s transform;
-`;
-
 const ContactForm = () => {
   // const [inputValue, setInputValue] = useState({
   //   name: '',
@@ -123,9 +97,6 @@ const ContactForm = () => {
   const [errMsg, setErrMsg] = useState('');
   const [executing, setExecuting] = useState(false);
   const [formValues, setFormValues] = useState({});
-  const [msgSent, setMsgSent] = useState(false);
-  const [rcError, setRcError] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [token, setToken] = useState('');
   const [verified, setVerified] = useState(false);
 
@@ -133,6 +104,7 @@ const ContactForm = () => {
     const handleSubmit = async (formVal, rctoken) => {
       const data = {
         ...formVal,
+        'g-recaptcha-response': rctoken,
       };
       const options = {
         method: 'POST',
@@ -142,16 +114,23 @@ const ContactForm = () => {
       };
       try {
         await axios(options);
-        setMsgSent(true);
         window.location.href = 'http://mateuszgruzla.pl/success';
       } catch (e) {
         setErrMsg(e.message);
+        console.log(errMsg);
       }
     };
-    if (Object.keys(formValues).length > 0) {
-      handleSubmit(formValues);
+    if (token) {
+      handleSubmit(formValues, token);
     }
-  }, [formValues]);
+  }, [formValues, token]);
+
+  const onSubmit = (rctoken) => {
+    console.log(verified);
+    setToken(rctoken);
+    setVerified(true);
+    setExecuting(false);
+  };
 
   return (
     // <StyledForm name='contact' method='POST' action='/success' data-netlify-recaptcha='true' data-netlify='true'>
@@ -188,7 +167,6 @@ const ContactForm = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(values) => {
-        setIsSubmitting(true);
         setFormValues({ ...values });
         setExecuting(true);
       }}
@@ -198,24 +176,13 @@ const ContactForm = () => {
           <Field name='bot-field' type='hidden' />
           <Field name='form-name' type='hidden' />
 
-          <span>
-            <StyledField name='name' placeholder='name.' />
-            <ActivePlaceholder>name.</ActivePlaceholder>
-            <ErrorMessage name='name' />
-          </span>
+          <FormikControl control='input' name='name' />
+          <FormikControl control='input' name='email' />
+          <FormikControl control='textarea' name='message' />
 
-          <span>
-            <Field name='email' placeholder='email.' />
-            <ActivePlaceholder>email.</ActivePlaceholder>
-            <ErrorMessage name='email' />
-          </span>
+          <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} onSubmit={onSubmit} />
 
-          <span>
-            <Field name='message' placeholder='message.' />
-            <ActivePlaceholder>message.</ActivePlaceholder>
-            <ErrorMessage name='message' />
-          </span>
-          <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary} error={errMsg} isSubmiting={executing}>
+          <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary} isSubmiting={executing}>
             Send
           </Button>
         </StyledForm>
