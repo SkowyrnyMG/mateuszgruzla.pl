@@ -129,7 +129,7 @@ const ContactForm = () => {
     console.log(verified);
     setToken(rctoken);
     setVerified(true);
-    setExecuting(false);
+    setExecuting(true);
   };
 
   return (
@@ -180,7 +180,7 @@ const ContactForm = () => {
           <FormikControl control='input' name='email' />
           <FormikControl control='textarea' name='message' />
 
-          <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} onSubmit={onSubmit} />
+          <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} />
 
           <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary} isSubmiting={executing}>
             Send
