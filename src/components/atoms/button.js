@@ -56,7 +56,7 @@ const ButtonText = styled.span`
 
 const WrapperBtn = ButtonText.withComponent('button');
 
-const Button = ({ children, btncolor, btnType, path, handleClick, btnAction }) => (
+const Button = ({ children, btncolor, btnType, path, handleClick, btnAction, error, isSubmiting }) => (
   <>
     {btnType === 'inner' && (
       <WrapperLink to={path}>
@@ -73,7 +73,7 @@ const Button = ({ children, btncolor, btnType, path, handleClick, btnAction }) =
       </WrapperOuterLink>
     )}
     {btnType === 'button' && (
-      <WrapperBtn btnType={btnType} btncolor={btncolor} onClick={handleClick} type={btnAction}>
+      <WrapperBtn btnType={btnType} btncolor={btncolor} onClick={handleClick} type={btnAction} disabled={isSubmiting}>
         <span>{children}</span>
       </WrapperBtn>
     )}
@@ -85,6 +85,7 @@ Button.defaultProps = {
   btncolor: ({ theme }) => theme.base.accent.primary,
   path: '/',
   btnType: 'button',
+  isSubmiting: true,
 };
 
 Button.propTypes = {
@@ -92,6 +93,7 @@ Button.propTypes = {
   btncolor: PropTypes.func,
   path: PropTypes.string,
   btnType: PropTypes.string,
+  isSubmiting: PropTypes.bool,
 };
 
 export default Button;
