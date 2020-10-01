@@ -10,35 +10,6 @@ import FormikControl from 'components/organisms/contact-page/contact-section/for
 import ErrorMSG from 'components/organisms/contact-page/contact-section/ErrorMSG';
 import Button from 'components/atoms/button';
 
-// const StyledForm = styled.form`
-//   width: 80%;
-
-//   input,
-//   textarea {
-//     margin-bottom: 2rem;
-//     background: transparent !important;
-//     border: 1px solid ${({ theme: { color } }) => color.content};
-//     width: 100%;
-//   }
-
-//   textarea {
-//     padding-top: 1rem;
-//     margin-bottom: 0;
-//   }
-
-//   input:placeholder-shown + div,
-//   textarea:placeholder-shown + div {
-//     opacity: 0;
-//     background-color: transparent;
-//     transform: translateY(100%);
-//   }
-
-//   label {
-//     position: relative;
-//     display: block;
-//   }
-// `;
-
 const StyledForm = styled(Form)`
   width: 80%;
 
@@ -70,16 +41,6 @@ const StyledForm = styled(Form)`
 `;
 
 const ContactForm = () => {
-  // const [inputValue, setInputValue] = useState({
-  //   name: '',
-  //   email: '',
-  //   message: '',
-  // });
-
-  // const handleChange = (e) => {
-  //   setInputValue({ ...inputValue, [e.target.id]: e.target.value });
-  // };
-
   const validationSchema = Yup.object().shape({
     name: Yup.string()
       .min(2, <ErrorMSG>Too Short!</ErrorMSG>)
@@ -133,30 +94,6 @@ const ContactForm = () => {
   };
 
   return (
-    // <StyledForm name='contact' method='POST' action='/success' data-netlify-recaptcha='true' data-netlify='true'>
-    //   <input type='hidden' name='form-name' value='contact' />
-
-    //   <label htmlFor='name'>
-    //     <input type='text' id='name' name='name' placeholder='name.' onChange={handleChange} value={inputValue.name} required minLength='3' />
-    //     <ActivePlaceholder>name.</ActivePlaceholder>
-    //   </label>
-
-    //   <label htmlFor='email'>
-    //     <input type='email' id='email' name='email' placeholder='email.' onChange={handleChange} value={inputValue.email} required />
-    //     <ActivePlaceholder>email.</ActivePlaceholder>
-    //   </label>
-
-    //   <label htmlFor='message'>
-    //     <textarea type='text' id='message' name='message' placeholder='message.' onChange={handleChange} value={inputValue.message} required minLength='15' />
-    //     <ActivePlaceholder>message.</ActivePlaceholder>
-    //   </label>
-
-    //   {/* <div data-netlify-recaptcha='true' /> */}
-    //   <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} />
-    //   <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary}>
-    //     Send
-    //   </Button>
-    // </StyledForm>
     <Formik
       initialValues={{
         'bot-field': '',
