@@ -21,7 +21,7 @@ const StyledForm = styled(Form)`
   textarea {
     margin-bottom: 2rem;
     background: transparent !important;
-    border: 1px solid ${({ theme: { color } }) => color.content};
+    border: 2px solid ${({ theme: { color } }) => color.content};
     width: 100%;
     :focus {
       outline: none;

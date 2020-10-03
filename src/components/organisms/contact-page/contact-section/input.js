@@ -10,8 +10,8 @@ const Wrapper = styled.span`
   input,
   textarea {
     color: ${({ error, touched, theme: { base, color } }) => {
-      if (error && touched) return base.accent.tertiary;
-      if (touched && error === undefined) return 'green';
+      if (error && touched) return base.accent.error;
+      if (touched && error === undefined) return base.accent.success;
       return color.content;
     }} !important;
 
@@ -19,8 +19,8 @@ const Wrapper = styled.span`
 
     & + div {
       color: ${({ error, touched, theme: { base, color } }) => {
-        if (error && touched) return base.accent.tertiary;
-        if (touched && error === undefined) return 'green';
+        if (error && touched) return base.accent.error;
+        if (touched && error === undefined) return base.accent.success;
         return color.content;
       }} !important;
     }
