@@ -166,6 +166,14 @@ module.exports = {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
+
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint: 'https://mateuszgruzla.us2.list-manage.com/subscribe/post?u=3634ebdfeae4af3d2f2de92a4&amp;id=5b2295008d',
+        timeout: 3500, // number; the amount of time, in milliseconds, that you want to allow mailchimp to respond to your request before timing out. defaults to 3500
+      },
+    },
     // `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,

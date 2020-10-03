@@ -6,8 +6,8 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
 import qs from 'qs';
 
-import FormikControl from 'components/organisms/contact-page/contact-section/formik-control';
-import ErrorMSG from 'components/organisms/contact-page/contact-section/ErrorMSG';
+import FormikControl from 'components/modules/formik-control/formik-control';
+import ErrorMSG from 'components/modules/formik-control/error-msg';
 import Button from 'components/atoms/button';
 
 const StyledForm = styled(Form)`
@@ -21,7 +21,6 @@ const StyledForm = styled(Form)`
   textarea {
     margin-bottom: 2rem;
     background: transparent !important;
-    border: 2px solid ${({ theme: { color } }) => color.content};
     width: 100%;
     :focus {
       outline: none;
@@ -32,13 +31,6 @@ const StyledForm = styled(Form)`
   textarea {
     padding-top: 1rem;
     margin-bottom: 1.5rem;
-  }
-
-  input:placeholder-shown + div,
-  textarea:placeholder-shown + div {
-    opacity: 0;
-    background-color: transparent;
-    transform: translateY(100%);
   }
 
   span {
@@ -100,6 +92,8 @@ const ContactForm = () => {
     setExecuting(true);
   };
 
+  const InputBackground = ({ theme: { color } }) => color.bg;
+
   return (
     <Formik
       initialValues={{
@@ -120,10 +114,10 @@ const ContactForm = () => {
           <Field name='bot-field' type='hidden' />
           <Field name='form-name' type='hidden' />
 
-          <FormikControl control='input' name='name' error={errors.name} touched={touched.name} />
+          <FormikControl control='input' name='name' error={errors.name} touched={touched.name} parentBackground={InputBackground} />
           {console.log(errors.name)}
-          <FormikControl control='input' name='email' error={errors.email} touched={touched.email} />
-          <FormikControl control='textarea' name='message' error={errors.message} touched={touched.message} />
+          <FormikControl control='input' name='email' error={errors.email} touched={touched.email} parentBackground={InputBackground} />
+          <FormikControl control='textarea' name='message' error={errors.message} touched={touched.message} parentBackground={InputBackground} />
 
           <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} onChange={onVerify} />
 

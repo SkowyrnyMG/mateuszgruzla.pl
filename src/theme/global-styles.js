@@ -45,6 +45,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 20px;
     font-family: inherit;
     color: ${({ theme: { color } }) => color.content};
+    border: 1px solid ${({ theme: { color } }) => color.content};
     background: ${({ theme: { color } }) => color.input};
     border-radius: 5px;
 
@@ -56,6 +57,13 @@ const GlobalStyles = createGlobalStyle`
 
   textarea {
     min-height: 25rem;
+  }
+
+  input:placeholder-shown + div,
+  textarea:placeholder-shown + div {
+    opacity: 0;
+    background-color: transparent;
+    transform: translateY(100%);
   }
 
   * + * {

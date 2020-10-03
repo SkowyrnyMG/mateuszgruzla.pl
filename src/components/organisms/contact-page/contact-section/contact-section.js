@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import SocialList from 'components/modules/social-list/social-list';
-import ContactForm from 'components/organisms/contact-page/contact-section/form';
+import ContactForm from 'components/modules/contact-form/contact-form';
 
 const Wrapper = styled.section`
   margin-bottom: 7.5rem;

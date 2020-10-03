@@ -2,13 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { Field, ErrorMessage } from 'formik';
 
-import ActivePlaceholder from 'components/organisms/contact-page/contact-section/active-placeholder';
+import ActivePlaceholder from 'components/modules/active-placeholder/active-placeholder';
 
 const Wrapper = styled.span`
   position: relative;
   display: block;
   input,
   textarea {
+    background: transparent;
+    border-width: 1px solid;
+    outline: none;
     color: ${({ error, touched, theme: { base, color } }) => {
       if (error && touched) return base.accent.error;
       if (touched && error === undefined) return base.accent.success;
@@ -31,11 +34,11 @@ const Wrapper = styled.span`
   }
 `;
 
-const Input = ({ label, name, tagType, error, touched, ...rest }) => (
+const Input = ({ label, name, tagType, error, touched, parentBackground, ...rest }) => (
   <Wrapper error={error} touched={touched} className='form-control'>
     <label htmlFor={name}>
       <Field as={tagType} id={name} name={name} {...rest} placeholder={name} />
-      <ActivePlaceholder>{name}.</ActivePlaceholder>
+      <ActivePlaceholder parentBackground={parentBackground}>{name}.</ActivePlaceholder>
       <ErrorMessage name={name} />
     </label>
   </Wrapper>
