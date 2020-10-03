@@ -51,8 +51,9 @@ const SubscribeForm = () => {
         }}
         validationSchema={SubscribeValidationSchema}
         onSubmit={({ email, name }) => {
-          addToMailchimp(email, name).then((data) => {
+          addToMailchimp(email, { FNAME: name }).then((data) => {
             setMailChimpResponse(data);
+            console.log(data);
           });
         }}
       >
@@ -63,7 +64,6 @@ const SubscribeForm = () => {
             <Button btncolor={({ theme }) => theme.base.accent.tertiary} type='submit'>
               SUBSCRIBE
             </Button>
-            {mailChimpResponse}
           </StyledForm>
         )}
       </Formik>
