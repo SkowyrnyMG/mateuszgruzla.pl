@@ -7,10 +7,32 @@ import ActivePlaceholder from 'components/organisms/contact-page/contact-section
 const Wrapper = styled.span`
   position: relative;
   display: block;
+  input,
+  textarea {
+    color: ${({ error, touched, theme: { base, color } }) => {
+      if (error && touched) return base.accent.tertiary;
+      if (touched && error === undefined) return 'green';
+      return color.content;
+    }} !important;
+
+    border-color: currentColor !important;
+
+    & + div {
+      color: ${({ error, touched, theme: { base, color } }) => {
+        if (error && touched) return base.accent.tertiary;
+        if (touched && error === undefined) return 'green';
+        return color.content;
+      }} !important;
+    }
+
+    ::placeholder {
+      color: inherit;
+    }
+  }
 `;
 
-const Input = ({ label, name, tagType, ...rest }) => (
-  <Wrapper className='form-control'>
+const Input = ({ label, name, tagType, error, touched, ...rest }) => (
+  <Wrapper error={error} touched={touched} className='form-control'>
     <label htmlFor={name}>
       <Field as={tagType} id={name} name={name} {...rest} placeholder={name} />
       <ActivePlaceholder>{name}.</ActivePlaceholder>

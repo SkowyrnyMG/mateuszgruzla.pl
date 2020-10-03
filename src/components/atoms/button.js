@@ -85,7 +85,7 @@ Button.defaultProps = {
   btncolor: ({ theme }) => theme.base.accent.primary,
   path: '/',
   btnType: 'button',
-  isSubmiting: true,
+  isSubmiting: false,
 };
 
 Button.propTypes = {

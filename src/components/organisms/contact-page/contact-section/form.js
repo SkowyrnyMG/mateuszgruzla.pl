@@ -13,18 +13,25 @@ import Button from 'components/atoms/button';
 const StyledForm = styled(Form)`
   width: 80%;
 
+  label {
+    color: inherit;
+  }
+
   input,
   textarea {
     margin-bottom: 2rem;
     background: transparent !important;
     border: 1px solid ${({ theme: { color } }) => color.content};
     width: 100%;
-    border-color: ${({ theme, isError }) => (isError ? 'red' : theme.color.content)};
+    :focus {
+      outline: none;
+      box-shadow: 0 0 1rem -0.3rem ${({ theme: { color } }) => color.content};
+    }
   }
 
   textarea {
     padding-top: 1rem;
-    margin-bottom: 0;
+    margin-bottom: 1.5rem;
   }
 
   input:placeholder-shown + div,
@@ -43,15 +50,15 @@ const StyledForm = styled(Form)`
 const ContactForm = () => {
   const validationSchema = Yup.object().shape({
     name: Yup.string()
-      .min(2, <ErrorMSG>Too Short!</ErrorMSG>)
-      .max(50, <ErrorMSG>Too Long!</ErrorMSG>)
+      .min(3, <ErrorMSG>Name cannot be shorter than 3 signs!</ErrorMSG>)
+      .max(50, <ErrorMSG>Name canoot be longer than 50 sings!</ErrorMSG>)
       .required(<ErrorMSG>Required!</ErrorMSG>),
     email: Yup.string()
       .email(<ErrorMSG>Invalid Email!</ErrorMSG>)
       .required(<ErrorMSG>Required!</ErrorMSG>),
     message: Yup.string()
-      .min(15, <ErrorMSG>Too Short!</ErrorMSG>)
-      .max(255, <ErrorMSG>Too Long!</ErrorMSG>)
+      .min(15, <ErrorMSG>Message should be at least 15 signs long!</ErrorMSG>)
+      .max(255, <ErrorMSG>Message cannot be longer than 50 signs!</ErrorMSG>)
       .required(<ErrorMSG>Required!</ErrorMSG>),
   });
 
@@ -108,14 +115,15 @@ const ContactForm = () => {
         setExecuting(true);
       }}
     >
-      {() => (
+      {({ errors, touched }) => (
         <StyledForm data-netlify='true' data-netlify-honeypot='bot-field' name='contact'>
           <Field name='bot-field' type='hidden' />
           <Field name='form-name' type='hidden' />
 
-          <FormikControl control='input' name='name' />
-          <FormikControl control='input' name='email' />
-          <FormikControl control='textarea' name='message' />
+          <FormikControl control='input' name='name' error={errors.name} touched={touched.name} />
+          {console.log(errors.name)}
+          <FormikControl control='input' name='email' error={errors.email} touched={touched.email} />
+          <FormikControl control='textarea' name='message' error={errors.message} touched={touched.message} />
 
           <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} onChange={onVerify} />
 
