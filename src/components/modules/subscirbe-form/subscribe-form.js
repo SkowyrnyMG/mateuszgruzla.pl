@@ -60,10 +60,10 @@ const SubscribeForm = () => {
   };
 
   const SubscribeValidationSchema = Yup.object().shape({
-    email: Yup.string()
+    Email: Yup.string()
       .email(<ErrorMSG>Invalid Email!</ErrorMSG>)
       .required(<ErrorMSG>Required!</ErrorMSG>),
-    name: Yup.string()
+    Name: Yup.string()
       .min(3, <ErrorMSG>Name should be at lest 3 signs long!</ErrorMSG>)
       .max(50, <ErrorMSG>Name shouldnot be longer than 50 signs!</ErrorMSG>)
       .required(<ErrorMSG>Required!</ErrorMSG>),
@@ -74,8 +74,8 @@ const SubscribeForm = () => {
       <NavHeading>Subscribe to newsletter</NavHeading>
       <Formik
         initialValues={{
-          email: '',
-          name: '',
+          Email: '',
+          Name: '',
         }}
         validationSchema={SubscribeValidationSchema}
         onSubmit={({ email, name }) => {
@@ -92,8 +92,8 @@ const SubscribeForm = () => {
                 <span>{submscribtionMsg}</span>
               </SubscribtionInfo>
             ) : null}
-            <FormikControl control='input' name='email' error={errors.email} touched={touched.email} parentBackground={InputBackground} />
-            <FormikControl control='input' name='name' error={errors.name} touched={touched.name} parentBackground={InputBackground} />
+            <FormikControl control='input' name='Email' error={errors.Email} touched={touched.Email} parentBackground={InputBackground} />
+            <FormikControl control='input' name='Name' error={errors.Name} touched={touched.Name} parentBackground={InputBackground} />
             <Button btncolor={({ theme }) => theme.base.accent.tertiary} btnAction='submit'>
               SUBSCRIBE
             </Button>

@@ -44,13 +44,16 @@ const HeaderSecondLine = styled.span`
   span {
     display: block;
     position: relative;
+    margin-top: -0.5rem;
+    width: 100%;
+    text-align: center;
     color: ${({ theme, isDarkTheme }) => (isDarkTheme ? theme.color.bg : theme.base.accent.primary)};
     z-index: 5;
-    margin-top: -0.5rem;
   }
 `;
 
-const BgContainer = styled.div`
+const BgContainer = styled.span`
+  display: block;
   position: absolute;
   width: 99%;
   height: 100%;
@@ -79,8 +82,7 @@ const HomePageHeader = () => {
           FR<UnvisibleLetter>O</UnvisibleLetter>NTEND
         </HeaderFirstLine>
         <HeaderSecondLine isDarkTheme={isDarkTheme}>
-          <BgContainer isDarkTheme={isDarkTheme} />
-          <span>DEVELOPER</span>
+          <BgContainer isDarkTheme={isDarkTheme}>DEVELOPER</BgContainer>
         </HeaderSecondLine>
         <HeaderThirdLine>with passion and dreams</HeaderThirdLine>
       </h1>

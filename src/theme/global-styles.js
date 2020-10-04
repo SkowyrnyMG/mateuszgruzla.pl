@@ -90,6 +90,7 @@ const GlobalStyles = createGlobalStyle`
   h1 {
     font-family: 'Changa One', cursive !important;
     text-transform: uppercase;
+    opacity: 0;
   }
 
   h1,
