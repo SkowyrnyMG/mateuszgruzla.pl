@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import addToMailchimp from 'gatsby-plugin-mailchimp';
+import parse from 'html-react-parser';
 
 import FormikControl from 'components/modules/formik-control/formik-control';
 import ErrorMSG from 'components/modules/formik-control/error-msg';
@@ -11,6 +12,7 @@ import Button from 'components/atoms/button';
 
 const Wrapper = styled.div`
   margin-top: 0;
+  width: 100%;
 `;
 
 const StyledForm = styled(Form)`
@@ -28,8 +30,34 @@ const StyledForm = styled(Form)`
   }
 `;
 
+const SubscribtionInfo = styled.span`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  max-width: 30rem;
+  font-size: ${({ theme: { base } }) => base.fontSize.ms};
+  color: ${({ theme: { base }, status }) => (status === 'error' ? base.accent.error : base.accent.success)};
+  word-wrap: break-word;
+  transition: all 0.5s;
+
+  span:first-child {
+    text-transform: uppercase;
+  }
+
+  a {
+    color: ${({ theme: { base } }) => base.accent.primary};
+  }
+`;
+
 const SubscribeForm = () => {
-  const [mailChimpResponse, setMailChimpResponse] = useState('');
+  const [subscribtionStatus, setSubscribtionStatus] = useState();
+  const [submscribtionMsg, setSubscribtionMsg] = useState();
+
+  const handleResponse = async (data) => {
+    const response = await data;
+    setSubscribtionStatus(response.result);
+    setSubscribtionMsg(parse(response.msg));
+  };
 
   const SubscribeValidationSchema = Yup.object().shape({
     email: Yup.string()
@@ -52,16 +80,21 @@ const SubscribeForm = () => {
         validationSchema={SubscribeValidationSchema}
         onSubmit={({ email, name }) => {
           addToMailchimp(email, { FNAME: name }).then((data) => {
-            setMailChimpResponse(data);
-            console.log(data);
+            handleResponse(data);
           });
         }}
       >
         {({ errors, touched }) => (
           <StyledForm>
+            {subscribtionStatus ? (
+              <SubscribtionInfo status={subscribtionStatus}>
+                <span>{subscribtionStatus}</span>
+                <span>{submscribtionMsg}</span>
+              </SubscribtionInfo>
+            ) : null}
             <FormikControl control='input' name='email' error={errors.email} touched={touched.email} parentBackground={InputBackground} />
             <FormikControl control='input' name='name' error={errors.name} touched={touched.name} parentBackground={InputBackground} />
-            <Button btncolor={({ theme }) => theme.base.accent.tertiary} type='submit'>
+            <Button btncolor={({ theme }) => theme.base.accent.tertiary} btnAction='submit'>
               SUBSCRIBE
             </Button>
           </StyledForm>
