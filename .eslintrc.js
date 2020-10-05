@@ -27,7 +27,13 @@ module.exports = {
     'react/button-has-type': 0,
     'react/jsx-first-prop-new-line': [1, 'multiline'],
     'react/jsx-closing-bracket-location': [1, 'tag-aligned'],
-    'react/jsx-max-props-per-line': 0,
+    'react/jsx-max-props-per-line': [
+      1,
+      {
+        when: 'multiline',
+        maximum: 3,
+      },
+    ],
     'react/jsx-filename-extension': [
       1,
       {

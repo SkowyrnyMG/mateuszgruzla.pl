@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const StyledBtnText = styled.span`
   padding: 2rem 3rem;
@@ -23,10 +25,31 @@ const StyledLink = styled(Link)`
   text-align: center;
 `;
 
-const BigButton = ({ children, btnColor, path }) => (
-  <StyledLink to={path}>
-    <StyledBtnText btnColor={btnColor}>{children}</StyledBtnText>
-  </StyledLink>
-);
+const BigButton = ({ children, btnColor, path }) => {
+  const animationWrapper = useRef(null);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const animationContainer = animationWrapper.current;
+    const animatedButton = animationContainer.querySelector('span');
+
+    gsap.set(animatedButton, { autoAlpha: 0 });
+
+    gsap.to(animatedButton, {
+      scrollTrigger: {
+        trigger: animationContainer,
+        start: 'top 80%',
+        end: 'bottom 10%',
+        toggleActions: 'play reverse play reverse',
+      },
+      duration: 0.5,
+      autoAlpha: 1,
+    });
+  });
+  return (
+    <StyledLink to={path} ref={animationWrapper}>
+      <StyledBtnText btnColor={btnColor}>{children}</StyledBtnText>
+    </StyledLink>
+  );
+};
 
 export default BigButton;

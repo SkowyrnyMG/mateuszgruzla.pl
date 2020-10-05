@@ -35,7 +35,7 @@ const Home = ({ location }) => {
           <HomePageTechnology />
           <Devider title='projects.' highlightEnd='3' highlightColor={({ theme }) => theme.base.accent.primary} />
           <HomePageProjects />
-          <Devider title='blog.' highlightEnd='2' highlightColor={({ theme }) => theme.base.accent.secondary} />
+          <Devider title='recentposts.' highlightEnd='6' highlightColor={({ theme }) => theme.base.accent.secondary} />
           <HomePageBlog />
         </GridView>
       </Wrapper>

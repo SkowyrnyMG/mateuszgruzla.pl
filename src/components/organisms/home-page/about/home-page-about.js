@@ -49,14 +49,15 @@ const HomePageAbout = () => {
     gsap.from([...animWrap.children], {
       scrollTrigger: {
         trigger: animWrap,
-        start: '100px bottom',
-        end: 'top top',
-        toggleActions: 'play reverse none none',
+        start: '10% 80%',
+        end: '90% 20%',
+        toggleActions: 'play reverse play reverse',
       },
       duration: 0.75,
       y: '+=100',
       autoAlpha: 0,
       stagger: 0.25,
+      ease: 'power4out',
     });
   });
   return (

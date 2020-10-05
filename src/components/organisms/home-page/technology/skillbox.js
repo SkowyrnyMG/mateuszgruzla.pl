@@ -47,6 +47,7 @@ const VerticalLine = styled(PathLine)`
 
 const Skill = styled.div.attrs(() => ({ className: 'skill' }))`
   display: flex;
+  justify-content: center;
   justify-content: ${({ side }) => (side === 'right' ? 'flex-start' : 'flex-end')};
   position: relative;
   padding: 2rem;
@@ -79,7 +80,8 @@ const IconWrapper = styled.div`
 `;
 
 const Content = styled.div`
-  flex-basis: 80%;
+  flex-basis: 85%;
+  padding: 2rem;
 `;
 
 const Skillbox = ({ side, title, children, techIcon }) => (

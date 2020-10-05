@@ -64,6 +64,7 @@ const skillAppear = (trigger, animTarget, duration, delay) => {
     scrollTrigger: {
       trigger,
       start: 'top 70%',
+      end: 'bottom 30%',
     },
   });
 };
@@ -89,11 +90,6 @@ const HomePageTechnology = () => {
       pathAppear(skillbox[elseOrder], pathLine[pathOrder + 1], 0.5, 0.75);
       pathAppear(skillbox[elseOrder], pathLine[pathOrder], 0.5, 0.75, 'to left');
       skillAppear(skillbox[elseOrder], skill[elseOrder], 0.5, 0.75);
-
-      // pathAppear(skillbox[elseOrder], pathLine[pathOrder + 1], 0.25, 0);
-      // boxAppear(skillbox[elseOrder], checkpoint[elseOrder], 0.5, 0.25);
-      // pathAppear(skillbox[elseOrder], pathLine[pathOrder], 0.25, 0.3, 'to left');
-      // skillAppear(skillbox[elseOrder], skill[elseOrder], 0.25, 0.55);
     });
   });
   return (
@@ -102,7 +98,8 @@ const HomePageTechnology = () => {
         I feel comfortable with ES6+. I can use arrow functions, destructuring, template strings, const + let, array.flat(), modules, etc.
       </Skillbox>
       <Skillbox side='right' title='React' techIcon={reactIcon}>
-        CRA, Hooks, Function/Class components, Prop-types, props, handle events and forms, styled-components, module-styles, actions, reducers, global state etc. are no scarry for me
+        CRA, Hooks, Function/Class components, Prop-types, props, handle events and forms, styled-components, module-styles, actions, reducers, global state etc. are no scarry for
+        me
       </Skillbox>
       <Skillbox title='Gatsby' techIcon={gatsbyIcon}>
         Generate pages from md files or CMS, implementing vary Gatsby plugins, creating templates, using “magic images”, creating graplql queries, etc.

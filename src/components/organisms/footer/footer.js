@@ -43,6 +43,9 @@ const Footer = () => (
       <InfoBox>
         <p>Coded by Mateusz Gruźla</p>
         <InnerLink to={routes.privacyPolicy}>Privacy policy</InnerLink>
+        <a href='https://github.com/SkowyrnyMG/mateuszgruzla.pl' target='_blank' rel='noreferrer'>
+          Click here to check code to this website!
+        </a>
       </InfoBox>
     </GridView>
   </StyledFooter>

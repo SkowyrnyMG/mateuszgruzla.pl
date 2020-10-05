@@ -24,8 +24,8 @@ const Wrapper = styled.div`
 
 const StyledHeading = styled.h2`
   text-align: left;
-  margin-bottom: -7.4rem;
-  margin-left: calc((100% - 1180px) / 2);
+  margin: 0 calc((100% - 1180px) / 2) -5.4rem;
+  line-height: 1.2;
 `;
 
 const Highlight = styled.span`
@@ -67,10 +67,13 @@ const Devider = ({ highlightEnd, highlightColor, title }) => {
     gsap.to(animationTarget, {
       scrollTrigger: {
         trigger: animationWrapperContainer,
-        start: '100px bottom',
+        start: '10% 85%',
+        end: 'bottom top',
+        toggleActions: 'play reverse play reverse',
       },
       duration: 1,
       transform: 'translateY(0)',
+      ease: 'power4.out',
     });
   });
   return (

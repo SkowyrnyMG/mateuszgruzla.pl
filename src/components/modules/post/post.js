@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { Link } from 'gatsby';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { useImg } from 'hooks/useImg';
 
@@ -56,9 +58,28 @@ const PublishDate = styled.span`
 
 const Post = ({ postImg, title, excerpt, tags, slug, publishDate }) => {
   const { defaultImg } = useImg();
+  const animationWrapper = useRef(null);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const animationContainer = animationWrapper.current;
+
+    gsap.set(animationContainer, { autoAlpha: 0, transform: 'translateY(100px)' });
+
+    gsap.to(animationContainer, {
+      scrollTrigger: {
+        trigger: animationContainer,
+        start: '20% 80%',
+        end: '80% 20%',
+        toggleActions: 'play reverse play reverse',
+      },
+      duration: 0.75,
+      autoAlpha: 1,
+      transform: 'translateY(0)',
+      ease: 'power2',
+    });
+  });
   return (
-    <StyledLink to={`/blog/${slug}`}>
-      {/* img */}
+    <StyledLink to={`/blog/${slug}`} ref={animationWrapper}>
       <StyledImg fluid={postImg ? postImg.childImageSharp.fluid : defaultImg} />
       <StyledHeading>{title}</StyledHeading>
       <Excerpt>{excerpt}</Excerpt>

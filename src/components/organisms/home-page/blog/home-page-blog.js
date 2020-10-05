@@ -15,10 +15,6 @@ const Wrapper = styled.section`
   margin-bottom: 12rem;
 `;
 
-const StyledHeading = styled.h3`
-  margin-bottom: 5rem;
-`;
-
 const PostWrapper = styled.div`
   display: grid;
   margin-bottom: 12rem;
@@ -36,7 +32,6 @@ const HomePageBlog = () => {
   const lastPosts = useLastPosts();
   return (
     <Wrapper>
-      <StyledHeading>Latest posts</StyledHeading>
       <PostWrapper>
         {lastPosts ? (
           lastPosts.map(({ node: { id, slug, frontmatter: { title, description, image, tags, date } } }) => (

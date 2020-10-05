@@ -19,7 +19,6 @@ const Header = ({ children }) => {
 
   useEffect(() => {
     const headerContainer = wrapper.current;
-    console.log(headerContainer);
     const heading = headerContainer.querySelector('h1');
     gsap.set(heading, { autoAlpha: 0 });
     gsap.to(heading, { duration: 0.6, delay: 0.2, autoAlpha: 1, ease: 'power4out' });

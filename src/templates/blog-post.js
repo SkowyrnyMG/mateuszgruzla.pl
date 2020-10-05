@@ -22,14 +22,6 @@ const Wrapper = styled.article`
   min-height: 100vh;
 `;
 
-const MainPostHeading = styled.h1`
-  margin-bottom: 3rem;
-  padding-bottom: 3rem;
-  font-family: ${({ theme: { base } }) => base.fontFamily.main} !important;
-  font-size: ${({ theme: { base } }) => base.fontSize.postMainHeading};
-  text-transform: none;
-`;
-
 const StyledPostBody = styled.div`
   margin-bottom: 5rem;
   display: flex;
@@ -81,6 +73,7 @@ const NavButton = styled(Link)`
   width: 12rem;
   margin: 0;
   display: flex;
+  align-items: flex-start;
   color: ${({ theme: { color } }) => color.header};
   font-size: ${({ theme: { base } }) => base.fontSize.ml};
   background: none;
@@ -88,14 +81,17 @@ const NavButton = styled(Link)`
   cursor: pointer;
   transition: color 0.25s;
 
-  span {
-    display: inline-block;
+  p {
+    height: 100%;
+    position: relative;
+    display: block;
     transition: color 0.25s;
   }
 
   svg {
     transform: translateY(8px);
     transition: color 0.2s;
+    margin: -0.4rem 0.3rem 0;
   }
 
   :hover * {
@@ -133,8 +129,7 @@ const BlogPost = ({ data, pageContext }) => {
       <SEO title={title} />
       <Wrapper>
         <GridView>
-          <MainPostHeading>{title}</MainPostHeading>
-          <Devider title=' ' />
+          <Devider title={title} />
           <StyledPostBody>
             <PostBodyContainer ref={PostBodyDOM}>
               <PostPageArticleHeader postImg={image} description={description} author={name} publishDate={date} timeToRead={timeToRead} tags={tags} />
@@ -157,13 +152,13 @@ const BlogPost = ({ data, pageContext }) => {
           <PostNavWrapper>
             {pageContext.previous && (
               <NavButton to={`/blog/${pageContext.previous.slug}`}>
-                <LeftNavIcon /> <span>prev post</span>
+                <LeftNavIcon /> <p>prev post</p>
               </NavButton>
             )}
             &nbsp;
             {pageContext.next && (
               <NavButton to={`/blog/${pageContext.next.slug}`}>
-                <span>next post</span>
+                <p>next post</p>
                 <RightNavIcon />
               </NavButton>
             )}

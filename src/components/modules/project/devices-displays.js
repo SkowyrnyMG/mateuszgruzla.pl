@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs(() => ({
+  className: 'displays-container',
+}))`
   position: relative;
   width: 100%;
   flex-basis: 50%;
