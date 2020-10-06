@@ -69,6 +69,9 @@ const HeaderThirdLine = styled.span`
   font-size: 6.2rem;
   text-transform: lowercase;
   letter-spacing: 2px;
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    letter-spacing: 1px;
+  }
 `;
 
 const HomePageHeader = () => {

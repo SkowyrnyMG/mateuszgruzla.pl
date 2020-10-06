@@ -8,7 +8,6 @@ const Wrapper = styled.div.attrs(() => ({
   position: relative;
   width: 100%;
   flex-basis: 50%;
-  background: #fff;
 
   > * {
     display: flex;
@@ -22,6 +21,13 @@ const Wrapper = styled.div.attrs(() => ({
 
   * {
     margin-top: 0;
+  }
+
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    margin-bottom: 2rem;
+    padding-top: 30rem;
+    flex-basis: 100%;
+    order: 1;
   }
 `;
 

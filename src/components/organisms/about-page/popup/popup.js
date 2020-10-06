@@ -12,9 +12,10 @@ const Wrapper = styled.div.attrs(() => ({
   display: flex;
   align-items: center;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: fixed;
   z-index: 100000;
+  padding-top: 5rem;
   width: 100%;
   height: 100vh;
   top: 0;

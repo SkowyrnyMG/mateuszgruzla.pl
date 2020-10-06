@@ -1,3 +1,15 @@
+export const breakpoints = {
+  huge: 1700,
+  bigDesktop: 1440,
+  mediumDesktop: 1300,
+  desktop: 1168,
+  bigTablet: 1028,
+  tablet: 767,
+  smallTablet: 630,
+  bigPhone: 480,
+  phone: 374,
+};
+
 const constTheme = {
   accent: {
     // primary: '#FFD829', // 1
@@ -39,6 +51,10 @@ const constTheme = {
     main: '"Montserrat", sans-serif',
     secondary: '"Changa One", cursive',
   },
+  mq: Object.keys(breakpoints).reduce((acc, breakpoint) => {
+    acc[breakpoint] = `@media (max-width: ${breakpoints[breakpoint]}px)`;
+    return acc;
+  }, {}),
 };
 
 export const lightTheme = {

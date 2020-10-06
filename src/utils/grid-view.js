@@ -7,6 +7,17 @@ const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr [content-start] 1170px [content-end] 1fr;
 
+  ${({
+    theme: {
+      base: { mq },
+    },
+  }) => mq.mediumDesktop} {
+    /* display: flex;
+    flex-direction: column;
+    padding: 0 3rem; */
+    grid-template-columns: 5rem [content-start] minmax(min-content, 1fr) [content-end] 5rem;
+  }
+
   > * {
     grid-column: content-start / content-end;
   }

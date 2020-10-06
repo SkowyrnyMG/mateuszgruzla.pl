@@ -22,6 +22,10 @@ const PostWrapper = styled.div`
   grid-gap: 5rem;
   width: 100%;
   justify-items: center;
+
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    grid-template-columns: minmax(min-content, 1fr);
+  }
 `;
 
 const StyledBigButton = styled(BigButton)`

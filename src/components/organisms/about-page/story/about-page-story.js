@@ -12,8 +12,20 @@ const Wrapper = styled.section`
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 7rem;
   align-items: center;
+  width: 100%;
   justify-content: space-between;
   margin-bottom: 9rem;
+
+  ${({
+    theme: {
+      base: { mq },
+    },
+  }) => mq.desktop} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 `;
 
 const TimelinePhoto = styled.div`

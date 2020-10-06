@@ -11,6 +11,10 @@ const Path = styled.div`
   margin-top: -3rem;
   position: relative;
   flex-basis: 45%;
+
+  ${({ theme: { base } }) => base.mq.tablet} {
+    flex-basis: 0%;
+  }
 `;
 
 const Checkpoint = styled.div.attrs(() => ({ className: 'checkpoint' }))`
@@ -30,7 +34,6 @@ const PathLine = styled.div.attrs(() => ({ className: 'pathLine' }))`
   left: 50%;
   transform-origin: bottom left;
   z-index: 1;
-  /* background: ${({ theme: { color } }) => color.content}; */
 `;
 
 const HorizontalLine = styled(PathLine)`
@@ -38,11 +41,18 @@ const HorizontalLine = styled(PathLine)`
   transform: ${({ side }) => (side === 'right' ? 'rotate(0)' : 'rotate(180deg)')};
   height: 1px;
   width: 50%;
+  ${({ theme: { base } }) => base.mq.tablet} {
+    height: 0;
+  }
 `;
 
 const VerticalLine = styled(PathLine)`
   width: 1px;
   height: calc(50% + 40px);
+
+  ${({ theme: { base } }) => base.mq.tablet} {
+    height: 0;
+  }
 `;
 
 const Skill = styled.div.attrs(() => ({ className: 'skill' }))`
@@ -57,6 +67,10 @@ const Skill = styled.div.attrs(() => ({ className: 'skill' }))`
   background: ${({ theme: { color } }) => color.secondary};
   z-index: 2;
   border-radius: 5px;
+
+  ${({ theme: { base } }) => base.mq.tablet} {
+    flex-basis: 95%;
+  }
 `;
 const IconWrapper = styled.div`
   margin-top: 0;

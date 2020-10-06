@@ -30,7 +30,7 @@ const StyledButton = styled.button`
   transition: 0.25s all;
 
   svg {
-    height: 35px;
+    height: 3.5rem;
     pointer-events: none;
   }
 

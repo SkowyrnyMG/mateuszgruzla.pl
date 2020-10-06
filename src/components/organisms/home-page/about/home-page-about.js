@@ -26,12 +26,17 @@ const ParagraphWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  width: 50rem;
+  width: 80rem;
+
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    width: 90%;
+  }
 `;
 
 const StyledParagraph = styled.p`
   margin-top: 0;
   margin-bottom: 7rem;
+  padding-right: 2rem;
   flex-basis: 48%;
   &:first-child {
     border-right: 1px solid ${({ theme: { color } }) => color.content.faded};

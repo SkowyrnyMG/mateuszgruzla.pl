@@ -13,7 +13,19 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     font-size: 62.5%;
     font-family: 'Montserrat', sans-serif;
-    /* overflow-x: hidden; */
+
+    ${({ theme: { base } }) => base.mq.desktop} {
+      font-size: 55%;
+    }
+    ${({ theme: { base } }) => base.mq.bigTablet} {
+      font-size: 50%;
+    }
+    ${({ theme: { base } }) => base.mq.tablet} {
+      font-size: 45%;
+    }
+    ${({ theme: { base } }) => base.mq.smallTablet} {
+      font-size: 40%;
+    }
   }
   body {
     margin: 0;
@@ -108,12 +120,16 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     text-decoration: none;
+    font-size: 18px;
     color: ${({ theme: { color } }) => color.content};
   }
 
   p {
     line-height: 1.6;
+    font-size: 18px;
   }
+
+
 `;
 
 export default GlobalStyles;

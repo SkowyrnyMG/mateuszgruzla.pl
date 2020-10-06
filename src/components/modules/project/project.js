@@ -26,6 +26,10 @@ const Wrapper = styled.div`
     margin-top: 0;
     transform: translateY(100px);
   }
+
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    flex-direction: column;
+  }
 `;
 
 const Content = styled.div.attrs(() => ({
@@ -33,6 +37,13 @@ const Content = styled.div.attrs(() => ({
 }))`
   flex-basis: 50%;
   order: ${({ side }) => (side === 'left' ? 1 : 0)};
+
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    flex-basis: 100%;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+    order: 2;
+  }
 `;
 
 const ButtonWrapper = styled.div`

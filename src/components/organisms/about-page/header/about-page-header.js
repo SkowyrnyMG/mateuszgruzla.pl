@@ -73,12 +73,14 @@ const CTA = styled.button`
   }
 
   span:first-child {
-    font-size: ${({ theme: { base } }) => base.fontSize.m};
+    /* font-size: ${({ theme: { base } }) => base.fontSize.m}; */
+    font-size: 1.8rem;
     color: ${({ theme: { base } }) => base.accent.tertiary};
   }
 
   span:nth-child(2) {
-    font-size: ${({ theme: { base } }) => base.fontSize.big};
+    /* font-size: ${({ theme: { base } }) => base.fontSize.big}; */
+    font-size: 4.6rem;
     color: ${({ theme: { color } }) => color.header};
   }
 

@@ -17,7 +17,6 @@ const Wrapper = styled.div`
     left: 0%;
     right: 0%;
     border-bottom: 1px solid ${({ theme: { color } }) => color.content};
-    transform: scaleX(1);
     z-index: -1;
   }
 `;
@@ -26,6 +25,9 @@ const StyledHeading = styled.h2`
   text-align: left;
   margin: 0 calc((100% - 1180px) / 2) -5.4rem;
   line-height: 1.2;
+  ${({ theme: { base } }) => base.mq.mediumDesktop} {
+    margin: 0 5rem -5.4rem;
+  }
 `;
 
 const Highlight = styled.span`
