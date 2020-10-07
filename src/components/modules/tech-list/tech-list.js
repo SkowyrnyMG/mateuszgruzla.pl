@@ -15,8 +15,8 @@ const Wrapper = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  height: 5rem;
-  width: 5rem;
+  height: 50px;
+  width: 50px;
 
   &:not(:last-child) {
     margin-right: 4rem;

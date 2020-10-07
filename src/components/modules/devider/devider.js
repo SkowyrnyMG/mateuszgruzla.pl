@@ -28,6 +28,10 @@ const StyledHeading = styled.h2`
   ${({ theme: { base } }) => base.mq.mediumDesktop} {
     margin: 0 5rem -5.4rem;
   }
+  ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    font-size: 50px;
+    margin: 0 5rem -28px;
+  }
 `;
 
 const Highlight = styled.span`

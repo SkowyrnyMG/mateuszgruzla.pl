@@ -24,9 +24,9 @@ const Portfolio = () => (
     <Wrapper>
       <GridView>
         <PortfolioPageHeader />
-        <Devider title='projects' highlightEnd='3' highlightColor={({ theme: { base } }) => base.accent.primary} />
+        <Devider title='projects.' highlightEnd='3' highlightColor={({ theme: { base } }) => base.accent.primary} />
         <PortfolioPageProjects />
-        <Devider title='contributions' highlightEnd='4' highlightColor={({ theme: { base } }) => base.accent.secondary} />
+        <Devider title='contributions.' highlightEnd='4' highlightColor={({ theme: { base } }) => base.accent.secondary} />
         <PortfolioPageContributions />
       </GridView>
     </Wrapper>

@@ -19,7 +19,7 @@ const PostWrapper = styled.div`
   display: grid;
   margin-bottom: 12rem;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 5rem;
+  grid-gap: 5em;
   width: 100%;
   justify-items: center;
 

@@ -14,12 +14,16 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  margin-bottom: 12rem;
+  margin: 8rem 0 10rem;
   width: 100%;
+
+  &:last-child {
+    margin-bottom: 7em;
+  }
 
   h3,
   h4 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5em;
   }
 
   > * {
@@ -40,8 +44,7 @@ const Content = styled.div.attrs(() => ({
 
   ${({ theme: { base } }) => base.mq.bigTablet} {
     flex-basis: 100%;
-    margin-bottom: 5rem;
-    margin-top: 5rem;
+    margin: 5em 0;
     order: 2;
   }
 `;

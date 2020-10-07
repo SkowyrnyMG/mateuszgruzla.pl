@@ -11,6 +11,11 @@ const Content = styled.h1`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+  ${({ theme: { base } }) => base.mq.smallTablet} {
+    flex-basis: 100%;
+    margin-right: 0;
+  }
 `;
 
 const ContentFirstLine = styled.span`
@@ -40,6 +45,11 @@ const CTAWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
+  ${({ theme: { base } }) => base.mq.smallTablet} {
+    flex-basis: 100%;
+    margin: 0 0 10rem 0;
+  }
 `;
 const CTA = styled.button`
   position: relative;
@@ -73,13 +83,11 @@ const CTA = styled.button`
   }
 
   span:first-child {
-    /* font-size: ${({ theme: { base } }) => base.fontSize.m}; */
     font-size: 1.8rem;
     color: ${({ theme: { base } }) => base.accent.tertiary};
   }
 
   span:nth-child(2) {
-    /* font-size: ${({ theme: { base } }) => base.fontSize.big}; */
     font-size: 4.6rem;
     color: ${({ theme: { color } }) => color.header};
   }

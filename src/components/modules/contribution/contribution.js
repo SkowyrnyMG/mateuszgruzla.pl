@@ -13,11 +13,18 @@ const Wrapper = styled.a`
   font-size: ${({ theme: { base } }) => base.fontSize.m};
   background: ${({ theme: { color } }) => color.menu};
   border-radius: 0.5rem;
+
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    flex-direction: column;
+  }
 `;
 
 const StyledImg = styled(Img)`
   flex-basis: 60%;
   margin-right: 5rem;
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    width: 40%;
+  }
 `;
 
 const Contribution = ({ companyLogo, link }) => {

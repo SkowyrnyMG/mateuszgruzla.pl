@@ -18,6 +18,7 @@ const Wrapper = styled.section`
 `;
 
 const StyledHeading = styled.h3`
+  font-size: ${({ theme: { base } }) => base.fontSize.xl};
   margin-bottom: 6rem;
   transition: none;
 `;

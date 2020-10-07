@@ -9,6 +9,9 @@ const Wrapper = styled.section`
   width: 100%;
   display: flex;
   align-items: flex-start;
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    flex-direction: column;
+  }
 `;
 
 const ContactInfo = styled.div`
@@ -16,6 +19,10 @@ const ContactInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    margin-bottom: 15rem;
+    align-items: center;
+  }
 `;
 
 const StyledParagraph = styled.p`
@@ -28,6 +35,10 @@ const FormWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    flex-basis: 100%;
+    width: 100%;
+  }
 `;
 
 const ContactSection = () => {

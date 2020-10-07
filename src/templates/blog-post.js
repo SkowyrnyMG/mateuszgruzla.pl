@@ -28,6 +28,10 @@ const StyledPostBody = styled.div`
   height: 100%;
   line-height: 1.6;
   border-bottom: 1px solid ${({ theme: { color } }) => color.secondary};
+
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    flex-direction: column-reverse;
+  }
 `;
 
 const PostBodyContainer = styled.div`

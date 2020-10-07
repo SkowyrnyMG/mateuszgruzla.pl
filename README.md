@@ -7,7 +7,8 @@ The main purpouse of creating this website was sharing with wider group of peopl
 
 Technologies used to create this project: GatsbyJS, React, StyledComponents, GSAP3, Netlify + NetlifyCMS
 Forms are handled with Formik - not so complicated library, but I think it's enough to create decent validated forms.
-For newsletter I've used MailChimp.
+
+Newsletter is handled by MailChimp.
 
 ## Blog
 

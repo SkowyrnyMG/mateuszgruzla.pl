@@ -26,6 +26,9 @@ const GlobalStyles = createGlobalStyle`
     ${({ theme: { base } }) => base.mq.smallTablet} {
       font-size: 40%;
     }
+    ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+      font-size: 30%;
+    }
   }
   body {
     margin: 0;
@@ -52,7 +55,7 @@ const GlobalStyles = createGlobalStyle`
   input,
   textarea {
     padding-left: 2rem;
-    height: 5rem;
+    height: 50px;
     width: 30rem;
     font-size: 20px;
     font-family: inherit;
@@ -111,11 +114,11 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h3 {
-    font-size: 2.85rem;
+    font-size: 28.5px;
   }
 
   h4 {
-    font-size: 2.4rem;
+    font-size: 24px;
   }
 
   a {

@@ -13,6 +13,10 @@ const Wrapper = styled.div`
   > *:nth-child(4n + 1) {
     grid-column: 1 / -1;
   }
+
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    grid-template-columns: minmax(min-content, 1fr);
+  }
 `;
 
 const BlogPagePosts = ({ posts }) => (

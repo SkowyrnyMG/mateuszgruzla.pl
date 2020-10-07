@@ -12,6 +12,10 @@ const StyledHeader = styled.header`
   & * {
     margin-top: 0;
   }
+
+  ${({ theme: { base } }) => base.mq.smallTablet} {
+    flex-direction: column;
+  }
 `;
 
 const Header = ({ children }) => {

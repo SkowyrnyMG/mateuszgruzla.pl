@@ -20,7 +20,6 @@ const Wrapper = styled.div`
 const Contact = () => (
   <Layout>
     <SEO title='Contact' />
-
     <Wrapper>
       <GridView>
         <ContactPageHeader />

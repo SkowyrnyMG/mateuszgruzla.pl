@@ -30,6 +30,12 @@ const Wrapper = styled.aside`
       text-decoration: underline;
     }
   }
+
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    position: relative;
+    margin-left: 0rem;
+    top: 0;
+  }
 `;
 
 const SetMarginByTagName = (tagName) => {

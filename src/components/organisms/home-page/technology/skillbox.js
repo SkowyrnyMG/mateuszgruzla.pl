@@ -71,6 +71,9 @@ const Skill = styled.div.attrs(() => ({ className: 'skill' }))`
   ${({ theme: { base } }) => base.mq.tablet} {
     flex-basis: 95%;
   }
+  ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    padding: ${({ side }) => (side === 'right' ? '5rem 0rem 5rem 10rem' : '5rem 10rem 5rem 0rem')};
+  }
 `;
 const IconWrapper = styled.div`
   margin-top: 0;
@@ -90,6 +93,20 @@ const IconWrapper = styled.div`
 
   * {
     margin-top: 0;
+  }
+
+  ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    width: 50px;
+    height: 50px;
+    top: -10px;
+    ${({ side }) =>
+      side === 'right'
+        ? css`
+            right: -10px;
+          `
+        : css`
+            left: -10px;
+          `}
   }
 `;
 
