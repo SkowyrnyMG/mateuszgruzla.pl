@@ -85,11 +85,18 @@ const CTA = styled.button`
   span:first-child {
     font-size: 1.8rem;
     color: ${({ theme: { base } }) => base.accent.tertiary};
+
+    ${({ theme: { base } }) => base.mq.smallTablet} {
+      font-size: 2.8rem;
+    }
   }
 
   span:nth-child(2) {
     font-size: 4.6rem;
     color: ${({ theme: { color } }) => color.header};
+    ${({ theme: { base } }) => base.mq.smallTablet} {
+      font-size: 6.6rem;
+    }
   }
 
   :hover {
@@ -98,6 +105,11 @@ const CTA = styled.button`
 
   :hover::before {
     transform: translate(-50%, -50%) scale(0.95);
+  }
+
+  ${({ theme: { base } }) => base.mq.smallTablet} {
+    width: 50rem;
+    height: 50rem;
   }
 `;
 

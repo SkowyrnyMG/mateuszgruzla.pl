@@ -32,6 +32,9 @@ const ParagraphWrapper = styled.div`
   ${({ theme: { base } }) => base.mq.bigTablet} {
     width: 90%;
   }
+  ${({ theme: { base } }) => base.mq.bigPhone} {
+    flex-direction: column;
+  }
 `;
 
 const StyledParagraph = styled.p`
@@ -41,6 +44,11 @@ const StyledParagraph = styled.p`
   flex-basis: 48%;
   &:first-child {
     border-right: 1px solid ${({ theme: { color } }) => color.content.faded};
+  }
+
+  ${({ theme: { base } }) => base.mq.bigPhone} {
+    border: none !important;
+    text-align: justify;
   }
 `;
 

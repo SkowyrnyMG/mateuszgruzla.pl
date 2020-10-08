@@ -26,8 +26,8 @@ const SocialMediaWrapper = styled.div`
   align-items: center;
   svg {
     margin-top: 0;
-    width: 4rem;
-    height: 4rem;
+    width: 2em;
+    height: 2em;
     fill: ${({ theme: { color } }) => color.content};
   }
 

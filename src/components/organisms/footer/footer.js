@@ -12,12 +12,24 @@ import InnerLink from 'components/atoms/inner-link';
 const StyledFooter = styled.footer`
   width: 100%;
   min-height: 62rem;
+  padding-bottom: 3rem;
+
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    h4 {
+      font-size: 18px !important;
+    }
+  }
 `;
 
 const FooterContentWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(min-content, 1fr));
   margin: 8rem 0;
+
+  ${({ theme: { base } }) => base.mq.tablet} {
+    grid-template-columns: minmax(min-content, 1fr);
+    grid-row-gap: 3em;
+  }
 `;
 
 const InfoBox = styled.div`
@@ -44,7 +56,7 @@ const Footer = () => (
         <p>Coded by Mateusz Gruźla</p>
         <InnerLink to={routes.privacyPolicy}>Privacy policy</InnerLink>
         <a href='https://github.com/SkowyrnyMG/mateuszgruzla.pl' target='_blank' rel='noreferrer'>
-          Click here to check code to this website!
+          &lt;&gt; Check code &lt;&#47;&gt;
         </a>
       </InfoBox>
     </GridView>

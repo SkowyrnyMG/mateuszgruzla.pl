@@ -32,6 +32,11 @@ const StyledHeading = styled.h2`
     font-size: 50px;
     margin: 0 5rem -28px;
   }
+
+  ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    font-size: 50px;
+    margin: 0 3rem -28px;
+  }
 `;
 
 const Highlight = styled.span`

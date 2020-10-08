@@ -19,6 +19,10 @@ const StyledList = styled.ul`
     font-weight: ${({ theme: { base } }) => base.fontWeight.bold};
     pointer-events: none;
   }
+
+  ${({ theme: { base } }) => base.mq.tablet} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const StyledListItem = styled.li`

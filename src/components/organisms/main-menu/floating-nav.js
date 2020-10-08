@@ -13,6 +13,7 @@ import MenuIcon from 'assets/svg/menu-icon.svg';
 const Wrapper = styled.div`
   display: flex;
   pointer-events: auto;
+  z-index: 20000;
 `;
 
 const StyledButton = styled.button`
@@ -55,6 +56,16 @@ const StyledButton = styled.button`
   &:active {
     transform: translateY(1px);
   }
+
+  ${({ theme: { base } }) => base.mq.tablet} {
+    width: 3.9em;
+    height: 3.9em;
+
+    svg {
+      height: 1.7em;
+      width: 1.7em;
+    }
+  }
 `;
 
 const ThemeIconsWrapper = styled.div`
@@ -79,7 +90,12 @@ const ThemeIconsWrapper = styled.div`
   }
 `;
 
-const FloatingNav = ({ toggleMenu, toggleSearch }) => {
+const StyledMenuIcon = styled(MenuIcon)`
+  transform: ${({ isMenuOpen }) => (isMenuOpen ? 'rotate(90deg)' : 'rotate(0deg)')};
+  transition: all 0.5s !important;
+`;
+
+const FloatingNav = ({ toggleMenu, toggleSearch, isMenuOpen }) => {
   const { isDarkTheme, setIsDarkTheme } = useContext(ThemeContext);
 
   const handleToggleTheme = () => {
@@ -98,7 +114,7 @@ const FloatingNav = ({ toggleMenu, toggleSearch }) => {
         <SearchIcon />
       </StyledButton>
       <StyledButton onClick={toggleMenu}>
-        <MenuIcon />
+        <StyledMenuIcon isMenuOpen={isMenuOpen} />
       </StyledButton>
     </Wrapper>
   );

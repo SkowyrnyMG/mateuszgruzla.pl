@@ -8,8 +8,9 @@ import LogoIcon from 'assets/svg/logo-icon.svg';
 import Header from 'components/atoms/header';
 
 const HeaderFirstLine = styled.span`
-  width: 76.9rem;
-  display: block;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   position: relative;
   font-size: 15rem;
   letter-spacing: 0.8rem;
@@ -36,7 +37,7 @@ const HeaderSecondLine = styled.span`
   justify-content: center;
   line-height: 11rem;
   margin-top: -2rem;
-  width: 76.9rem;
+  width: 100%;
   height: 11rem;
   font-size: 12rem;
   position: relative;
@@ -60,6 +61,10 @@ const BgContainer = styled.span`
   background: ${({ theme, isDarkTheme }) => (isDarkTheme ? theme.base.accent.primary : theme.color.header)};
   transition: all 0.25s;
   z-index: 0;
+
+  ${({ theme: { base } }) => base.mq.bigPhone} {
+    width: 100%;
+  }
 `;
 
 const HeaderThirdLine = styled.span`

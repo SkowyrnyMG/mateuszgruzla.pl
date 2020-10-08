@@ -27,6 +27,7 @@ const StyledForm = styled(Form)`
 
   input {
     margin-bottom: 2rem;
+    width: 100%;
   }
 `;
 

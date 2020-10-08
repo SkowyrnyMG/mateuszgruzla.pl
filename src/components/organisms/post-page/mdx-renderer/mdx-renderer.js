@@ -65,6 +65,12 @@ const StyledArticle = styled.article`
     line-height: 1;
     padding: 2rem;
     border-radius: 0.5rem;
+    font-size: 15px;
+    overflow-x: scroll !important;
+
+    ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+      width: 88vw;
+    }
   }
 
   pre[class*='language-']::before {

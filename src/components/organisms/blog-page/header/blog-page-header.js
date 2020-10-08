@@ -13,7 +13,8 @@ const FirstLine = styled.span`
   color: ${({ theme: { base } }) => base.accent.secondary};
 `;
 const SecondLine = styled.span`
-  display: block;
+  display: flex;
+  justify-content: center;
   margin-top: -9rem;
   font-size: 4.5rem;
   font-weight: ${({ theme: { base } }) => base.fontWeight.thin};

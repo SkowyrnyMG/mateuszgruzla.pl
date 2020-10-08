@@ -119,7 +119,7 @@ const ContactForm = () => {
           <FormikControl control='input' name='email' error={errors.email} touched={touched.email} parentBackground={InputBackground} />
           <FormikControl control='textarea' name='message' error={errors.message} touched={touched.message} parentBackground={InputBackground} />
 
-          <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} onChange={onVerify} />
+          <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} onChange={onVerify} size='compact' />
 
           <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary} isSubmiting={executing}>
             Send

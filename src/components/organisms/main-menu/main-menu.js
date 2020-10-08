@@ -16,9 +16,13 @@ const Wrapper = styled.div`
   flex-direction: column;
   position: fixed;
   right: 1.8rem;
-  top: 3rem;
+  top: 0;
+  padding-top: 3rem;
   z-index: 99999;
   pointer-events: none;
+  ${({ theme: { base } }) => base.mq.tablet} {
+    right: 0;
+  }
 `;
 
 const StyledNav = styled.div.attrs(() => ({
@@ -45,6 +49,15 @@ const StyledNav = styled.div.attrs(() => ({
       pointer-events: auto;
       transform: translateY(0);
     `};
+
+  ${({ theme: { base } }) => base.mq.tablet} {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+  }
 `;
 
 const NavContentWrapper = styled.nav`
@@ -56,6 +69,15 @@ const NavContentWrapper = styled.nav`
 
   > * {
     margin-top: 0;
+  }
+
+  ${({ theme: { base } }) => base.mq.tablet} {
+    flex-direction: column;
+    align-items: center;
+
+    > *:not(:last-child) {
+      margin-bottom: 2em;
+    }
   }
 `;
 
@@ -92,7 +114,7 @@ const MainMenu = () => {
   return (
     <Wrapper ref={wrapper}>
       <OutterField isMenuOpen={isMenuOpen} />
-      <FloatingNav toggleMenu={() => setIsMenuOpen((state) => !state)} toggleSearch={() => setIsSearchOpen((state) => !state)} />
+      <FloatingNav toggleMenu={() => setIsMenuOpen((state) => !state)} toggleSearch={() => setIsSearchOpen((state) => !state)} isMenuOpen={isMenuOpen} />
       <SearchMenu isSearchOpen={isSearchOpen} setIsSearchOpen={() => setIsSearchOpen(false)} />
       <StyledNav isMenuOpen={isMenuOpen}>
         <NavContentWrapper>

@@ -23,6 +23,10 @@ const StyledLink = styled(Link)`
   * {
     margin-top: 0;
   }
+
+  ${({ theme: { base } }) => base.mq.smallTablet} {
+    grid-row-gap: 1.5em;
+  }
 `;
 
 const StyledImg = styled(Img)``;
@@ -48,6 +52,10 @@ const Tag = styled.span`
 
   &:not(:last-child) {
     margin-right: 1rem;
+  }
+
+  ${({ theme: { base } }) => base.mq.smallTablet} {
+    font-size: 15px;
   }
 `;
 

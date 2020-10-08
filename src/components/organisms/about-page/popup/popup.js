@@ -10,7 +10,6 @@ const Wrapper = styled.div.attrs(() => ({
   className: 'closePopup',
 }))`
   display: flex;
-  align-items: center;
   justify-content: center;
   align-items: flex-start;
   position: fixed;
@@ -21,11 +20,16 @@ const Wrapper = styled.div.attrs(() => ({
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.9);
+  overflow-y: scroll;
 
   opacity: ${({ isPopupActive }) => (isPopupActive ? 1 : 0)};
   pointer-events: ${({ isPopupActive }) => (isPopupActive ? 'auto' : 'none')};
 
   transition: opacity 0.25s;
+
+  ${({ theme: { base } }) => base.mq.tablet} {
+    padding: 2rem 0;
+  }
 `;
 
 const PopupBox = styled.div`
@@ -40,6 +44,13 @@ const PopupBox = styled.div`
   background: ${({ theme: { color } }) => color.secondary};
   transform: ${({ isPopupActive }) => (isPopupActive ? 'translateY(0)' : 'translateY(150px)')};
   transition: transform 0.25s;
+
+  ${({ theme: { base } }) => base.mq.tablet} {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+  }
 `;
 
 const Content = styled.div`
@@ -48,6 +59,10 @@ const Content = styled.div`
   flex-direction: column;
   align-content: flex-start;
   justify-content: center;
+
+  ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    flex-basis: 100%;
+  }
 `;
 
 const StyledHeading = styled.h3`
@@ -67,12 +82,18 @@ const StyledLogo = styled(LogoIcon)`
   * {
     fill: ${({ theme: { base } }) => base.accent.secondary};
   }
+
+  ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    display: none;
+    visibility: hidden;
+    position: absolute;
+  }
 `;
 
 const CloseButton = styled.button`
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: 0;
+  right: 0;
   width: 35px;
   height: 35px;
   border-radius: 5px;
@@ -96,6 +117,11 @@ const CloseButton = styled.button`
   }
   ::after {
     transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    top: 10px;
+    right: 10px;
   }
 `;
 

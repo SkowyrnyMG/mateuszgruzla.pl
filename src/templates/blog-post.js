@@ -20,6 +20,10 @@ const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    padding-top: 4em;
+  }
 `;
 
 const StyledPostBody = styled.div`

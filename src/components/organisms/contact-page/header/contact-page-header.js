@@ -16,8 +16,9 @@ const HeaderFirstLine = styled.span`
   color: ${({ theme: { base } }) => base.accent.secondary};
 `;
 const HeaderSecondLine = styled.span`
+  display: flex;
+  justify-content: center;
   margin-top: -5rem;
-  display: block;
   font-size: 4.6rem;
   font-weight: ${({ theme: { base } }) => base.fontWeight.thin};
 `;

@@ -29,6 +29,10 @@ const Wrapper = styled.div`
 
 const SearchArea = styled.div`
   width: 60%;
+
+  ${({ theme: { base } }) => base.mq.smallTablet} {
+    width: 90%;
+  }
 `;
 
 const SearchMenu = ({ isSearchOpen, setIsSearchOpen }) => {

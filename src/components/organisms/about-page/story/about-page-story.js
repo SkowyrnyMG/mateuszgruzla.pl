@@ -36,6 +36,10 @@ const TimelinePhoto = styled.div`
 
 const ImageBox = styled.div`
   width: 50rem;
+
+  ${({ theme: { base } }) => base.mq.tablet} {
+    width: 100%;
+  }
 `;
 
 const PhotoInfo = styled.p`
