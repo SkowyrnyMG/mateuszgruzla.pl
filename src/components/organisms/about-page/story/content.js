@@ -23,7 +23,7 @@ const Content = ({ title, children, fullWidth }) => {
     gsap.registerPlugin(ScrollTrigger);
     const animationContainer = animationWrapper.current;
 
-    gsap.set([...animationContainer.children], { autoAlpha: 0, transform: 'translateY(100px)' });
+    gsap.set([...animationContainer.children], { opacity: 0, transform: 'translateY(100px)' });
 
     gsap.to([...animationContainer.children], {
       scrollTrigger: {
@@ -34,7 +34,7 @@ const Content = ({ title, children, fullWidth }) => {
       },
       duration: 0.75,
       transform: 'translateY(0)',
-      autoAlpha: 1,
+      opacity: 1,
       stagger: 0.25,
     });
   });
