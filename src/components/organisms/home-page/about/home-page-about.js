@@ -18,7 +18,7 @@ const Wrapper = styled.section`
 `;
 
 const StyledHeading = styled.h3`
-  font-size: ${({ theme: { base } }) => base.fontSize.xl};
+  font-size: ${({ theme: { base } }) => base.fontSize.l};
   margin-bottom: 6rem;
   transition: none;
 `;
@@ -34,6 +34,7 @@ const ParagraphWrapper = styled.div`
   }
   ${({ theme: { base } }) => base.mq.bigPhone} {
     flex-direction: column;
+    margin-bottom: 3em;
   }
 `;
 
@@ -49,6 +50,19 @@ const StyledParagraph = styled.p`
   ${({ theme: { base } }) => base.mq.bigPhone} {
     border: none !important;
     text-align: justify;
+  }
+`;
+
+const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3em 0;
+  width: 100%;
+  height: 30rem;
+  svg {
+    width: 30rem !important;
+    height: 30rem !important;
   }
 `;
 
@@ -76,7 +90,9 @@ const HomePageAbout = () => {
   });
   return (
     <Wrapper ref={animationWrapper}>
-      <LogoSvg />
+      <LogoWrapper>
+        <LogoSvg />
+      </LogoWrapper>
       <StyledHeading>I’m Mateusz Gruźla.</StyledHeading>
       <ParagraphWrapper>
         <StyledParagraph>

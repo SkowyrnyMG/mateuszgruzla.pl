@@ -21,7 +21,7 @@ const ContactInfo = styled.div`
   align-items: flex-start;
   ${({ theme: { base } }) => base.mq.bigTablet} {
     margin-bottom: 15rem;
-    align-items: center;
+    /* align-items: center; */
   }
 `;
 

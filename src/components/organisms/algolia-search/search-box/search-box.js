@@ -4,6 +4,14 @@ import { connectSearchBox } from 'react-instantsearch-dom';
 
 const StyledForm = styled.form`
   width: 100%;
+
+  ${({ theme: { base } }) => base.mq.smallTablet} {
+    margin-top: 5em;
+  }
+
+  ${({ theme: { base } }) => base.mq.bigPhone} {
+    margin-top: 8em;
+  }
 `;
 
 const StyledInput = styled.input`

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 
 const Wrapper = styled.div`
-  margin-bottom: 6rem;
+  margin-bottom: 6em;
   width: 100%;
   display: flex;
   align-items: center;
@@ -11,6 +11,10 @@ const Wrapper = styled.div`
 
   * {
     margin-top: 0;
+  }
+
+  ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    margin-bottom: 6em;
   }
 `;
 

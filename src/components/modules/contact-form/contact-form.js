@@ -37,6 +37,10 @@ const StyledForm = styled(Form)`
     position: relative;
     display: block;
   }
+
+  ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    width: 100%;
+  }
 `;
 
 const ContactForm = () => {

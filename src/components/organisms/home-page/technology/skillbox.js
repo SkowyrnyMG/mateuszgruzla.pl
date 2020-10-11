@@ -113,6 +113,10 @@ const IconWrapper = styled.div`
 const Content = styled.div`
   flex-basis: 85%;
   padding: 2rem;
+
+  p {
+    font-size: ${({ theme: { base } }) => base.fontSize.ms};
+  }
 `;
 
 const Skillbox = ({ side, title, children, techIcon }) => (

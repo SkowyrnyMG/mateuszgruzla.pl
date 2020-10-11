@@ -16,6 +16,10 @@ const StyledHeader = styled.header`
   ${({ theme: { base } }) => base.mq.smallTablet} {
     flex-direction: column;
   }
+
+  ${({ theme: { base } }) => base.mq.bigPhone} {
+    margin: 5em 0;
+  }
 `;
 
 const Header = ({ children }) => {

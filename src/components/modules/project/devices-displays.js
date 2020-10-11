@@ -40,7 +40,7 @@ const BigScreenDisplay = styled.div`
   padding: 1rem 1rem 1rem;
   width: 42rem;
   height: 25rem;
-  border: 0.5rem solid ${({ theme: { base }, side }) => (side === 'left' ? base.accent.secondary : base.accent.primary)};
+  border: 0.7rem solid ${({ theme: { base }, side }) => (side === 'left' ? base.accent.secondary : base.accent.primary)};
   border-radius: 1.5rem;
   background: black;
   box-shadow: ${({ theme: { base } }) => base.shadow.darkSmall};
@@ -73,7 +73,7 @@ const TabletDisplay = styled.div`
   width: 21.7rem;
   height: 16.3rem;
   background: #000;
-  border: 5px solid ${({ theme: { base }, side }) => (side === 'left' ? base.accent.secondary : base.accent.primary)};
+  border: 0.7rem solid ${({ theme: { base }, side }) => (side === 'left' ? base.accent.secondary : base.accent.primary)};
   border-radius: 1.5rem;
   box-shadow: ${({ theme: { base } }) => base.shadow.darkSmall};
   overflow: hidden;
@@ -87,7 +87,7 @@ const MobileDisplay = styled.div`
   width: 7rem;
   height: 13rem;
   background: #000;
-  border: 5px solid ${({ theme: { base }, side }) => (side === 'left' ? base.accent.secondary : base.accent.primary)};
+  border: 0.5rem solid ${({ theme: { base }, side }) => (side === 'left' ? base.accent.secondary : base.accent.primary)};
   border-radius: 1.5rem;
   box-shadow: ${({ theme: { base } }) => base.shadow.darkSmall};
   overflow: hidden;

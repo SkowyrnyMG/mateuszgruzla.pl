@@ -33,6 +33,8 @@ const StyledButton = styled.button`
   svg {
     height: 3.5rem;
     pointer-events: none;
+    transform: ${({ isMenuOpen }) => (isMenuOpen ? 'rotate(90deg)' : 'rotate(0deg)')};
+    transition: all 0.5s !important;
   }
 
   * {
@@ -90,11 +92,6 @@ const ThemeIconsWrapper = styled.div`
   }
 `;
 
-const StyledMenuIcon = styled(MenuIcon)`
-  transform: ${({ isMenuOpen }) => (isMenuOpen ? 'rotate(90deg)' : 'rotate(0deg)')};
-  transition: all 0.5s !important;
-`;
-
 const FloatingNav = ({ toggleMenu, toggleSearch, isMenuOpen }) => {
   const { isDarkTheme, setIsDarkTheme } = useContext(ThemeContext);
 
@@ -113,8 +110,8 @@ const FloatingNav = ({ toggleMenu, toggleSearch, isMenuOpen }) => {
       <StyledButton onClick={toggleSearch}>
         <SearchIcon />
       </StyledButton>
-      <StyledButton onClick={toggleMenu}>
-        <StyledMenuIcon isMenuOpen={isMenuOpen} />
+      <StyledButton onClick={toggleMenu} isMenuOpen={isMenuOpen}>
+        <MenuIcon />
       </StyledButton>
     </Wrapper>
   );

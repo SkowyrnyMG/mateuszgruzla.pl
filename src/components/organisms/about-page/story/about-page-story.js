@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Content from 'components/organisms/about-page/story/content';
 import ColorText from 'components/atoms/color-text';
@@ -28,10 +30,19 @@ const Wrapper = styled.section`
   }
 `;
 
-const TimelinePhoto = styled.div`
+const TimelinePhoto = styled.div.attrs(() => ({
+  className: 'story-timeline-photo',
+}))`
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  /* &:nth-child(odd) {
+    transform: translateX(50px);
+  }
+  &:nth-child(even) {
+    transform: translateX(-50px);
+  } */
 `;
 
 const ImageBox = styled.div`
@@ -50,8 +61,33 @@ const PhotoInfo = styled.p`
 
 const AboutPageStory = () => {
   const { aboutComodore, aboutHelloroman } = useImg();
+  const animationWrapper = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const animationContainer = animationWrapper.current;
+    const timelineBoxes = animationContainer.querySelectorAll('.story-timeline-photo');
+
+    timelineBoxes.forEach((box, index) => {
+      gsap.set([...box.children], { autoAlpha: 0, transform: `translateX(${index % 2 === 0 || index === 0 ? '50px' : '-50px'})` });
+
+      gsap.to([...box.children], {
+        scrollTrigger: {
+          trigger: box,
+          start: '-5% 90%',
+          end: 'bottom 20%',
+          toggleActions: 'play reverse play reverse',
+        },
+        duration: 0.75,
+        autoAlpha: 1,
+        transform: 'translateX(0)',
+        stagger: 0.25,
+      });
+    });
+  });
+
   return (
-    <Wrapper>
+    <Wrapper ref={animationWrapper}>
       <Content title='Love to the digital world'>
         Since I was young kid I was all about PC, playing games, fast typing etc.
         <br />

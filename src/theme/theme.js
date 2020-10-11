@@ -37,7 +37,7 @@ const constTheme = {
     l: '24px',
     ml: '18px',
     m: '18px',
-    ms: '15px',
+    ms: '16px',
   },
   fontWeight: {
     thin: 300,

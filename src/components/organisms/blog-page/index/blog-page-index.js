@@ -46,6 +46,10 @@ const PrevButton = styled(Link)`
   /* border-right: 2px dashed ${({ theme: { base } }) => base.accent.primary} !important; */
   pointer-events: ${({ pagenumber }) => (pagenumber === 1 ? `none` : ` auto`)};
   color: ${({ pagenumber, theme }) => (pagenumber === 1 ? `gray` : theme.color.active)};
+
+  ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    margin-right: .3em;
+  }
 `;
 const NextButton = styled(Link)`
   position: relative;
@@ -53,6 +57,9 @@ const NextButton = styled(Link)`
   /* border-left: 2px dashed ${({ theme: { base } }) => base.accent.primary} !important; */
   pointer-events: ${({ pagenumber, numberofpages }) => (pagenumber === numberofpages ? `none` : ` auto`)};
   color: ${({ pagenumber, numberofpages, theme }) => (pagenumber === numberofpages ? `gray` : theme.color.active)};
+  ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    margin-left: .3em;
+  }
 `;
 
 const CurrentLink = styled(Link)`
