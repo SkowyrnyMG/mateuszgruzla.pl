@@ -17,6 +17,7 @@ const Wrapper = styled.section`
   width: 100%;
   justify-content: space-between;
   margin-bottom: 9rem;
+  overflow-x: hidden;
 
   ${({
     theme: {
@@ -36,13 +37,6 @@ const TimelinePhoto = styled.div.attrs(() => ({
   display: flex;
   align-items: center;
   flex-direction: column;
-
-  /* &:nth-child(odd) {
-    transform: translateX(50px);
-  }
-  &:nth-child(even) {
-    transform: translateX(-50px);
-  } */
 `;
 
 const ImageBox = styled.div`
