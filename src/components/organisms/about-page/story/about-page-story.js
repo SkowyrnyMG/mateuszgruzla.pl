@@ -69,7 +69,7 @@ const AboutPageStory = () => {
     const timelineBoxes = animationContainer.querySelectorAll('.story-timeline-photo');
 
     timelineBoxes.forEach((box, index) => {
-      gsap.set([...box.children], { autoAlpha: 0, transform: `translateX(${index % 2 === 0 || index === 0 ? '50px' : '-50px'})` });
+      gsap.set([...box.children], { opacity: 0, transform: `translateX(${index % 2 === 0 || index === 0 ? '50px' : '-50px'})` });
 
       gsap.to([...box.children], {
         scrollTrigger: {
@@ -79,7 +79,7 @@ const AboutPageStory = () => {
           toggleActions: 'play reverse play reverse',
         },
         duration: 0.75,
-        autoAlpha: 1,
+        opacity: 1,
         transform: 'translateX(0)',
         stagger: 0.25,
       });
