@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
+import { Disqus } from 'gatsby-plugin-disqus';
 
 import Layout from 'utils/layout';
 import SEO from 'utils/seo';
@@ -114,6 +115,8 @@ const BlogPost = ({ data, pageContext }) => {
       frontmatter: { title, date, description, tags, image },
       body,
       timeToRead,
+      slug,
+      id,
     },
     site: {
       siteMetadata: {
@@ -131,6 +134,14 @@ const BlogPost = ({ data, pageContext }) => {
     allHeadings.forEach((heading, index) => heading.setAttribute('id', `heading-index-${index}`));
     setHeadings(allHeadings);
   }, []);
+
+  const baseBlogUrl = 'https://mateuszgruzla.pl/blog/';
+
+  const disqusConfig = {
+    url: `${baseBlogUrl + slug}`,
+    identifier: id,
+    title,
+  };
 
   return (
     <Layout>
@@ -157,6 +168,7 @@ const BlogPost = ({ data, pageContext }) => {
             </a>
           </ShareWrapper>
 
+          <Disqus config={disqusConfig} />
           <PostNavWrapper>
             {pageContext.previous && (
               <NavButton to={`/blog/${pageContext.previous.slug}`}>

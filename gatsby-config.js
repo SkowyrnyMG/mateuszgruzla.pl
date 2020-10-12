@@ -189,6 +189,12 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-netlify-cms',
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `mateuszgruzla-pl`,
+      },
+    },
 
     {
       resolve: `gatsby-plugin-algolia`,
