@@ -84,11 +84,7 @@ const ThemeIconsWrapper = styled.div`
     fill: ${({ theme: { color } }) => color.content};
 
     :nth-child(1) {
-      opacity: ${({ isDarkTheme, theme }) => {
-        console.log(theme);
-        console.log(isDarkTheme);
-        return isDarkTheme === true ? 1 : 0;
-      }};
+      opacity: ${({ isDarkTheme }) => (isDarkTheme === true ? 1 : 0)};
     }
     :nth-child(2) {
       opacity: ${({ isDarkTheme }) => (isDarkTheme === true ? 0 : 1)};
@@ -98,11 +94,9 @@ const ThemeIconsWrapper = styled.div`
 
 const FloatingNav = ({ toggleMenu, toggleSearch, isMenuOpen }) => {
   const { isDarkTheme, setIsDarkTheme } = useContext(ThemeContext);
-  console.log('floating nav');
-  console.log(isDarkTheme);
 
   const handleToggleTheme = () => {
-    setIsDarkTheme((state) => !state);
+    setIsDarkTheme(!isDarkTheme);
     Cookies.set('theme', !isDarkTheme === true ? 'dark' : 'light');
   };
 
