@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import { ThemeContext } from 'context/theme-context';
@@ -11,11 +11,17 @@ const RootStylesWrapper = ({ children }) => {
   console.log('root styles wrapper');
   console.log(isDarkTheme);
 
+  const [isMounted, setMount] = useState(false);
+  useEffect(() => {
+    setMount(true);
+    console.log(`Is mounted: ${isMounted}`);
+  });
+
   return (
     <div>
       <ThemeProvider theme={isDarkTheme === true ? darkTheme : lightTheme}>
         <GlobalStyles />
-        {children}
+        {isMounted === true && <>{children}</>}
       </ThemeProvider>
     </div>
   );
