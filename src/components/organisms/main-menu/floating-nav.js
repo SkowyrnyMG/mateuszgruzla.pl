@@ -94,11 +94,14 @@ const ThemeIconsWrapper = styled.div`
 
 const FloatingNav = ({ toggleMenu, toggleSearch, isMenuOpen }) => {
   const { isDarkTheme, setIsDarkTheme } = useContext(ThemeContext);
+  console.log('floating nav');
+  console.log(isDarkTheme);
 
   const handleToggleTheme = () => {
     setIsDarkTheme((state) => !state);
     Cookies.set('theme', !isDarkTheme === true ? 'dark' : 'light');
   };
+
   return (
     <Wrapper>
       <StyledButton onClick={handleToggleTheme}>
