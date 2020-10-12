@@ -8,13 +8,11 @@ import GlobalStyles from '../theme/global-styles';
 
 const RootStylesWrapper = ({ children }) => {
   const { isDarkTheme } = useContext(ThemeContext);
-  console.log('root styles wrapper');
-  console.log(isDarkTheme);
 
+  // We are checking if component is mounted to basicly trigger Rerender on whole page. We have to do that because React’s hydrate method treats differences between client and server. Right now our site will use theme from user cookies instead of default.
   const [isMounted, setMount] = useState(false);
   useEffect(() => {
     setMount(true);
-    console.log(`Is mounted: ${isMounted}`);
   });
 
   return (
