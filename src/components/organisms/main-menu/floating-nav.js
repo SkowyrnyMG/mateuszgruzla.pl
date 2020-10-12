@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 import Cookies from 'js-cookie';
-
-import { lightTheme, darkTheme } from 'theme/theme';
 
 import { ThemeContext } from 'context/theme-context';
 
@@ -98,27 +96,25 @@ const FloatingNav = ({ toggleMenu, toggleSearch, isMenuOpen }) => {
   const { isDarkTheme, setIsDarkTheme } = useContext(ThemeContext);
 
   const handleToggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
+    setIsDarkTheme((state) => !state);
     Cookies.set('theme', !isDarkTheme === true ? 'dark' : 'light');
   };
 
   return (
-    <ThemeProvider theme={isDarkTheme === true ? darkTheme : lightTheme}>
-      <Wrapper>
-        <StyledButton onClick={handleToggleTheme}>
-          <ThemeIconsWrapper isDarkTheme={isDarkTheme}>
-            <LightThemeIcon />
-            <DarkThemeIcon />
-          </ThemeIconsWrapper>
-        </StyledButton>
-        <StyledButton onClick={toggleSearch}>
-          <SearchIcon />
-        </StyledButton>
-        <StyledButton onClick={toggleMenu} isMenuOpen={isMenuOpen}>
-          <MenuIcon />
-        </StyledButton>
-      </Wrapper>
-    </ThemeProvider>
+    <Wrapper>
+      <StyledButton onClick={handleToggleTheme}>
+        <ThemeIconsWrapper isDarkTheme={isDarkTheme}>
+          <LightThemeIcon />
+          <DarkThemeIcon />
+        </ThemeIconsWrapper>
+      </StyledButton>
+      <StyledButton onClick={toggleSearch}>
+        <SearchIcon />
+      </StyledButton>
+      <StyledButton onClick={toggleMenu} isMenuOpen={isMenuOpen}>
+        <MenuIcon />
+      </StyledButton>
+    </Wrapper>
   );
 };
 
