@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Cookies from 'js-cookie';
@@ -99,6 +99,12 @@ const FloatingNav = ({ toggleMenu, toggleSearch, isMenuOpen }) => {
     setIsDarkTheme((state) => !state);
     Cookies.set('theme', !isDarkTheme === true ? 'dark' : 'light');
   };
+
+  const [isMounted, setMount] = useState(false);
+  useEffect(() => {
+    setMount(true);
+    console.log(`Is mounted: ${isMounted}`);
+  });
 
   return (
     <Wrapper>
