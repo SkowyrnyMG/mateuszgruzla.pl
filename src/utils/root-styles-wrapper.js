@@ -13,7 +13,7 @@ const RootStylesWrapper = ({ children }) => {
   const [isMounted, setMount] = useState(false);
   useEffect(() => {
     setMount(true);
-  });
+  }, []);
 
   return (
     <div>
