@@ -84,7 +84,11 @@ const ThemeIconsWrapper = styled.div`
     fill: ${({ theme: { color } }) => color.content};
 
     :nth-child(1) {
-      opacity: ${({ isDarkTheme }) => (isDarkTheme === true ? 1 : 0)};
+      opacity: ${({ isDarkTheme, theme }) => {
+        console.log(theme);
+        console.log(isDarkTheme);
+        return isDarkTheme === true ? 1 : 0;
+      }};
     }
     :nth-child(2) {
       opacity: ${({ isDarkTheme }) => (isDarkTheme === true ? 0 : 1)};

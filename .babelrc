@@ -1,5 +1,14 @@
 {
-  "plugins": ["@babel/plugin-proposal-optional-chaining", "@babel/plugin-proposal-export-default-from", "babel-plugin-styled-components"],
+  "plugins": [
+    "@babel/plugin-proposal-optional-chaining",
+    "@babel/plugin-proposal-export-default-from",
+    [
+      "babel-plugin-styled-components",
+      {
+        "ssr": true
+      }
+    ]
+  ],
   "presets": [
     [
       "babel-preset-gatsby",
