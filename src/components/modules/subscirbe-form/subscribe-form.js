@@ -79,8 +79,8 @@ const SubscribeForm = () => {
           Name: '',
         }}
         validationSchema={SubscribeValidationSchema}
-        onSubmit={({ email, name }) => {
-          addToMailchimp(email, { FNAME: name }).then((data) => {
+        onSubmit={({ Email, Name }) => {
+          addToMailchimp(Email, { FNAME: Name }).then((data) => {
             handleResponse(data);
           });
         }}
