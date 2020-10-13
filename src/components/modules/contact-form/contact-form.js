@@ -126,7 +126,7 @@ const ContactForm = () => {
           <FormikControl control='input' name='email' error={errors.email} touched={touched.email} parentBackground={InputBackground} />
           <FormikControl control='textarea' name='message' error={errors.message} touched={touched.message} parentBackground={InputBackground} />
 
-          <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} onChange={onVerify} onErrored={onError} size='compact' />
+          <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} onChange={onVerify} onErrored={onError} onExpired={onError} on size='compact' />
           {captchaError && <ErrorMSG>ReCAPTCHA ERROR!</ErrorMSG>}
 
           <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary}>

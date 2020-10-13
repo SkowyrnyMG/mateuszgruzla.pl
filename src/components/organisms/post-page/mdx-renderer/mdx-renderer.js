@@ -68,19 +68,32 @@ const StyledArticle = styled.article`
     font-size: 15px;
     overflow-x: scroll !important;
 
+    ::-webkit-scrollbar {
+      width: 1.5rem;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: ${({ theme: { color } }) => color.contentFaded};
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: ${({ theme: { base } }) => base.accent.secondary};
+    }
+
     ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
       width: 88vw;
     }
   }
 
   pre[class*='language-']::before {
+    width: fit-content;
     border-radius: 0 0 0.25rem 0.25rem;
     font-size: 12px;
     letter-spacing: 0.025rem;
     padding: 0.1rem 0.5rem;
     position: absolute;
-    right: 1rem;
-    text-align: right;
+    left: 1rem;
+    text-align: left;
     text-transform: uppercase;
     top: 0;
   }
