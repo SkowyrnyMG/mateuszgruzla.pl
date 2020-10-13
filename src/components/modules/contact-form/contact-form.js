@@ -59,7 +59,7 @@ const ContactForm = () => {
   });
 
   const [errMsg, setErrMsg] = useState('');
-  const [executing, setExecuting] = useState(false);
+  const [captchaError, setCaptchaError] = useState(false);
   const [formValues, setFormValues] = useState({});
   const [token, setToken] = useState('');
   const [verified, setVerified] = useState(false);
@@ -92,8 +92,13 @@ const ContactForm = () => {
   const onVerify = (rctoken) => {
     console.log(verified);
     setToken(rctoken);
+    setCaptchaError(false);
     setVerified(true);
-    setExecuting(true);
+  };
+
+  const onError = () => {
+    setCaptchaError(true);
+    setVerified(false);
   };
 
   const InputBackground = ({ theme: { color } }) => color.bg;
@@ -110,7 +115,6 @@ const ContactForm = () => {
       validationSchema={validationSchema}
       onSubmit={(values) => {
         setFormValues({ ...values });
-        setExecuting(true);
       }}
     >
       {({ errors, touched }) => (
@@ -119,13 +123,13 @@ const ContactForm = () => {
           <Field name='form-name' type='hidden' />
 
           <FormikControl control='input' name='name' error={errors.name} touched={touched.name} parentBackground={InputBackground} />
-          {console.log(errors.name)}
           <FormikControl control='input' name='email' error={errors.email} touched={touched.email} parentBackground={InputBackground} />
           <FormikControl control='textarea' name='message' error={errors.message} touched={touched.message} parentBackground={InputBackground} />
 
-          <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} onChange={onVerify} size='compact' />
+          <ReCAPTCHA data-netlify-recaptcha='true' sitekey={process.env.GATSBY_SITE_RECAPTCHA_KEY} onChange={onVerify} onErrored={onError} size='compact' />
+          {captchaError && <ErrorMSG>ReCAPTCHA ERROR!</ErrorMSG>}
 
-          <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary} isSubmiting={executing}>
+          <Button btnAction='submit' btnType='button' btncolor={({ theme: { base } }) => base.accent.secondary}>
             Send
           </Button>
         </StyledForm>
