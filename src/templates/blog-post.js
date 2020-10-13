@@ -130,9 +130,11 @@ const BlogPost = ({ data, pageContext }) => {
   const PostBodyDOM = useRef(null);
   const TableOfContentDOM = useRef(null);
   useEffect(() => {
-    const allHeadings = PostBodyDOM.current.querySelectorAll('h1, h2, h3, h4, h5, h6');
-    allHeadings.forEach((heading, index) => heading.setAttribute('id', `heading-index-${index}`));
-    setHeadings(allHeadings);
+    setTimeout(() => {
+      const allHeadings = PostBodyDOM.current.querySelectorAll('h1, h2, h3, h4, h5, h6');
+      allHeadings.forEach((heading, index) => heading.setAttribute('id', `heading-index-${index}`));
+      setHeadings(allHeadings);
+    }, 0);
   }, []);
 
   const baseBlogUrl = 'https://mateuszgruzla.pl/blog/';
