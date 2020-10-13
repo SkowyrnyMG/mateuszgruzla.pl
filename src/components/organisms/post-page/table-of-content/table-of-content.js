@@ -14,6 +14,7 @@ const Wrapper = styled.aside`
   height: fit-content;
   background: ${({ theme: { color } }) => color.secondary};
   border-radius: 0.5rem;
+  opacity: 0;
 
   button {
     background: none;
@@ -85,7 +86,12 @@ const TableOfContent = ({ headings }) => {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollToPlugin);
-    const TOCButtons = ButtonWrapper.current.querySelectorAll('button');
+
+    const buttonContainer = ButtonWrapper.current;
+    const TOCButtons = buttonContainer.querySelectorAll('button');
+
+    gsap.set(buttonContainer, { autoAlpha: 0 });
+    gsap.to(buttonContainer, { duration: 1, autoAlpha: 1 });
 
     [...TOCButtons].forEach((content) =>
       content.addEventListener('click', (e) => {
