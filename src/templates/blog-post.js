@@ -2,20 +2,21 @@ import React, { useState, useEffect, useRef } from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 import { Disqus } from 'gatsby-plugin-disqus';
+import Img from 'gatsby-image';
 
 import Layout from 'utils/layout';
 import SEO from 'utils/seo';
 import GridView from 'utils/grid-view';
 import MdxRenderer from 'components/organisms/post-page/mdx-renderer/mdx-renderer';
+import { useImg } from 'hooks/useImg';
 
 import Devider from 'components/modules/devider/devider';
 import FbIcon from 'assets/svg/fb-icon.svg';
 import TwitterIcon from 'assets/svg/twitter-icon.svg';
-import LeftNavIcon from 'assets/svg/left-post-arrow.svg';
-import RightNavIcon from 'assets/svg/right-post-arrow.svg';
 
 import TableOfContent from 'components/organisms/post-page/table-of-content/table-of-content';
 import PostPageArticleHeader from 'components/organisms/post-page/article-header/post-page-article-header';
+import RecentPosts from 'components/modules/recent-posts/recent-posts';
 
 const Wrapper = styled.article`
   display: flex;
@@ -54,10 +55,12 @@ const ShareWrapper = styled.aside`
   margin: 5rem 0 9rem;
   display: flex;
   align-items: center;
-
+  font-size: ${({ theme: { base } }) => base.fontSize.ms};
   svg {
     height: 4rem;
+    min-height: 35px;
     width: 4rem;
+    min-width: 35px;
     fill: ${({ theme: { base } }) => base.accent.secondary};
   }
 
@@ -68,9 +71,10 @@ const ShareWrapper = styled.aside`
 
 const PostNavWrapper = styled.div`
   margin-bottom: 8rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(130px, 30rem) 1fr [mobile] 1fr minmax(130px, 30rem);
+  grid-column-gap: 1rem;
+  align-items: flex-start;
   width: 100%;
 
   * {
@@ -79,34 +83,82 @@ const PostNavWrapper = styled.div`
 `;
 
 const NavButton = styled(Link)`
-  width: 12rem;
+  position: relative;
+  width: 30rem;
+  min-width: 130px;
   margin: 0;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-rows: minmax(63px, 15rem) minmax(min-content, 5rem);
   color: ${({ theme: { color } }) => color.header};
-  font-size: ${({ theme: { base } }) => base.fontSize.ml};
+  font-size: ${({ theme: { base } }) => base.fontSize.s};
   background: none;
   border: none;
   cursor: pointer;
-  transition: color 0.25s;
+  transition: all 0.25s;
+
+  &:first-of-type {
+    grid-column: 1 / 2;
+    justify-self: start;
+  }
+
+  &:last-of-type {
+    grid-column: 4 / 5;
+    justify-self: end;
+  }
+
+  &:first-of-type::before,
+  &:last-of-type::before {
+    content: '';
+    position: absolute;
+    padding: 0.5rem 1rem;
+    background-color: ${({ theme: { base } }) => base.accent.secondary};
+    z-index: 9999;
+  }
+
+  &:first-of-type::before {
+    content: 'prev';
+    top: 0;
+    left: 0;
+    border-top-left-radius: 5px;
+  }
+
+  &:last-of-type::before {
+    content: 'next';
+    top: 0;
+    right: 0;
+    border-top-right-radius: 5px;
+  }
 
   p {
-    height: 100%;
     position: relative;
+    margin-top: 0.5em;
+    font-size: ${({ theme: { base } }) => base.fontSize.s};
+    font-weight: ${({ theme: { base } }) => base.fontWeight.bold};
+    height: 100%;
     display: block;
     transition: color 0.25s;
   }
 
-  svg {
-    transform: translateY(8px);
-    transition: color 0.2s;
-    margin: -0.4rem 0.3rem 0;
+  :hover {
+    transform: translateY(-5px);
+    p {
+      color: ${({ theme: { base } }) => base.accent.secondary};
+    }
   }
 
-  :hover * {
-    color: ${({ theme: { base } }) => base.accent.secondary};
-    fill: currentColor;
+  ${({ theme: { base } }) => base.mq.tablet} {
+    &:first-of-type {
+      grid-column: 1 / 3;
+    }
+
+    &:last-of-type {
+      grid-column: 3 / 5;
+    }
   }
+`;
+
+const StyledButtonImg = styled(Img)`
+  border-radius: 5px;
 `;
 
 const BlogPost = ({ data, pageContext }) => {
@@ -124,6 +176,8 @@ const BlogPost = ({ data, pageContext }) => {
       },
     },
   } = data;
+
+  const { defaultImg } = useImg();
 
   // Here we are creating table of content regarding heading tags in MDX body, scrollTo animation logic is implemented in table-of-content.js file
   const [headings, setHeadings] = useState('');
@@ -170,21 +224,23 @@ const BlogPost = ({ data, pageContext }) => {
             </a>
           </ShareWrapper>
 
-          <Disqus config={disqusConfig} />
           <PostNavWrapper>
             {pageContext.previous && (
               <NavButton to={`/blog/${pageContext.previous.slug}`}>
-                <LeftNavIcon /> <p>prev post</p>
+                <StyledButtonImg fluid={pageContext.previous.frontmatter.image ? pageContext.previous.frontmatter.image.childImageSharp.fluid : defaultImg} />
+                <p>{pageContext.previous.frontmatter.title}</p>
               </NavButton>
             )}
-            &nbsp;
+
             {pageContext.next && (
               <NavButton to={`/blog/${pageContext.next.slug}`}>
-                <p>next post</p>
-                <RightNavIcon />
+                <StyledButtonImg fluid={pageContext.next.frontmatter.image ? pageContext.next.frontmatter.image.childImageSharp.fluid : defaultImg} />
+                <p>{pageContext.next.frontmatter.title}</p>
               </NavButton>
             )}
           </PostNavWrapper>
+          <RecentPosts />
+          <Disqus config={disqusConfig} />
         </GridView>
       </Wrapper>
     </Layout>

@@ -39,10 +39,14 @@ const SearchMenu = ({ isSearchOpen, setIsSearchOpen }) => {
   return (
     <Wrapper isSearchOpen={isSearchOpen}>
       <SearchArea>
-        <SearchComponent indices={algoliaIndices} />
-        <Button btncolor={({ theme: { base } }) => base.accent.tertiary} btnType='button' handleClick={setIsSearchOpen}>
-          Close
-        </Button>
+        {isSearchOpen && (
+          <>
+            <SearchComponent indices={algoliaIndices} />
+            <Button btncolor={({ theme: { base } }) => base.accent.tertiary} btnType='button' handleClick={setIsSearchOpen}>
+              Close
+            </Button>
+          </>
+        )}
       </SearchArea>
     </Wrapper>
   );

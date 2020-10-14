@@ -38,9 +38,18 @@ const HomePageBlog = () => {
     <Wrapper>
       <PostWrapper>
         {lastPosts ? (
-          lastPosts.map(({ node: { id, slug, frontmatter: { title, description, image, tags, date } } }) => (
-            <Post postImg={image} title={title} excerpt={description} tags={tags} key={id} slug={slug} publishDate={date} />
-          ))
+          lastPosts.map(
+            (
+              {
+                node: {
+                  id,
+                  slug,
+                  frontmatter: { title, description, image, tags, date },
+                },
+              },
+              index,
+            ) => index < 2 && <Post postImg={image} title={title} excerpt={description} tags={tags} key={id} slug={slug} publishDate={date} />,
+          )
         ) : (
           <span>Sorry, there&lsquo;s nothing here yet!</span>
         )}

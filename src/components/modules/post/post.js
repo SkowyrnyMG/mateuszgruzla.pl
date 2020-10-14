@@ -19,6 +19,7 @@ const StyledLink = styled(Link)`
   border-radius: 5px;
   box-shadow: ${({ theme: { base } }) => base.shadow.darkSmall};
   overflow: hidden;
+  opacity: 0;
 
   * {
     margin-top: 0;

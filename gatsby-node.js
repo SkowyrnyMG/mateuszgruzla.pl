@@ -16,6 +16,18 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               frontmatter {
                 title
+                image {
+                  childImageSharp {
+                    fluid {
+                      base64
+                      aspectRatio
+                      src
+                      srcSet
+                      sizes
+                      originalImg
+                    }
+                  }
+                }
               }
               slug
             }

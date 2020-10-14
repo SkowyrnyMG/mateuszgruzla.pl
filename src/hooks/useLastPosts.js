@@ -5,7 +5,7 @@ export const useLastPosts = () => {
     allMdx: { posts },
   } = useStaticQuery(graphql`
     query {
-      allMdx(limit: 2, sort: { order: DESC, fields: frontmatter___date }) {
+      allMdx(limit: 8, sort: { order: DESC, fields: frontmatter___date }) {
         posts: edges {
           node {
             frontmatter {
