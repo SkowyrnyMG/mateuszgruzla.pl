@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { routes } from 'utils/routes';
@@ -157,6 +158,11 @@ const Popup = ({ isPopupActive, handleClosePopup }) => {
       </PopupBox>
     </Wrapper>
   );
+};
+
+Popup.propTypes = {
+  isPopupActive: PropTypes.bool.isRequired,
+  handleClosePopup: PropTypes.func.isRequired,
 };
 
 export default Popup;

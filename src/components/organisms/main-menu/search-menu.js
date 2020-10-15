@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import SearchComponent from 'components/organisms/algolia-search/search-component/search-component';
 
@@ -50,6 +51,11 @@ const SearchMenu = ({ isSearchOpen, setIsSearchOpen }) => {
       </SearchArea>
     </Wrapper>
   );
+};
+
+SearchMenu.propTypes = {
+  isSearchOpen: PropTypes.bool.isRequired,
+  setIsSearchOpen: PropTypes.func.isRequired,
 };
 
 export default SearchMenu;

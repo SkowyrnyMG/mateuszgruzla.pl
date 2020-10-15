@@ -1,5 +1,6 @@
-import { Link } from 'gatsby';
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { connectStateResults, Highlight, Hits, Index, PoweredBy } from 'react-instantsearch-dom';
 
@@ -88,6 +89,15 @@ const SearchResult = ({ indices, className }) => {
       <PoweredBy />
     </StyledResult>
   );
+};
+
+SearchResult.defaultProps = {
+  className: '',
+};
+
+SearchResult.propTypes = {
+  indices: PropTypes.arrayOf(PropTypes.object).isRequired,
+  className: PropTypes.string,
 };
 
 export default SearchResult;

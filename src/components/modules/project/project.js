@@ -60,7 +60,7 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-const Project = ({ title, children, technologies, side, bigScreen, tabletDevice, mobileDevice, projectLink, codeLink }) => {
+const Project = ({ children, title, technologies, side, bigScreen, tabletDevice, mobileDevice, projectLink, codeLink }) => {
   const animationWrapper = useRef(null);
 
   useEffect(() => {
@@ -110,12 +110,19 @@ const Project = ({ title, children, technologies, side, bigScreen, tabletDevice,
 Project.defaultProps = {
   title: 'Latest project!',
   side: 'right',
+  projectLink: '',
+  codeLink: '',
 };
 
 Project.propTypes = {
   title: PropTypes.string,
   technologies: PropTypes.arrayOf(PropTypes.object).isRequired,
   side: PropTypes.string,
+  projectLink: PropTypes.string,
+  codeLink: PropTypes.string,
+  bigScreen: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.arrayOf(PropTypes.shape({}))]).isRequired,
+  tabletDevice: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.arrayOf(PropTypes.shape({}))]).isRequired,
+  mobileDevice: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.arrayOf(PropTypes.shape({}))]).isRequired,
 };
 
 export default Project;

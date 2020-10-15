@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -17,7 +18,7 @@ const StyledContentHeading = styled.h3`
   margin-bottom: 3rem;
 `;
 
-const Content = ({ title, children, fullWidth }) => {
+const Content = ({ children, title, fullWidth }) => {
   const animationWrapper = useRef(null);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -44,6 +45,15 @@ const Content = ({ title, children, fullWidth }) => {
       <p>{children}</p>
     </Wrapper>
   );
+};
+
+Content.defaultProps = {
+  fullWidth: false,
+};
+
+Content.propTypes = {
+  title: PropTypes.string.isRequired,
+  fullWidth: PropTypes.bool,
 };
 
 export default Content;

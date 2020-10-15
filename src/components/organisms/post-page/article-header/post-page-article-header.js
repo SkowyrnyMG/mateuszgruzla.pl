@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import LogoIcon from 'assets/svg/logo-icon.svg';
 import Img from 'gatsby-image';
@@ -17,7 +18,8 @@ const Wrapper = styled.div`
 const ContentWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(5, minmax(min-content, 1fr));
-  grid-template-rows: repeat(3, min-content);
+  /* grid-template-rows: repeat(3, min-content); */
+  grid-auto-rows: min-content;
   grid-row-gap: 2rem;
   justify-content: start;
   align-items: center;
@@ -39,7 +41,7 @@ const StyledImg = styled(Img)`
 `;
 
 const StyledDescription = styled.p`
-  grid-column: 1 / 4;
+  grid-column: 1 / 5;
   font-size: ${({ theme: { base } }) => base.fontSize.m};
   font-weight: ${({ theme: { base } }) => base.fontWeight.regular};
 `;
@@ -48,12 +50,19 @@ const TimeToRead = styled.span`
   grid-column: 4 / -1;
   justify-self: end;
   align-self: start;
+  ${({ theme: { base } }) => base.mq.bigPhone} {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
 `;
 
 const AuthorInfo = styled.div`
   display: flex;
   align-items: center;
-  grid-column: 1 / -1;
+  grid-column: 1 / 4;
+  ${({ theme: { base } }) => base.mq.bigPhone} {
+    grid-column: 1 / -1;
+  }
 `;
 
 const StyledAuthorLogo = styled(LogoIcon)`
@@ -63,7 +72,7 @@ const StyledAuthorLogo = styled(LogoIcon)`
 `;
 
 const PublishDate = styled.span`
-  grid-column: 1 / 3;
+  grid-column: 1 / 5;
 `;
 
 const Tags = styled.div`
@@ -99,16 +108,29 @@ const PostPageArticleHeader = ({ postImg, description, timeToRead, author, publi
       <StyledImg fluid={postImg ? postImg.childImageSharp.fluid : defaultImg} />
       <ContentWrapper>
         <StyledDescription>{description}</StyledDescription>
-        <TimeToRead>Time to read {timeToRead} min.</TimeToRead>
+        <Tags>{tags ? tags.map((tag) => <Tag key={tag}>{tag}</Tag>) : 'news'}</Tags>
         <AuthorInfo>
           <StyledAuthorLogo />
           <span>By {author}</span>
         </AuthorInfo>
-        <PublishDate>Published {publishDate}</PublishDate>
-        <Tags>{tags ? tags.map((tag) => <Tag key={tag}>{tag}</Tag>) : 'news'}</Tags>
+        <TimeToRead>Time to read {timeToRead} min.</TimeToRead>
+        <PublishDate>{publishDate}</PublishDate>
       </ContentWrapper>
     </Wrapper>
   );
+};
+
+PostPageArticleHeader.defaultProps = {
+  postImg: useImg.defaultImg,
+};
+
+PostPageArticleHeader.propTypes = {
+  postImg: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.arrayOf(PropTypes.shape({}))]),
+  description: PropTypes.string.isRequired,
+  timeToRead: PropTypes.number.isRequired,
+  author: PropTypes.string.isRequired,
+  publishDate: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default PostPageArticleHeader;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import Img from 'gatsby-image';
 
@@ -119,7 +120,7 @@ const Content = styled.div`
   }
 `;
 
-const Skillbox = ({ side, title, children, techIcon }) => (
+const Skillbox = ({ children, side, title, techIcon }) => (
   <Wrapper side={side}>
     <Skill side={side}>
       <IconWrapper side={side}>
@@ -137,5 +138,15 @@ const Skillbox = ({ side, title, children, techIcon }) => (
     </Path>
   </Wrapper>
 );
+
+Skillbox.defaultProps = {
+  side: 'left',
+};
+
+Skillbox.propTypes = {
+  side: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  techIcon: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.arrayOf(PropTypes.shape({}))]).isRequired,
+};
 
 export default Skillbox;

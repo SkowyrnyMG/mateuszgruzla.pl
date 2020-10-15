@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import gsap from 'gsap';
@@ -50,6 +51,11 @@ const BigButton = ({ children, btnColor, path }) => {
       <StyledBtnText btnColor={btnColor}>{children}</StyledBtnText>
     </StyledLink>
   );
+};
+
+BigButton.propTypes = {
+  btnColor: PropTypes.func.isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default BigButton;

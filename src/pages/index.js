@@ -29,13 +29,13 @@ const Home = ({ location }) => {
       <Wrapper>
         <GridView>
           <HomePageHeader />
-          <Devider title='bio.' highlightEnd='2' highlightColor={({ theme }) => theme.base.accent.primary} />
+          <Devider title='bio.' highlightEnd='2' />
           <HomePageAbout />
           <Devider title='technology.' highlightEnd='4' highlightColor={({ theme }) => theme.base.accent.secondary} />
           <HomePageTechnology />
-          <Devider title='projects.' highlightEnd='3' highlightColor={({ theme }) => theme.base.accent.primary} />
+          <Devider title='projects.' highlightEnd='3' />
           <HomePageProjects />
-          <Devider title='recentposts.' highlightEnd='6' highlightColor={({ theme }) => theme.base.accent.secondary} />
+          <Devider title='lastposts.' highlightEnd='4' highlightColor={({ theme }) => theme.base.accent.secondary} />
           <HomePageBlog />
         </GridView>
       </Wrapper>

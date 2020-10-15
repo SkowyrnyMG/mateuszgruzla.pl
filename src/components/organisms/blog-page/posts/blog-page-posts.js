@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Post from 'components/modules/post/post';
@@ -38,5 +39,9 @@ const BlogPagePosts = ({ posts }) => (
     )}
   </Wrapper>
 );
+
+BlogPagePosts.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default BlogPagePosts;

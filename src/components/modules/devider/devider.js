@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -96,6 +97,18 @@ const Devider = ({ highlightEnd, highlightColor, title }) => {
       </StyledHeading>
     </Wrapper>
   );
+};
+
+Devider.defaultProps = {
+  title: '',
+  highlightEnd: '',
+  highlightColor: ({ theme: { base } }) => base.accent.primary,
+};
+
+Devider.propTypes = {
+  highlightEnd: PropTypes.string,
+  highlightColor: PropTypes.func,
+  title: PropTypes.string,
 };
 
 export default Devider;

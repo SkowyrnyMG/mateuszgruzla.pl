@@ -9,6 +9,7 @@ export const breakpoints = {
   bigPhoneBreak: 570,
   bigPhone: 480,
   phone: 374,
+  smallPhone: 350,
 };
 
 const constTheme = {

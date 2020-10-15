@@ -6,7 +6,8 @@ import ActivePlaceholder from 'components/modules/active-placeholder/active-plac
 
 const Wrapper = styled.span`
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   input,
   textarea {
     background: transparent;
@@ -31,6 +32,12 @@ const Wrapper = styled.span`
     ::placeholder {
       color: inherit;
     }
+  }
+  ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    margin-bottom: 1.5em !important;
+  }
+  ${({ theme: { base } }) => base.mq.smallPhone} {
+    margin-bottom: 2.5em !important;
   }
 `;
 

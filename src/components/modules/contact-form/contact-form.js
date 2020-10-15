@@ -15,6 +15,13 @@ const StyledForm = styled(Form)`
 
   label {
     color: inherit;
+    display: block;
+    ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+      margin-top: 2em;
+    }
+    ${({ theme: { base } }) => base.mq.smallPhone} {
+      margin-top: 4em;
+    }
   }
 
   input,

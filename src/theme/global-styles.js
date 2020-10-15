@@ -33,6 +33,12 @@ const GlobalStyles = createGlobalStyle`
     ${({ theme: { base } }) => base.mq.bigPhone} {
       font-size: 25%;
     }
+
+    ${({ theme: { base } }) => base.mq.smallPhone} {
+      font-size: 20%;
+    }
+
+
   }
   body {
     margin: 0;

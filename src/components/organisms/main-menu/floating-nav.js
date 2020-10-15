@@ -120,6 +120,8 @@ const FloatingNav = ({ toggleMenu, toggleSearch, isMenuOpen }) => {
 
 FloatingNav.propTypes = {
   toggleMenu: PropTypes.func.isRequired,
+  toggleSearch: PropTypes.func.isRequired,
+  isMenuOpen: PropTypes.bool.isRequired,
 };
 
 export default FloatingNav;

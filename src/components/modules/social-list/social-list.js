@@ -65,6 +65,7 @@ SocialList.defaultProps = {
   linkedinLink: 'https://www.linkedin.com/in/mateusz-gru%C5%BAla-99b0ab18b/',
   githubLink: 'https://github.com/SkowyrnyMG',
   twitterLink: 'https://twitter.com/GruzlaMateusz',
+  vertical: false,
 };
 
 SocialList.propTypes = {
@@ -72,6 +73,7 @@ SocialList.propTypes = {
   linkedinLink: PropTypes.string,
   githubLink: PropTypes.string,
   twitterLink: PropTypes.string,
+  vertical: PropTypes.bool,
 };
 
 export default SocialList;

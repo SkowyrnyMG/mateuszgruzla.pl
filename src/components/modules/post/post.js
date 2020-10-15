@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { Link } from 'gatsby';
@@ -96,6 +97,20 @@ const Post = ({ postImg, title, excerpt, tags, slug, publishDate }) => {
       <PublishDate>{publishDate}</PublishDate>
     </StyledLink>
   );
+};
+
+Post.defaultProps = {
+  postImg: useImg.defaultImg,
+  tags: ['news'],
+};
+
+Post.propTypes = {
+  postImg: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.arrayOf(PropTypes.shape({}))]),
+  title: PropTypes.string.isRequired,
+  excerpt: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string),
+  slug: PropTypes.string.isRequired,
+  publishDate: PropTypes.string.isRequired,
 };
 
 export default Post;

@@ -29,6 +29,13 @@ const StyledForm = styled(Form)`
     margin-bottom: 2rem;
     width: 100%;
   }
+
+  ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    margin-top: 3em;
+  }
+  ${({ theme: { base } }) => base.mq.smallPhone} {
+    margin-top: 5em;
+  }
 `;
 
 const SubscribtionInfo = styled.span`

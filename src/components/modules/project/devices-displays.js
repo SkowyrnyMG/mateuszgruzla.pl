@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 
@@ -116,6 +117,17 @@ const DevicesDisplays = ({ side, bigScreen, tabletDevice, mobileDevice }) => {
       </MobileDevice>
     </Wrapper>
   );
+};
+
+DevicesDisplays.defaultProps = {
+  side: 'right',
+};
+
+DevicesDisplays.propTypes = {
+  side: PropTypes.string,
+  bigScreen: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.arrayOf(PropTypes.shape({}))]).isRequired,
+  tabletDevice: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.arrayOf(PropTypes.shape({}))]).isRequired,
+  mobileDevice: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.arrayOf(PropTypes.shape({}))]).isRequired,
 };
 
 export default DevicesDisplays;

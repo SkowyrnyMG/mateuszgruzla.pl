@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 // placeholder requires label parent with relative positioning to work correctly
 
@@ -13,5 +14,9 @@ const ActivePlaceholder = styled.div`
   background-color: ${({ parentBackground }) => parentBackground};
   transition: opacity 0.25s, background-color 0.3s, 0.25s transform;
 `;
+
+ActivePlaceholder.propTypes = {
+  parentBackground: PropTypes.func.isRequired,
+};
 
 export default ActivePlaceholder;

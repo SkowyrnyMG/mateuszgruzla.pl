@@ -74,7 +74,7 @@ const PostNavWrapper = styled.div`
   display: grid;
   grid-template-columns: minmax(130px, 30rem) 1fr [mobile] 1fr minmax(130px, 30rem);
   grid-column-gap: 1rem;
-  align-items: flex-start;
+  align-items: start;
   width: 100%;
 
   * {
@@ -89,6 +89,7 @@ const NavButton = styled(Link)`
   margin: 0;
   display: grid;
   grid-template-rows: minmax(63px, 15rem) minmax(min-content, 5rem);
+
   color: ${({ theme: { color } }) => color.header};
   font-size: ${({ theme: { base } }) => base.fontSize.s};
   background: none;
@@ -96,34 +97,32 @@ const NavButton = styled(Link)`
   cursor: pointer;
   transition: all 0.25s;
 
-  &:first-of-type {
+  &:nth-of-type(1) {
     grid-column: 1 / 2;
     justify-self: start;
   }
 
-  &:last-of-type {
+  &:nth-of-type(2) {
     grid-column: 4 / 5;
     justify-self: end;
   }
 
-  &:first-of-type::before,
-  &:last-of-type::before {
+  span {
     content: '';
     position: absolute;
+    width: fit-content;
     padding: 0.5rem 1rem;
     background-color: ${({ theme: { base } }) => base.accent.secondary};
     z-index: 9999;
   }
 
-  &:first-of-type::before {
-    content: 'prev';
+  &:first-of-type span {
     top: 0;
     left: 0;
     border-top-left-radius: 5px;
   }
 
-  &:last-of-type::before {
-    content: 'next';
+  &:last-of-type span {
     top: 0;
     right: 0;
     border-top-right-radius: 5px;
@@ -147,11 +146,10 @@ const NavButton = styled(Link)`
   }
 
   ${({ theme: { base } }) => base.mq.tablet} {
-    &:first-of-type {
+    &:nth-of-type(1) {
       grid-column: 1 / 3;
     }
-
-    &:last-of-type {
+    &:nth-of-type(2) {
       grid-column: 3 / 5;
     }
   }
@@ -227,6 +225,7 @@ const BlogPost = ({ data, pageContext }) => {
           <PostNavWrapper>
             {pageContext.previous && (
               <NavButton to={`/blog/${pageContext.previous.slug}`}>
+                <span>prev</span>
                 <StyledButtonImg fluid={pageContext.previous.frontmatter.image ? pageContext.previous.frontmatter.image.childImageSharp.fluid : defaultImg} />
                 <p>{pageContext.previous.frontmatter.title}</p>
               </NavButton>
@@ -234,6 +233,7 @@ const BlogPost = ({ data, pageContext }) => {
 
             {pageContext.next && (
               <NavButton to={`/blog/${pageContext.next.slug}`}>
+                <span>next</span>
                 <StyledButtonImg fluid={pageContext.next.frontmatter.image ? pageContext.next.frontmatter.image.childImageSharp.fluid : defaultImg} />
                 <p>{pageContext.next.frontmatter.title}</p>
               </NavButton>

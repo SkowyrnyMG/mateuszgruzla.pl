@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import gsap from 'gsap';
@@ -60,6 +61,11 @@ const Contribution = ({ companyLogo, link }) => {
       </p>
     </Wrapper>
   );
+};
+
+Contribution.propTypes = {
+  companyLogo: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.arrayOf(PropTypes.shape({}))]).isRequired,
+  link: PropTypes.string.isRequired,
 };
 
 export default Contribution;

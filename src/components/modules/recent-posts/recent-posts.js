@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   grid-auto-rows: minmax(min-content, 1fr);
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1em;
-  align-items: center;
+  align-items: start;
   justify-items: center;
   border-top: 1px solid ${({ theme: { color } }) => color.contentFaded};
 

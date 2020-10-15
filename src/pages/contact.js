@@ -23,7 +23,7 @@ const Contact = () => (
     <Wrapper>
       <GridView>
         <ContactPageHeader />
-        <Devider highlightEnd='7' highlightColor={({ theme: { base } }) => base.accent.primary} title='messageme.' />
+        <Devider highlightEnd='4' title='textme.' />
         <ContactSection />
       </GridView>
     </Wrapper>

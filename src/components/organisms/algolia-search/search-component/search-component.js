@@ -1,5 +1,6 @@
-import algoliasearch from 'algoliasearch/lite';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch } from 'react-instantsearch-dom';
 import StyledSearchResult from 'components/organisms/algolia-search/search-results/search-results';
 import StyledSearchBox from 'components/organisms/algolia-search/search-box/search-box';
@@ -16,3 +17,7 @@ export default function Search({ indices }) {
     </InstantSearch>
   );
 }
+
+Search.propTypes = {
+  indices: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
