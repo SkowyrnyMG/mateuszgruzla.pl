@@ -28,7 +28,7 @@ const StyledImg = styled(Img)`
   }
 `;
 
-const Contribution = ({ companyLogo, link }) => {
+const Contribution = ({ children, companyLogo, link }) => {
   const animationWrapper = useRef(null);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -53,12 +53,7 @@ const Contribution = ({ companyLogo, link }) => {
   return (
     <Wrapper href={link} target='_blank' rel='noreferrer' ref={animationWrapper}>
       <StyledImg fluid={companyLogo} />
-      <p>
-        I’ve contributed to <b>livesession SDK plugin</b>. I’ve figured out how to install and run their package on Angular apps. It is nothing big tho, but everytime when I think
-        about this it makes me really proud of myself. <br />
-        If you don’t know what <b>livesession</b> is, then you really have to visit their <b>webpage</b>. Their software will help you to keep eye on your client needs and
-        interests.
-      </p>
+      <p>{children}</p>
     </Wrapper>
   );
 };

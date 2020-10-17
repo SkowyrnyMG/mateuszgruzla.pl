@@ -41,7 +41,7 @@ const Wrapper = styled.span`
   }
 `;
 
-const Input = ({ label, name, tagType, error, touched, parentBackground, ...rest }) => (
+const Input = ({ name, tagType, error, touched, parentBackground, ...rest }) => (
   <Wrapper error={error} touched={touched} className='form-control'>
     <label htmlFor={name}>
       <Field as={tagType} id={name} name={name} {...rest} placeholder={name} />

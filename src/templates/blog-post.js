@@ -159,6 +159,10 @@ const StyledButtonImg = styled(Img)`
   border-radius: 5px;
 `;
 
+const StyledDisqus = styled(Disqus)`
+  margin: 4em 0;
+`;
+
 const BlogPost = ({ data, pageContext }) => {
   const {
     mdx: {
@@ -240,7 +244,7 @@ const BlogPost = ({ data, pageContext }) => {
             )}
           </PostNavWrapper>
           <RecentPosts />
-          <Disqus config={disqusConfig} />
+          <StyledDisqus config={disqusConfig} />
         </GridView>
       </Wrapper>
     </Layout>

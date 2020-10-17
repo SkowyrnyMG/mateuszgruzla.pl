@@ -14,17 +14,9 @@ export const breakpoints = {
 
 const constTheme = {
   accent: {
-    // primary: '#FFD829', // 1
-    primary: '#FDCA40', // 2
-    // primary: '#2176FF', //3
-
-    // secondary: '#9B37FF', // 1
-    secondary: '#2176FF', // 2
-    // secondary: '#FDCA40', // 3
-
+    primary: '#FDCA40',
+    secondary: '#2176FF',
     tertiary: '#FF593D',
-    // tertiary: '#FF593D',
-
     quaternary: '#FF00E5',
     success: '#28a745',
     error: '#dc3545',

@@ -86,6 +86,10 @@ Button.defaultProps = {
   path: '/',
   btnType: 'button',
   isSubmiting: false,
+  btnAction: 'submit',
+  handleClick: () => {
+    return true;
+  },
 };
 
 Button.propTypes = {
@@ -94,6 +98,8 @@ Button.propTypes = {
   path: PropTypes.string,
   btnType: PropTypes.string,
   isSubmiting: PropTypes.bool,
+  btnAction: PropTypes.string,
+  handleClick: PropTypes.func,
 };
 
 export default Button;

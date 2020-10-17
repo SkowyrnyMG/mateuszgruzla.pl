@@ -56,6 +56,7 @@ const AnimationWrapper = styled.span`
 
 const Devider = ({ highlightEnd, highlightColor, title }) => {
   const titleArr = title.split('');
+
   const titleOutput = titleArr.reduce((acc, current, index) => {
     const key = current + index;
     acc.push(
@@ -88,6 +89,7 @@ const Devider = ({ highlightEnd, highlightColor, title }) => {
       ease: 'power4.out',
     });
   });
+
   return (
     <Wrapper>
       <StyledHeading highlightColor={highlightColor}>

@@ -73,12 +73,12 @@ const Post = ({ postImg, title, excerpt, tags, slug, publishDate }) => {
     gsap.registerPlugin(ScrollTrigger);
     const animationContainer = animationWrapper.current;
 
-    gsap.set(animationContainer, { autoAlpha: 0, transform: 'translateY(100px)' });
+    gsap.set(animationContainer, { autoAlpha: 0, transform: 'translateY(30px)' });
 
     gsap.to(animationContainer, {
       scrollTrigger: {
         trigger: animationContainer,
-        start: '20% 80%',
+        start: 'top 90%',
         end: '80% 20%',
         toggleActions: 'play reverse play reverse',
       },

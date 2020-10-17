@@ -48,6 +48,23 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Montserrat`,
+            variants: [`300`, `400`, `700`],
+            subsets: [`latin`],
+          },
+          {
+            family: `Changa One`,
+            variants: [`300`, `400`, `700`],
+            subsets: [`latin`],
+          },
+        ],
+      },
+    },
+    {
       resolve: 'gatsby-plugin-eslint',
       options: {
         test: /\.js$|\.jsx$/,

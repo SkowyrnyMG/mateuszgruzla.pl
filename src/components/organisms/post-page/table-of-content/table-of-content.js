@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
@@ -117,6 +118,10 @@ const TableOfContent = ({ headings }) => {
       })}
     </Wrapper>
   );
+};
+
+TableOfContent.propTypes = {
+  headings: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
 };
 
 export default TableOfContent;

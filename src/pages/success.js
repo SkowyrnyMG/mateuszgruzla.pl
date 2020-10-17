@@ -5,8 +5,6 @@ import Layout from 'utils/layout';
 import GridView from 'utils/grid-view';
 import SEO from 'utils/seo';
 import Devider from 'components/modules/devider/devider';
-import Button from 'components/atoms/button';
-import { routes } from 'utils/routes';
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,12 +25,12 @@ const InfoWrapper = styled.div`
 `;
 
 const Success = () => {
-  const [timer, setTimer] = useState(8);
+  const [timer, setTimer] = useState(6);
 
   useEffect(() => {
     setTimeout(() => {
       window.location.href = 'http://mateuszgruzla.pl';
-    }, 9000);
+    }, 7000);
     function countDown() {
       if (timer > 0) {
         setTimer(timer - 1);
@@ -53,9 +51,6 @@ const Success = () => {
           <InfoWrapper>
             <h4>From has been submitted!</h4>
             <p>You will be redirected to home page in {timer}</p>
-            <Button btnType='inner' path={routes.home}>
-              Go to home page
-            </Button>
           </InfoWrapper>
         </GridView>
       </Wrapper>
