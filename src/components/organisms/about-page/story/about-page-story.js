@@ -83,13 +83,13 @@ const AboutPageStory = () => {
   return (
     <Wrapper ref={animationWrapper}>
       <Content title='Love to the digital world'>
-        Since I was young kid I was all about PC, playing games, fast typing etc.
+        Since I was a young kid I was all about PC, playing games, fast typing, etc.
         <br />
         <br />
-        It all started from my old good friend <b>Comodore C64</b>, which my dad bought for me and my older brother as christmas gift one year. Back then of course I did not even
-        think about learning coding, graphics etc. I was just enjoing myself and allways I wanted to master every game that i took in my hands. Yes I know that it sounds like story
-        of 90% nerdy guys born in ninety’s, but for me it was <b>beginning</b> of beautiful <b>passion</b> which was slowly evolving in me to finnaly replace most time spent on
-        playing video games to learn and practise <b>coding</b>.
+        It all started with my old good friend <b>Commodore C64</b>, which my dad bought for me and my older brother as a Christmas gift one year. Back then of course I did not
+        even think about learning coding, graphics, etc. I was just enjoying myself and always I wanted to master every game that I took in my hands. Yes, I know that it sounds
+        like a story of 90% nerdy guys born in the nineties, but for me, it was<b>the beginning</b> of a beautiful <b>passion</b> that was slowly evolving in me to finally push me
+        to learn how to <b>code</b> and think like a programmer.
       </Content>
 
       <TimelinePhoto>
@@ -97,7 +97,7 @@ const AboutPageStory = () => {
           <Img fluid={aboutComodore} />
         </ImageBox>
         <PhotoInfo>
-          Me and my older bro playing <ColorText colorText={({ theme: { base } }) => base.accent.primary}>PACMAN</ColorText> on C64 Yes. This boy in swaggy{' '}
+          Me and my older bro playing <ColorText colorText={({ theme: { base } }) => base.accent.primary}>PACMAN</ColorText> on C64 Yes. This boy in a swaggy{' '}
           <ColorText colorText={({ theme: { base } }) => base.accent.quaternary}>pink</ColorText> shirt is me{' '}
           <span role='img' aria-label='LOL'>
             😅
@@ -106,17 +106,18 @@ const AboutPageStory = () => {
       </TimelinePhoto>
 
       <Content title='First lines of code' fullWidth>
-        On <b>June 2019th</b> I wrote my first lines of <b>CSS</b>, but that was not my coding “first touch”... Back in highschoool I was on IT profile and besides of others
-        subjects I had also <b>programming</b> classes where i could learn some basics of alghoritms, planning my development process and basics of few coding languages.
+        In <b>June</b> 2019th I wrote my first lines of <b>CSS</b>, but that was not my first coding experience... Back in high school, I was on IT profile and besides other
+        subjects I had also
+        <b>programming</b> classes where I could learn some basics of algorithms, planning my development process, and basics of few coding languages.
         <br />
         <br />
-        They were teaching us Turbo-Pascal, C++ and <b>Java</b>. Oh, yes. Good ol’ Java{' '}
+        They were teaching us Turbo-Pascal, C++, and <b>Java</b>. Oh, yes. Good old&apos; Java{' '}
         <span role='img' aria-label='Arrow Heart'>
           💘
         </span>
-        . I think it was my first programming language in which i felt really comfortable. I took many extra hours classes to learn more of it, but unfortunately for me I’ve been
-        graduated in the same year. After I finished the school I had to start work and because of that I’ve spend more or less 5 years without code to finnaly come back to it in
-        2019th.
+        . I think it was my first programming language in which I felt comfortable. I took many extra hours of classes to learn more and more of it, but unfortunately for me,
+        I&apos;ve been graduated in the same year. After I finished school I had to start work to earn money for a living. I&apos;ve spent more or less 5 years without code to
+        finally come back to it in 2019th.
       </Content>
 
       <TimelinePhoto>
@@ -129,12 +130,15 @@ const AboutPageStory = () => {
       </TimelinePhoto>
 
       <Content title='Road to Frontend'>
-        In 2019 after I saw prototype of my brother website which he made for himself on one of popular page builders I have sworn to him that one day I will create his personal
-        wepage that will make him be proud of it. As totally newbie as “webmaster” firstly i gave Wordpress a try, but I’ve noticed really quickly that I have to follow theme
-        options and I did not really have any space to be creative, so I’ve decided to learn <strong>CSS and HTML</strong>. Of course after that i hopped reallly quickly into
-        <strong> JavaScript</strong> with second edition of “Przeprogramowani” course. In meantime I’ve visited few Frontend meetups on which I’ve learnt more about development,
-        Javascript and it’s frameworks to finnaly choose <strong>React</strong> as my favorite. .. and here we are! Right now I am practising React, <strong>Gatsby</strong> and
-        JavaScript itself on my presonal projects and sometimes on commercial orders.
+        In 2019 after I saw the prototype of my brother&apos;s website which he made for himself on one of the popular page builders I have sworn to him that one day I will create
+        the webpage that will make him proud of it. As a total newbie as &apos;&apos;webmaster&apos;&apos; firstly I gave WordPress a try, but I’ve noticed quickly that I have to
+        follow theme options and I did not have any space to be creative, so I’ve decided to learn <strong>CSS and HTML</strong> - I&apos;ve bought some courses on Udemy. At this
+        point, I&apos;ve already known what I would like to become in the future. Of course, after that, I hopped quickly into <strong>JavaScript</strong> with the second edition
+        of the &apos;&apos;Przeprogramowani.pl&apos;&apos; course. That was a great time. I was learning something new each day. Thanks to the Przeprogramowani.pl mentors I was
+        always writing the best quality code and also I&apos;ve gained some coding confidence. Right now I know that I can code ANYTHING that I want if I invest my time and heart
+        into it. In meantime, I’ve visited a few Frontend meetups on which I’ve learned more about development, Javascript, and its frameworks to finally choose to
+        <strong> React</strong> as my favorite. .. and here we are! Right now I am practicing React <strong>Gatsby</strong>, and JavaScript itself on my projects and sometimes on
+        commercial orders.
       </Content>
     </Wrapper>
   );

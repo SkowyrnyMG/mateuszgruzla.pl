@@ -45,7 +45,7 @@ const ContactSection = () => {
   return (
     <Wrapper>
       <ContactInfo>
-        <StyledParagraph>If you want to chat with me you can use contact form or just simply write to me on my social profiles.</StyledParagraph>
+        <StyledParagraph>If you want to chat with me you can use the contact form or just simply write to me on my social profiles.</StyledParagraph>
         <SocialList vertical />
       </ContactInfo>
       <FormWrapper>

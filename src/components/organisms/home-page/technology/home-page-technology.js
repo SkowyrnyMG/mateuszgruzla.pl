@@ -95,20 +95,24 @@ const HomePageTechnology = () => {
   return (
     <Wrapper ref={wrapper}>
       <Skillbox title='Javascript' techIcon={javascriptIcon}>
-        I feel comfortable with ES6+. I can use arrow functions, destructuring, template strings, const + let, array.flat(), modules, etc.
+        I feel comfortable in writting JavaScript code in ES6+ standards. Arrow functions, destructuring, async/await, let/const, promises, array methods, module imports and many
+        more will find their place in my lines of code! I can also use external NPM packages and implement them to the project basing on documentation.
       </Skillbox>
       <Skillbox side='right' title='React' techIcon={reactIcon}>
-        CRA, Hooks, Function/Class components, Prop-types, props, handle events and forms, styled-components, module-styles, actions, reducers, global state etc. are no scarry for
-        me
+        CRA, Hooks, Function/Class components, Prop-types, props, handle events, styled-components, css-modules, actions, reducers, global state, context, WEB API, Form validation
+        with Formik + Yup and many more are in my toolbox. I can easly create re-usable components with seperated logic. I can handle state of the app through useState, context and
+        for bussines logic data with Redux.
       </Skillbox>
       <Skillbox title='Gatsby' techIcon={gatsbyIcon}>
-        Generate pages from md files or CMS, implementing vary Gatsby plugins, creating templates, using “magic images”, creating graplql queries, etc.
+        I can generate pages from MD files or CMS, implementing various Gatsby plugins, creating templates, using “magic images” for best images optimization, creating graplQL
+        queries, etc.
       </Skillbox>
       <Skillbox side='right' title='Jest' techIcon={jestIcon}>
-        I can do simple unit and integration tests
+        I can do simple unit and integration tests. For React I use Jest together with the React testing library.
       </Skillbox>
       <Skillbox title='GSAP3' techIcon={gsapIcon}>
-        This is my favorite animation library. I can use timelines, scrolltrigers etc. to put some live into my webapps
+        It is my favorite animation library. I can use timelines, ScrollTrigers, ScrollTo, etc. to put some life into my web apps. I can implement GSAP into my React and Gatsby
+        apps using useRef and useEffect to grab DOM elements and start the animation.
       </Skillbox>
       <StyledHeading>other tools</StyledHeading>
       <OtherTechCarousel />

@@ -145,10 +145,11 @@ const Popup = ({ isPopupActive, handleClosePopup }) => {
         <Content>
           <StyledHeading>OPEN TO WORK</StyledHeading>
           <StyledParagraph>
-            If your Company is looking for creative, open minded, passionate Frontend developer, which is just about to start his coding career then you are in right place! <br />
+            If your company is looking for a creative, open-minded, passionate Frontend developer, which is just about to start his coding career then you are in right place!
+            <br />
             <br />
             <b>I am ready to start my path</b> as Javascript/React/Gatsby dev. <br />
-            <br />I would like to be part of a team which would help me to develop my skills even further to become better porgrammer and person.
+            <br />I would like to be part of a team that would help me to develop my skills even further to become a better developer and person.
           </StyledParagraph>
           <Button path={routes.contact} btnType='inner' btncolor={({ theme: { base } }) => base.accent.secondary}>
             CONTACT WITH ME!

@@ -21,8 +21,10 @@ const PortfolioPageProjects = () => {
         mobileDevice={knsMobile}
         projectLink='https://koncepcjanasukces.info/'
       >
-        This project was my <b>first</b> commercial webpage created without any page builder. It was coded for local influencer, online buissines and marketing specialist ending
-        with passionate weight sports coach. Author can add some posts to the page using NetlifyCMS.
+        This project was my <b>first</b> commercial webpage created without any page builder (WordPress etc.). It was coded for the local influencer, online business, and marketing
+        specialist. On his website, you can find many opportunities to invest your money or even get into better shape with his lifting advice. The author can add new posts through
+        the Netlify CMS - I&apos;ve created a user-friendly post template which will allow rendering almost any piece of content starting with images, through quotes, ending on
+        youtube videos.
       </Project>
 
       <Project
@@ -34,10 +36,10 @@ const PortfolioPageProjects = () => {
         mobileDevice={invoicingAppMobile}
         codeLink='https://github.com/skowyrnyMG/'
       >
-        This app will help you to issue invoices on your clients, keep truck on payment process and also to hold your client database in one place. Adding new client will be fully
-        automated to avoid any mistakes or spelling issues on invoices. As a no backend person (yet) i will use Firebase as my database. For serverside needs I will do everything
-        in Netlify Cloud Functions. Obviously whole front of the app will be based on React enviroment. If you are interested to see my progress regarding this project please do
-        subscribe to my newsletter!
+        This app will help you to issue invoices on your clients, keep eye on the payment process, and also hold your client database in one place. Adding a new client will be
+        fully automated to avoid any mistakes or spelling issues on invoices. As a no backend person (yet) I will use Firebase as my database. For serverside needs, I will do
+        everything in Netlify Cloud Functions. The whole front of the app will be based on the React environment. If you are interested to see my progress regarding this project
+        please do subscribe to my newsletter!
       </Project>
     </Wrapper>
   );
