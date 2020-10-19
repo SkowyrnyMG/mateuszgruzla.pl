@@ -1,14 +1,17 @@
 import React, { useContext } from 'react';
+import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Cookies from 'js-cookie';
 
+import { routes } from 'utils/routes';
 import { ThemeContext } from 'context/theme-context';
 
 import LightThemeIcon from 'assets/svg/light-theme-icon.svg';
 import DarkThemeIcon from 'assets/svg/dark-theme-icon.svg';
 import SearchIcon from 'assets/svg/search-icon.svg';
 import MenuIcon from 'assets/svg/menu-icon.svg';
+import HomeIcon from 'assets/svg/home-icon.svg';
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,10 +20,16 @@ const Wrapper = styled.div`
 `;
 
 const StyledButton = styled.button`
-  margin: 0;
-  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: ${({ theme: { base } }) => base.fontSize.m};
   width: 7rem;
+  min-width: 56px;
   height: 7rem;
+  min-height: 56px;
   border: none;
   outline: none;
   background: ${({ theme: { color } }) => color.menu};
@@ -42,7 +51,7 @@ const StyledButton = styled.button`
     transition: 0.25s fill !important;
   }
 
-  &:first-of-type {
+  &:first-child {
     border-bottom-left-radius: 3rem;
   }
 
@@ -60,13 +69,19 @@ const StyledButton = styled.button`
   }
 
   ${({ theme: { base } }) => base.mq.tablet} {
-    width: 3.9em;
-    height: 3.9em;
-
+    font-size: ${({ theme: { base } }) => base.fontSize.s};
     svg {
       height: 1.7em;
       width: 1.7em;
     }
+  }
+`;
+
+const HomePageButton = styled(StyledButton)`
+  position: relative;
+  pointer-events: ${({ location }) => (location.pathname === '/' ? 'none' : 'auto')};
+  * {
+    opacity: ${({ location }) => (location.pathname === '/' ? 0.5 : 1)};
   }
 `;
 
@@ -92,16 +107,17 @@ const ThemeIconsWrapper = styled.div`
   }
 `;
 
-const FloatingNav = ({ toggleMenu, toggleSearch, isMenuOpen }) => {
+const FloatingNav = ({ toggleMenu, toggleSearch, isMenuOpen, location }) => {
   const { isDarkTheme, setIsDarkTheme } = useContext(ThemeContext);
-
   const handleToggleTheme = () => {
     setIsDarkTheme((state) => !state);
     Cookies.set('theme', !isDarkTheme === true ? 'dark' : 'light');
   };
-
   return (
     <Wrapper>
+      <HomePageButton as={Link} to={routes.home} location={location}>
+        <HomeIcon />
+      </HomePageButton>
       <StyledButton onClick={handleToggleTheme}>
         <ThemeIconsWrapper isDarkTheme={isDarkTheme}>
           <LightThemeIcon />

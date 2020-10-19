@@ -44,8 +44,8 @@ const FinalInfo = styled.p`
   padding: 2rem 5rem;
 `;
 
-const PrivacyPolicy = () => (
-  <Layout>
+const PrivacyPolicy = ({ location }) => (
+  <Layout location={location}>
     <SEO title='Polityka prywatności' image='logo' />
     <GridView>
       <StyledSection>

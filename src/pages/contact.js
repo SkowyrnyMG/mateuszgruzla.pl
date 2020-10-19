@@ -17,8 +17,8 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const Contact = () => (
-  <Layout>
+const Contact = ({ location }) => (
+  <Layout location={location}>
     <SEO title='Contact' />
     <Wrapper>
       <GridView>

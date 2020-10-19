@@ -31,7 +31,7 @@ const Home = ({ location }) => {
           <HomePageHeader />
           <Devider title='bio.' highlightEnd='2' />
           <HomePageAbout />
-          <Devider title='technology.' highlightEnd='4' highlightColor={({ theme }) => theme.base.accent.secondary} />
+          <Devider title='stack.' highlightEnd='3' highlightColor={({ theme }) => theme.base.accent.secondary} />
           <HomePageTechnology />
           <Devider title='projects.' highlightEnd='3' />
           <HomePageProjects />

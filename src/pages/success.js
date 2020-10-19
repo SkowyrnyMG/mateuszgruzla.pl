@@ -24,7 +24,7 @@ const InfoWrapper = styled.div`
   }
 `;
 
-const Success = () => {
+const Success = ({ location }) => {
   const [timer, setTimer] = useState(6);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Success = () => {
     };
   });
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title='Contact form submission success' />
       <Wrapper>
         <GridView>

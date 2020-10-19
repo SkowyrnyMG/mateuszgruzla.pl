@@ -19,13 +19,13 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const Blog = ({ data, pageContext }) => {
+const Blog = ({ data, pageContext, location }) => {
   const {
     allMdx: { posts },
   } = data;
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title='Blog' />
       <Wrapper>
         <GridView>

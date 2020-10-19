@@ -18,8 +18,8 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const Portfolio = () => (
-  <Layout>
+const Portfolio = ({ location }) => (
+  <Layout location={location}>
     <SEO title='Portfolio' />
     <Wrapper>
       <GridView>

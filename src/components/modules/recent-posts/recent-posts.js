@@ -72,6 +72,7 @@ const NavButton = styled(Link)`
 
 const StyledButtonImg = styled(Img)`
   border-radius: 5px;
+  margin-bottom: 0 !important;
 
   * {
     margin-top: 0;

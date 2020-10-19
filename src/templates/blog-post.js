@@ -163,7 +163,7 @@ const StyledDisqus = styled(Disqus)`
   margin: 4em 0;
 `;
 
-const BlogPost = ({ data, pageContext }) => {
+const BlogPost = ({ data, pageContext, location }) => {
   const {
     mdx: {
       frontmatter: { title, date, description, tags, image },
@@ -202,7 +202,7 @@ const BlogPost = ({ data, pageContext }) => {
   };
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title={title} />
       <Wrapper>
         <GridView>

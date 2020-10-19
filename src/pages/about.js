@@ -19,8 +19,8 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const About = () => (
-  <Layout>
+const About = ({ location }) => (
+  <Layout location={location}>
     <SEO title='About' />
     <Wrapper>
       <GridView>

@@ -94,11 +94,10 @@ const OutterField = styled.div.attrs(() => ({
   pointer-events: auto;
 `;
 
-const MainMenu = () => {
+const MainMenu = ({ location }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { privacyPolicy } = routes;
-
   const wrapper = useRef(null);
 
   const handleOutMenuClick = (e) => {
@@ -114,7 +113,7 @@ const MainMenu = () => {
   return (
     <Wrapper ref={wrapper}>
       <OutterField isMenuOpen={isMenuOpen} />
-      <FloatingNav toggleMenu={() => setIsMenuOpen((state) => !state)} toggleSearch={() => setIsSearchOpen((state) => !state)} isMenuOpen={isMenuOpen} />
+      <FloatingNav location={location} toggleMenu={() => setIsMenuOpen((state) => !state)} toggleSearch={() => setIsSearchOpen((state) => !state)} isMenuOpen={isMenuOpen} />
       <SearchMenu isSearchOpen={isSearchOpen} setIsSearchOpen={() => setIsSearchOpen(false)} />
       <StyledNav isMenuOpen={isMenuOpen}>
         <NavContentWrapper>

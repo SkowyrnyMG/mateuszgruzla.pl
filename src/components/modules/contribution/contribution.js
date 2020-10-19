@@ -9,7 +9,7 @@ const Wrapper = styled.a`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 7.5rem;
+  margin-bottom: 4em;
   padding: 2rem 3rem;
   font-size: ${({ theme: { base } }) => base.fontSize.m};
   background: ${({ theme: { color } }) => color.menu};

@@ -7,34 +7,19 @@ import RootStylesWrapper from 'utils/root-styles-wrapper';
 import MainMenu from 'components/organisms/main-menu/main-menu';
 import Footer from 'components/organisms/footer/footer';
 
-const TemporaryMain = styled.main`
+const Main = styled.main`
   margin-top: 12rem;
-  min-height: 100vh;
-  width: 100%;
 `;
 
-const Layout = ({ children }) => {
-  // const rootPath = `${__PATH_PREFIX__}/`;
-
+const Layout = ({ children, location }) => {
   return (
     <ThemeContextProvider>
       <RootStylesWrapper>
-        <MainMenu />
-
-        <TemporaryMain>{children}</TemporaryMain>
-
+        <MainMenu location={location} />
+        <Main>{children}</Main>
         <Footer />
       </RootStylesWrapper>
     </ThemeContextProvider>
-    // <div
-    //   style={{
-    //     marginLeft: `auto`,
-    //     marginRight: `auto`,
-    //     maxWidth: rhythm(24),
-    //     padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-    //   }}
-    // >
-    // </div>
   );
 };
 
