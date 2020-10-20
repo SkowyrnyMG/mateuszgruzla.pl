@@ -10,7 +10,7 @@ export const ThemeContextProvider = ({ children }) => {
     userTheme = savedTheme === 'light' ? false : true;
   } else {
     userTheme = true;
-    Cookies.set('theme', 'dark');
+    Cookies.set('theme', 'dark', { expires: 365 });
   }
   const [isDarkTheme, setIsDarkTheme] = useState(userTheme);
 

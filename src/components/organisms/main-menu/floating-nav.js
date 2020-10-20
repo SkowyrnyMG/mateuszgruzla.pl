@@ -111,7 +111,7 @@ const FloatingNav = ({ toggleMenu, toggleSearch, isMenuOpen, location }) => {
   const { isDarkTheme, setIsDarkTheme } = useContext(ThemeContext);
   const handleToggleTheme = () => {
     setIsDarkTheme((state) => !state);
-    Cookies.set('theme', !isDarkTheme === true ? 'dark' : 'light');
+    Cookies.set('theme', !isDarkTheme === true ? 'dark' : 'light', { expires: 365 });
   };
   return (
     <Wrapper>
