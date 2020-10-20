@@ -5,7 +5,7 @@ authors:
 tags:
   - News
 title: Another coding blog?!
-image: profilowe-male.jpg
+image: question-mark-2492009_1280.jpg
 description: As you probably have noticed, this is another front-end blog. In
   this post, I want to quickly explain why I even decided to create it.
 ---
