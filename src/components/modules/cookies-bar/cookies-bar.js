@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Cookies from 'js-cookie';
+import gsap from 'gsap';
 
 import { routes } from 'utils/routes';
 
@@ -10,20 +11,19 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
   bottom: 0;
   left: 0;
   width: 100%;
+  padding: 5px;
   font-size: ${({ theme: { base } }) => base.fontSize.s} !important;
   background: ${({ theme: { color } }) => color.menu};
-  z-index: 99999;
-  transform: ${({ cookieAccept }) => (cookieAccept ? 'translateY(100%)' : 'translateY(0)')};
-  transition: transform 1s;
-
+  transform: translateY(100%);
   p,
   a {
     font-size: inherit;
   }
+
+  z-index: 99999;
 `;
 
 const StyledLink = styled(Link)`
@@ -47,24 +47,37 @@ const CloseButton = styled.button`
 `;
 
 const CookiesBar = () => {
-  const [cookieAccept, setCookieAccept] = useState(false);
-  const handleConfirm = () => {
-    setCookieAccept(true);
-    Cookies.set('cookie-agree', true, { expires: 365 });
-  };
+  const animationWrapper = useRef(null);
+  const [cookieAccept, setCookieAccept] = useState('true');
 
   useEffect(() => {
+    const animationContainer = animationWrapper.current;
+    const confirmButton = animationContainer.querySelector('button');
+
     const userCookie = Cookies.get('cookie-agree');
     setCookieAccept(userCookie);
-  }, []);
+
+    const handleConfirm = () => {
+      Cookies.set('cookie-agree', 'true', { expires: 365 });
+      setCookieAccept('true');
+    };
+
+    confirmButton.addEventListener('click', handleConfirm);
+
+    const finalPosition = cookieAccept === 'true' ? '100%' : 0;
+    const animationDelay = cookieAccept === 'true' ? 0 : 3;
+    gsap.to(animationContainer, { duration: 2, delay: animationDelay, y: finalPosition });
+
+    return () => confirmButton.removeEventListener('click', handleConfirm);
+  }, [cookieAccept, setCookieAccept]);
 
   return (
-    <Wrapper cookieAccept={cookieAccept}>
+    <Wrapper ref={animationWrapper}>
       <p>
         On this website I use <b>cookies</b> to enable you as a visitor to adapt the appearance of the website.&nbsp;
         <StyledLink to={routes.privacyPolicy}>More info here..</StyledLink>
       </p>
-      <CloseButton onClick={handleConfirm}>OK</CloseButton>
+      <CloseButton>OK</CloseButton>
     </Wrapper>
   );
 };
