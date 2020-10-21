@@ -44,7 +44,7 @@ module.exports = {
       name: `Mateusz Gruźla`,
       summary: `who dreams to become developer`,
     },
-    description: `I am Mateusz Gruźle the Frontend developer with passion and dreams`,
+    description: `Mateusz Gruźla blog, website and portfolio. FRONTEND || JAVASCRIPT || REACT || GATSBY || NODE. It's just another page about coding created by some Nerd. I create websites and web apps, email me if you have an open project!`,
     siteUrl: `https://mateuszgruzla.pl/`,
     social: {
       twitter: `gruzlamateusz`,
