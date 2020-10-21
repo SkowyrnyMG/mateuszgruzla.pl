@@ -52,14 +52,14 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-gtag`,
       options: {
         trackingId: process.env.GOOGLE_ANALITICS_TRACK_ID,
         head: true,
         anonymize: true,
-        respectDNT: true,
       },
     },
+
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
