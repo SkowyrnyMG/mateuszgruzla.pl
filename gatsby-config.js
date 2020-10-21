@@ -3,6 +3,10 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const { NODE_ENV, URL: NETLIFY_SITE_URL = 'https://www.mateuszgruzla.pl', DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL, CONTEXT: NETLIFY_ENV = NODE_ENV } = process.env;
+const isNetlifyProduction = NETLIFY_ENV === 'production';
+const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
+
 const myQuery = `
 query {
   allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
@@ -48,6 +52,15 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GOOGLE_ANALITICS_TRACK_ID,
+        head: true,
+        anonymize: true,
+        respectDNT: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
         fonts: [
@@ -82,17 +95,11 @@ module.exports = {
         pages: path.join(__dirname, 'src/pages'),
         components: path.join(__dirname, 'src/components'),
         templates: path.join(__dirname, 'src/components/templates'),
-        // sections: path.join(__dirname, 'src/components/sections'),
         assets: path.join(__dirname, 'src/assets'),
         theme: path.join(__dirname, 'src/theme'),
         context: path.join(__dirname, 'src/context'),
-        // routes: path.join(__dirname, 'src/routes'),
-        // vendors: path.join(__dirname, 'src/vendors'),
         utils: path.join(__dirname, 'src/utils'),
-        // contexts: path.join(__dirname, 'src/contexts'),
-        // providers: path.join(__dirname, 'src/providers'),
         hooks: path.join(__dirname, 'src/hooks'),
-        // helpers: path.join(__dirname, 'src/helpers'),
       },
     },
     {
@@ -116,7 +123,6 @@ module.exports = {
         name: `images`,
       },
     },
-
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
@@ -178,13 +184,6 @@ module.exports = {
     },
 
     {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
-      },
-    },
-
-    {
       resolve: 'gatsby-plugin-mailchimp',
       options: {
         endpoint: 'https://mateuszgruzla.us2.list-manage.com/subscribe/post?u=3634ebdfeae4af3d2f2de92a4&amp;id=5b2295008d',
@@ -212,7 +211,28 @@ module.exports = {
         shortname: `mateuszgruzla-pl`,
       },
     },
-
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        resolveEnv: () => NETLIFY_ENV,
+        env: {
+          production: {
+            policy: [{ userAgent: '*' }],
+          },
+          'branch-deploy': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null,
+          },
+          'deploy-preview': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null,
+          },
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-algolia`,
       options: {

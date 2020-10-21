@@ -46,7 +46,7 @@ const FinalInfo = styled.p`
 
 const PrivacyPolicy = ({ location }) => (
   <Layout location={location}>
-    <SEO title='Polityka prywatności' image='logo' />
+    <SEO title='Privacy Policy' image='logo' />
     <GridView>
       <StyledSection>
         <h2>Polityka prywatności / Privacy policy</h2>
