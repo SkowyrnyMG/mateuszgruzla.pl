@@ -96,12 +96,12 @@ const HomePageAbout = () => {
       <StyledHeading>I’m Mateusz Gruźla.</StyledHeading>
       <ParagraphWrapper>
         <StyledParagraph>
-          The future senior developer... like I’ve mentioned above “Developer with passion and dreams” with a strong accent on dreams... Anyhow, born in 1993 and living in a small
-          city in Poland called Bielawa, placed 70 km from Wroclaw.
+          A future senior developer... like I’ve mentioned above “Developer with passion and dreams” with a strong emphasis on dreams. Born and raised in a small city in Poland
+          called Bielawa, placed 70 km from Wroclaw.
         </StyledParagraph>
         <StyledParagraph>
-          Since June 2019 after I wrote my first lines of CSS I immediately fell in love with code and right now I spend almost all of my free time after work on coding with short
-          breaks to play with my dog or spend some time with my lovely fiance.
+          In June 2019 after I wrote my first lines of CSS I immediately fell in love with coding. Since then most of my free time is focused on coding with short breaks to spend
+          some time with my lovely fiance and to play with my dog.
         </StyledParagraph>
       </ParagraphWrapper>
       <Button btnType='inner' path={routes.about} btncolor={({ theme }) => theme.base.accent.primary}>

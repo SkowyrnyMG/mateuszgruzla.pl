@@ -95,24 +95,24 @@ const HomePageTechnology = () => {
   return (
     <Wrapper ref={wrapper}>
       <Skillbox title='Javascript' techIcon={javascriptIcon}>
-        I feel comfortable in writting JavaScript code in ES6+ standards. Arrow functions, destructuring, async/await, let/const, promises, array methods, module imports and many
-        more will find their place in my lines of code! I can also use external NPM packages and implement them to the project basing on documentation.
+        I feel comfortable with writing JavaScript code in ES6+ standards: arrow functions, destructuring, async/await, let/const, promises, array methods, module imports and many
+        more modern features. I can also use external NPM packages and implement them to any project based on the package documentation.
       </Skillbox>
       <Skillbox side='right' title='React' techIcon={reactIcon}>
-        CRA, Hooks, Function/Class components, Prop-types, props, handle events, styled-components, css-modules, actions, reducers, global state, context, WEB API, Form validation
-        with Formik + Yup and many more are in my toolbox. I can easly create re-usable components with seperated logic. I can handle state of the app through useState, context and
-        for bussines logic data with Redux.
+        CRA, hooks, function/class components, Prop-types, props, handle events, styled-components, css-modules, actions, reducers, global state, context, WEB API, form validation
+        with Formik + Yup and many more tools are under my belt. I can easly create re-usable components with seperated logic. I am capable of handling the state of the app through
+        useState, context and Redux.
       </Skillbox>
       <Skillbox title='Gatsby' techIcon={gatsbyIcon}>
-        I can generate pages from MD files or CMS, implementing various Gatsby plugins, creating templates, using “magic images” for best images optimization, creating graplQL
+        I can generate pages from MD files or CMS, implementing various Gatsby plugins, creating templates, using “magic images” for the best image optimization, creating graplQL
         queries, etc.
       </Skillbox>
       <Skillbox side='right' title='Jest' techIcon={jestIcon}>
-        I can do simple unit and integration tests. For React I use Jest together with the React testing library.
+        I can do simple unit and integration tests. For React I use Jest together with the React Testing Library.
       </Skillbox>
       <Skillbox title='GSAP3' techIcon={gsapIcon}>
-        It is my favorite animation library. I can use timelines, ScrollTrigers, ScrollTo, etc. to put some life into my web apps. I can implement GSAP into my React and Gatsby
-        apps using useRef and useEffect to grab DOM elements and start the animation.
+        It is by far my favorite animation library. I am comfortable with the use of timelines, ScrollTrigers, ScrollTo, etc. to breathe some life into my web apps. I can implement
+        GSAP into my React and Gatsby apps using useRef and useEffect to grab DOM elements to start the animation.
       </Skillbox>
       <StyledHeading>other tools</StyledHeading>
       <OtherTechCarousel />

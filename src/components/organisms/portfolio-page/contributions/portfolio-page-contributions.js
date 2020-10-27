@@ -18,9 +18,9 @@ const PortfolioPageContributions = () => {
   return (
     <Wrapper>
       <Contribution companyLogo={livesessionLogo} link='https://www.npmjs.com/package/@livesession/sdk'>
-        I’ve contributed to the <b>livesession SDK plugin</b>. I’ve figured out how to install and run their package on Angular apps. It is nothing big tho, but whenever I think
-        about this it makes me proud of myself. If you don’t know what <b>livesession</b> is, then you have to visit their webpage. Their software will help you to keep eye on your
-        client&apos;s needs and interests. interests.
+        I&apos;ve contributed to the <b>livesession SDK plugin</b>. I managed to figure out how to install and run their package on Angular apps. It is nothing big though, but
+        whenever I think about it, it makes me proud. If you don’t know what <b>livesession</b> is, then you have to visit their webpage. Their software will help you keep an eye
+        out on your clients needs and interests.
       </Contribution>
     </Wrapper>
   );

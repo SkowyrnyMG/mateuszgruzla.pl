@@ -30,9 +30,9 @@ const HomePageProjects = () => {
         mobileDevice={knsMobile}
         projectLink='https://koncepcjanasukces.info/'
       >
-        This project was my <b>first</b> commercial webpage created without any page builder (WordPress etc.). It was coded for the local influencer, online business, and marketing
-        specialist. On his website, you can find many opportunities to invest your money or even get into better shape with his lifting advice. The author can add new posts through
-        the Netlify CMS - I&apos;ve created a user-friendly post template which will allow rendering almost any piece of content starting with images, through quotes, ending on
+        This project was my <b>first</b> commercial webpage created without the use of any page builder (WordPress etc.). It was coded for a local influencer who is a marketing
+        specialist with an online business. On his website, you can find opportunities to invest your money and get some lifestyle advice. The author can add new posts through the
+        Netlify CMS - I&apos;ve created a user-friendly template for posting which will allow rendering almost any piece of content starting with images, quotes and ending on
         youtube videos.
       </Project>
       <BigButton path={routes.portfolio} btnColor={({ theme }) => theme.base.accent.primary}>

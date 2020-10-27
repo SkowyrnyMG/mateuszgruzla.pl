@@ -21,9 +21,9 @@ const PortfolioPageProjects = () => {
         mobileDevice={knsMobile}
         projectLink='https://koncepcjanasukces.info/'
       >
-        This project was my <b>first</b> commercial webpage created without any page builder (WordPress etc.). It was coded for the local influencer, online business, and marketing
-        specialist. On his website, you can find many opportunities to invest your money or even get into better shape with his lifting advice. The author can add new posts through
-        the Netlify CMS - I&apos;ve created a user-friendly post template which will allow rendering almost any piece of content starting with images, through quotes, ending on
+        This project was my <b>first</b> commercial webpage created without the use of any page builder (WordPress etc.). It was coded for a local influencer who is a marketing
+        specialist with an online business. On his website, you can find opportunities to invest your money and get some lifestyle advice. The author can add new posts through the
+        Netlify CMS - I&apos;ve created a user-friendly template for posting which will allow rendering almost any piece of content starting with images, quotes and ending on
         youtube videos.
       </Project>
 
@@ -36,10 +36,10 @@ const PortfolioPageProjects = () => {
         mobileDevice={invoicingAppMobile}
         codeLink='https://github.com/skowyrnyMG/'
       >
-        This app will help you to issue invoices on your clients, keep eye on the payment process, and also hold your client database in one place. Adding a new client will be
-        fully automated to avoid any mistakes or spelling issues on invoices. As a no backend person (yet) I will use Firebase as my database. For serverside needs, I will do
-        everything in Netlify Cloud Functions. The whole front of the app will be based on the React environment. If you are interested to see my progress regarding this project
-        please do subscribe to my newsletter!
+        This app will help you to issue invoices to your clients, keep an eye on the payment process, and also hold your clients database in one place. Adding a new client will be
+        fully automated to avoid any mistakes or spelling issues on invoices. As not a backend person (yet) I will use Firebase for my database. For serverside needs, I will do
+        everything with Netlify Cloud Functions. The whole front of the app will be based on the React environment. If you are interested in my progress regarding this project
+        please subscribe to my newsletter!
       </Project>
     </Wrapper>
   );
