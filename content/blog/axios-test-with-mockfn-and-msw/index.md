@@ -132,3 +132,36 @@ yarn add msw --dev
 You can configurate and fire mocked server directly in each test, but it's recommended to create few external files to separate server logic and keep the DRY and clean code. 
 
 #### Handlers
+
+To interact with the mocked server you will have to create some endpoints to fire your requests to (they are almost like express API endpoints).
+
+To keep everything organized you can create a directory in the src/ and keep all MSW files in there.
+
+Let's create some handlers:
+
+```javascript
+// src/msw/server-handlers.js
+
+import {rest} from 'msw';
+
+const handlers = [
+  rest.get('https://api.thecatapi.com/v1/images/search', (req, res, ctx) => {
+    return res(ctx.status(200),
+    ctx.json(
+      [{
+        url: 'https://cdn2.thecatapi.com/images/4iu.gif',
+      }]
+    ))
+  }),
+]
+
+export {handlers};
+```
+
+
+
+To set up your response you will have to create a unique handler for this specific endpoint. To do that you have to put a specific endpoint as a first argument of rest.get() function (https://api.thecatapi.com/v1/images/search - in our example). The second thing that you pass to this function is a callback and this is where you handle how the server should respond. So you are giving here 3 things (req, res, ctx):
+
+1. req - actual request
+2. res - response function which you trigger to get response back
+3. ctx - context to help
