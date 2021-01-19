@@ -158,10 +158,25 @@ const handlers = [
 export {handlers};
 ```
 
-
-
 To set up your response you will have to create a unique handler for this specific endpoint. To do that you have to put a specific endpoint as a first argument of rest.get() function (https://api.thecatapi.com/v1/images/search - in our example). The second thing that you pass to this function is a callback and this is where you handle how the server should respond. So you are giving here 3 things (req, res, ctx):
 
 1. req - actual request
 2. res - response function which you trigger to get response back
-3. ctx - context to help
+3. ctx - context to build up responses
+
+From this function you will have to return the response with some context inside (ctx). For exaple you can return response status (ctx.status(200)) and actual body of your response in our example we have returned JSON (ctx.json()) with some data. In body of response you can return literally anything, but your JSON structure should be matching regular API call response, otherwise your tests may fail.
+
+#### Server
+
+After we have created come handlers, setting up the server will be a piece of cake.
+
+Let start with creating another .js file in msw directory called server.js and fill it up with some msw functions:
+```javascript
+import {rest} from 'msw';
+import {setupServer} from 'msw/node'
+import {handlers} from './server-handlers';
+
+const server = setupServer(...handlers);
+
+export {server, rest};
+```
