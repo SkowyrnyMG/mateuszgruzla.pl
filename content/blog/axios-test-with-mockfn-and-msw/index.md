@@ -115,7 +115,7 @@ After that beeing said I have to go a little bit further and get you into the Mo
 
 ## MSW - the game changer
 
-\[MSW](https://mswjs.io/docs/) stands for Mock the Serviece Worker. This library does literally what the name of it says. Instead of mocking one specific function you can now mock server which will intercept tested requests. 
+[MSW](https://mswjs.io/docs/) stands for Mock the Serviece Worker. This library does literally what the name of it says. Instead of mocking one specific function you can now mock server which will intercept tested requests. 
 
 How does it all work? Let me explain on next simple example. To do that we will have to modify our codebase a little bit. First of all we no longer need \_\_mocks\_\_ directory so you have to delete it, otherwise it may cause testing errors.
 
@@ -218,3 +218,9 @@ The MSW gives you more confidency while testing your app. Let me just quickly po
 2. You do not have to worry about providing details of fetch as headers etc.
 3. It works with axios and fetch without adding any additional code!
 4. And most important, if you would mess up your fetch request, the test will correctly fail. Because of that you can track broken code before you would deploy it to the production.
+
+If you are interested in going deep into the msw, check their [documentation](https://mswjs.io/docs/)!
+
+##### THE END
+
+Thank you for reading! You can find codebase to our examples [here](https://github.com/SkowyrnyMG/mock-fn-vs-msw/tree/msw-testing).
