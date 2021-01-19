@@ -171,12 +171,20 @@ From this function you will have to return the response with some context inside
 After we have created come handlers, setting up the server will be a piece of cake.
 
 Let start with creating another .js file in msw directory called server.js and fill it up with some msw functions:
+
 ```javascript
-import {rest} from 'msw';
 import {setupServer} from 'msw/node'
 import {handlers} from './server-handlers';
 
 const server = setupServer(...handlers);
 
-export {server, rest};
+export {server};
 ```
+
+At this place we have to import setupServer function from 'msw/node' and our handlers that we have created in previous step. We will use setupServer function to create server and store it into a variable, which we can export from the file. To make server run correcty we have to pass to it numbers of request handlers. Each of this handlers intercept some specific request according to our handlers configuration. From now on server can handle how it should respond rather than hitting regular API. 
+
+The last thing left to do is running our server during our tests. So lets jump quickly to the next step.
+
+#### Run the server
+
+After our handlers and server setup is complete we have to make our server start to listening for the requests. To do that we can use jest callbacks as beforeAll, afterEach and afterAll. You can use those directly in your test file, but it's recommended to put it into our setupTest.js file to keep the code clean.
