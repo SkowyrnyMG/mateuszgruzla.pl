@@ -188,3 +188,33 @@ The last thing left to do is running our server during our tests. So lets jump q
 #### Run the server
 
 After our handlers and server setup is complete we have to make our server start to listening for the requests. To do that we can use jest callbacks as beforeAll, afterEach and afterAll. You can use those directly in your test file, but it's recommended to put it into our setupTest.js file to keep the code clean.
+
+```javascript
+//src/setupTests.js - this file will be added after creating project with create-react-app
+import {server} from './msw/server.js';
+
+beforeAll(() => server.listen());
+
+afterEach(() => server.resetHandlers());
+
+afterAll(() => server.close());
+```
+
+At this point we have to import our server that has been created in previous step.
+
+In beforeAll we start server to listen before all test have been run.
+
+tOne of the most important action have to be set up in afterEach function. Here we will reset all the hanlders with resetHandlers() function. Why this is so important? All of the handlers can be overwritten for each individual test and with reset function we are just taking it back to the original state that we have created in our server-handlers.js file.
+
+After all tests are finished we have to close the server in afterAll function.
+
+Right now your tests won't hit the real API, but server that we have just created!
+
+### Conclusion
+
+The MSW gives you more confidency while testing your app. Let me just quickly point out why I think that this way of testing request is better than old mock function:
+
+1. You can test your request statuses
+2. You do not have to worry about providing details of fetch as headers etc.
+3. It works with axios and fetch without adding any additional code!
+4. And most important, if you would mess up your fetch request, the test will correctly fail. Because of that you can track broken code before you would deploy it to the production.
