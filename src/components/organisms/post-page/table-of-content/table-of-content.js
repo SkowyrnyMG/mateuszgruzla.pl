@@ -17,6 +17,7 @@ const Wrapper = styled.aside`
   border-radius: 0.5rem;
   opacity: 0;
 
+
   button {
     background: none;
     border: none;
@@ -36,6 +37,7 @@ const Wrapper = styled.aside`
   ${({ theme: { base } }) => base.mq.bigTablet} {
     position: relative;
     margin-left: 0rem;
+    width: 89vw;
     top: 0;
   }
 `;

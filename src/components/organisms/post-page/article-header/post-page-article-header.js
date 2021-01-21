@@ -9,7 +9,7 @@ import { useImg } from 'hooks/useImg';
 const Wrapper = styled.div`
   display: grid;
   grid-template-rows: 45rem min-content;
-  width: 95%;
+  width: 100%;
   min-height: 60rem;
   background: ${({ theme: { color } }) => color.secondary};
   border-radius: 0 0 0.5rem 0.5rem;
