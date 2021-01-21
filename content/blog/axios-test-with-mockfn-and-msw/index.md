@@ -119,11 +119,11 @@ After that being said I have to go a little bit further and get you into the Moc
 
 [MSW](https://mswjs.io/docs/) stands for Mock the Serviece Worker. This library does literally what the name of it says. Instead of mocking one specific function you can now mock server which will intercept tested requests. 
 
-How does it all work? Let me explain on next simple example. To do that we will have to modify our codebase a little bit. First of all we no longer need \_\_mocks\_\_ directory so you have to delete it, otherwise it may cause testing errors.
+How does it all work? Let me explain on the next simple example. To do that we will have to modify our codebase a little bit. First of all, we no longer need \_\_mocks\_\_ directory so you have to delete it, otherwise it may cause testing errors.
 
 ### Instalation and configuration
 
-Add MSW to your procect with:
+Add MSW to your project with:
 
 ```
 npm install msw --save-dev
