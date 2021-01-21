@@ -11,6 +11,7 @@ const components = {
 const StyledArticle = styled.article`
   line-height: 1.8;
 
+
   a {
     color: ${({theme: {base}}) => base.accent.secondary};
     text-decoration: underline;
@@ -20,6 +21,7 @@ const StyledArticle = styled.article`
   p {
     margin-bottom: 2rem;
     font-size: ${({ theme: { base } }) => base.fontSize.m};
+    word-wrap: break-word;
   }
 
   h2 {
