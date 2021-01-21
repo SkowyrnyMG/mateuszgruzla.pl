@@ -11,6 +11,12 @@ const components = {
 const StyledArticle = styled.article`
   line-height: 1.8;
 
+  a {
+    color: ${({theme: {base}}) => base.accent.secondary};
+    text-decoration: underline;
+    font-weight: ${({theme: {base}}) => base.fontWeight.bold};
+  }
+
   p {
     margin-bottom: 2rem;
     font-size: ${({ theme: { base } }) => base.fontSize.m};
@@ -64,6 +70,7 @@ const StyledArticle = styled.article`
     margin: 5rem 0;
     line-height: 1;
     padding: 2rem;
+    width: 70rem;
     border-radius: 0.5rem;
     font-size: 15px;
     overflow-x: scroll !important;
@@ -80,7 +87,7 @@ const StyledArticle = styled.article`
       background: ${({ theme: { base } }) => base.accent.secondary};
     }
 
-    ${({ theme: { base } }) => base.mq.bigPhoneBreak} {
+    ${({theme: {base}}) => base.mq.bigTablet} {
       width: 88vw;
     }
   }

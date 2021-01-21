@@ -59,22 +59,33 @@ module.exports = {
         anonymize: true,
       },
     },
-
+    // {
+    //   family: `Montserrat`,
+    //   variants: [`300`, `400`, `700`],
+    //   subsets: [`latin`],
+    // },
+    // {
+    //   family: `Changa One`,
+    //   variants: [`300`, `400`, `700`],
+    //   subsets: [`latin`],
+    // },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: [
-          {
-            family: `Montserrat`,
-            variants: [`300`, `400`, `700`],
-            subsets: [`latin`],
-          },
-          {
-            family: `Changa One`,
-            variants: [`300`, `400`, `700`],
-            subsets: [`latin`],
-          },
-        ],
+        fonts: {
+          google: [
+            {
+              family: `Montserrat`,
+              variants: [`300`, `400`, `700`],
+              subsets: [`latin`],
+            },
+            {
+              family: `Changa One`,
+              variants: [`300`, `400`, `700`],
+              subsets: [`latin`],
+            },
+          ],
+        },
       },
     },
     {
