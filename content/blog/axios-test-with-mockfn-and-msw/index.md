@@ -28,9 +28,9 @@ At this moment I've started to read more about Jest and React testing library an
 
 ## Testing axios
 
-When I've tested axios for the first time I went straight forward with it. I didn't mock my requests and I didn't use MSW neither. My tests were using regular GET, POST requests. As long as the API responded with 200 and with correct data all of my tests passed, but when I've lost internet connection for a while all of them failed. At this point I've figured out that maybe I should write my axios test in another way?
+When I've tested axios for the first time I went straight forward with it. I didn't mock my requests and I didn't use MSW either. My tests were using regular GET, POST requests. As long as the API responded with 200 and with correct data all of my tests passed, but when I've lost internet connection for a while all of them failed. At this point, I've figured out that maybe I should write my axios test in another way?
 
-After research I found 2 reasonable ways that allow me to test my API request in a fast and predictable way. The first old school way is **mocking your axios/fetch**, second is the **Mocking the Service Worker**.
+After research, I found 2 reasonable ways that allow me to test my API request in a fast and predictable way. The first old-school way is **mocking your axios/fetch**, second is the **Mocking the Service Worker**.
 
 ### Mocking axios
 
@@ -38,9 +38,9 @@ How does mocking work? In simple words, you are "switching" regular axios reques
 
 Let's look at the example:
 
-For the test purpouses, I will be using free cat API with *https://api.thecatapi.com/v1/images/search* endpoint*.*
+For test purposes, I will be using free cat API with *https://api.thecatapi.com/v1/images/search* endpoint*.*
 
-At start, let's create a cat getter function.
+At the start, let's create a cat getter function.
 
 ```javascript
 import axios from 'axios';
@@ -73,7 +73,7 @@ export default {
 }
 ```
 
-After our mock is setted up we are free to write our first mock axios test. To do that let's create \_\_test\_\_ folder with cat-getter.js file next to our cat-getter.js hook.
+After our mock is set up we are free to write our first mock axios test. To do that let's create \_\_test\_\_ folder with cat-getter.js file next to our cat-getter.js hook.
 
 ```javascript
 // src/cat-frame/__tests__/cat-getter.js
@@ -117,11 +117,11 @@ After that being said I have to go a little bit further and get you into the Moc
 
 ## MSW - the game changer
 
-[MSW](https://mswjs.io/docs/) stands for Mock the Serviece Worker. This library does literally what the name of it says. Instead of mocking one specific function you can now mock server which will intercept tested requests. 
+[MSW](https://mswjs.io/docs/) stands for Mock the Service Worker. This library does literally what the name of it says. Instead of mocking one specific function, you can now mock a server that will intercept tested requests. 
 
-How does it all work? Let me explain on the next simple example. To do that we will have to modify our codebase a little bit. First of all, we no longer need \_\_mocks\_\_ directory so you have to delete it, otherwise it may cause testing errors.
+How does it all work? Let me explain the next simple example. To do that we will have to modify our codebase a little bit. First of all, we no longer need \_\_mocks\_\_ directory so you have to delete it, otherwise, it may cause testing errors.
 
-### Instalation and configuration
+### Installation and configuration
 
 Add MSW to your project with:
 
@@ -131,7 +131,7 @@ npm install msw --save-dev
 yarn add msw --dev
 ```
 
-You can configurate and fire mocked server directly in each test, but it's recommended to create few external files to separate server logic and keep the DRY and clean code. 
+You can configure and fire mocked server directly in each test, but it's recommended to create few external files to separate server logic and keep the DRY and clean code. 
 
 #### Handlers
 
@@ -160,13 +160,13 @@ const handlers = [
 export {handlers};
 ```
 
-To set up your response you will have to create a unique handler for this specific endpoint. To do that you have to put a specific endpoint as a first argument of rest.get() function (https://api.thecatapi.com/v1/images/search - in our example). The second thing that you pass to this function is a callback and this is where you handle how the server should respond. So you are giving here 3 things (req, res, ctx):
+To set up your response you will have to create a unique handler for each specific endpoint. To do that you have to put a unique endpoint as the first argument of rest.get() function (https://api.thecatapi.com/v1/images/search - in our example). The second thing that you pass to this function is a callback and this is where you handle how the server should respond. So you are giving here 3 things (req, res, ctx):
 
 1. req - actual request
-2. res - response function which you trigger to get response back
+2. res - response function which you trigger to get a response back
 3. ctx - context to build up responses
 
-From this function you will have to return the response with some context inside (ctx). For exaple you can return response status (ctx.status(200)) and actual body of your response in our example we have returned JSON (ctx.json()) with some data. In body of response you can return literally anything, but your JSON structure should be matching regular API call response, otherwise your tests may fail.
+From this function you will have to return the response with some context inside (ctx). For example you can return response status (ctx.status(200)) and the actual body of your response in our example we have returned JSON (ctx.json()) with some data. In the body of rthe esponse, you can return literally anything, but your JSON structure should be matching regular API call response, otherwise your tests may fail.
 
 #### Server
 
@@ -183,13 +183,11 @@ const server = setupServer(...handlers);
 export {server};
 ```
 
-At this place we have to import setupServer function from 'msw/node' and our handlers that we have created in previous step. We will use setupServer function to create server and store it into a variable, which we can export from the file. To make server run correcty we have to pass to it numbers of request handlers. Each of this handlers intercept some specific request according to our handlers configuration. From now on server can handle how it should respond rather than hitting regular API. 
-
-The last thing left to do is running our server during our tests. So lets jump quickly to the next step.
+At this place we have to import setupServer function from 'msw/node' and our handlers that we have created in the previous step. We will use setupServer function to create a server and store it into a variable, which we can export from the file. To make sthe erver run correctly we have to pass to it a number of request handlers. Each of these handlers intercepts some specific request according to our handlers' configuration. From now on s erver can handle how it should respond rather than hitting regular API. The last thing left to do is running our the server during our tests. So let's jump quickly to the next step.
 
 #### Run the server
 
-After our handlers and server setup is complete we have to make our server start to listening for the requests. To do that we can use jest callbacks as beforeAll, afterEach and afterAll. You can use those directly in your test file, but it's recommended to put it into our setupTest.js file to keep the code clean.
+After our handlers and server setup is complete we have to make our server start listening for the requests. To do that we can use jest callbacks as beforeAll, afterEach and afterAll. You can use those directly in your test file, but it's recommended to put it into our setupTest.js file to keep the code clean.
 
 ```javascript
 //src/setupTests.js - this file will be added after creating project with create-react-app
@@ -202,19 +200,19 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 ```
 
-At this point we have to import our server that has been created in previous step.
+At this point we have to import our server that has been created in pthe revious step.
 
-In beforeAll we start server to listen before all test have been run.
+In beforeAll we start the server to listen before all tests have been run.
 
-One of the most important action have to be set up in afterEach function. Here we will reset all the hanlders with resetHandlers() function. Why this is so important? All of the handlers can be overwritten for each individual test and with reset function we are just taking it back to the original state that we have created in our server-handlers.js file.
+One of the most important thing what you have to remember to do happens in afterEach() function. Here we will reset all the handlers with resetHandlers() function. Why this is so important? All of the handlers can be overwritten for each individual test and with the reset function, we are just taking it back to the original state that we have created in our server-handlers.js file.
 
 After all tests are finished we have to close the server in afterAll function.
 
-Right now your tests won't hit the real API, but server that we have just created!
+Right now your tests won't hit the real API, but a server that we have just created!
 
 ### Test example
 
-With setup like that our test can look something like that:
+With a setup like that our test can look something like that:
 
 ```javascript
 // src/cat-frame/__tests__/cat-getter.js
@@ -233,15 +231,15 @@ describe('Cat getter mock', () => {
 
 ### Conclusion
 
-The MSW gives you more confidency while testing your app. Let me just quickly point out why I think that this way of testing request is better than old mock function:
+Let me just quickly point out why I think that this way of testing request is better than the old mock function:
 
 1. You can test your request statuses
 2. You do not have to worry about providing details of fetch as headers etc.
 3. It works with axios and fetch without adding any additional code!
-4. And most important, if you would mess up your fetch request, the test will correctly fail. Because of that you can track broken code before you would deploy it to the production.
+4. And most importantly, if you would mess up your fetch request, the test will correctly fail. Because of that you can track broken code before you would deploy it to production.
 
 If you are interested in going deep into the msw, check their [documentation](https://mswjs.io/docs/)!
 
 ##### THE END
 
-Thank you for reading! You can find codebase to our examples [here](https://github.com/SkowyrnyMG/mock-fn-vs-msw/tree/msw-testing).
+Thank you for reading! You can find codebase to our examples in [here](https://github.com/SkowyrnyMG/mock-fn-vs-msw/tree/msw-testing).
