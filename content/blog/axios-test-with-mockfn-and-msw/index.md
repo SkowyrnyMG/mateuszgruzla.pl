@@ -204,11 +204,30 @@ At this point we have to import our server that has been created in previous ste
 
 In beforeAll we start server to listen before all test have been run.
 
-tOne of the most important action have to be set up in afterEach function. Here we will reset all the hanlders with resetHandlers() function. Why this is so important? All of the handlers can be overwritten for each individual test and with reset function we are just taking it back to the original state that we have created in our server-handlers.js file.
+One of the most important action have to be set up in afterEach function. Here we will reset all the hanlders with resetHandlers() function. Why this is so important? All of the handlers can be overwritten for each individual test and with reset function we are just taking it back to the original state that we have created in our server-handlers.js file.
 
 After all tests are finished we have to close the server in afterAll function.
 
 Right now your tests won't hit the real API, but server that we have just created!
+
+### Test example
+
+With setup like that our test can look something like that:
+
+```javascript
+// src/cat-frame/__tests__/cat-getter.js
+import { CatGetter } from '../cat-getter';
+
+describe('Cat getter mock', () => {
+  test('should run once', async () => {
+    
+    const result = await CatGetter();
+    console.log(result)
+    
+    expect(result).toBe('https://cdn2.thecatapi.com/images/4iu.gif');
+  });
+});
+```
 
 ### Conclusion
 
