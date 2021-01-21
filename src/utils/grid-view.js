@@ -10,6 +10,10 @@ const GridWrapper = styled.div`
   ${({ theme: { base } }) => base.mq.mediumDesktop} {
     grid-template-columns: 5rem [content-start] minmax(min-content, 1fr) [content-end] 5rem;
   }
+  ${({ theme: { base } }) => base.mq.bigTablet} {
+    grid-template-columns: 5rem [content-start] calc(100vw - 10rem) [content-end] 5rem;
+  }
+
 
   > * {
     grid-column: content-start / content-end;
