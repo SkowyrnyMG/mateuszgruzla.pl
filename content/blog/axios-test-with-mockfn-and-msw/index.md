@@ -14,7 +14,7 @@ description: Testing your app is sometimes harder than coding it. Especially
 ---
 ## *"Do I need to write tests?"*
 
-This question was bothering me from a while and I could't find answer until last month. 
+This question was bothering me for a while and I couldn't find the answer until last month. 
 
 In October I've started to think about writing something bigger than I usually do. That is why I wanted to create a plan that I could follow during my development process. I wrote on a piece of paper every functionality that I want to implement in my new Invoicing app and after that first concerns appeared.
 
@@ -58,7 +58,7 @@ export const CatGetter = async () => {
 }
 ```
 
-To test this hook manually we would have to write a component that would fire our request and display API response, but we can also mock our axios and check if the app is working correctly.
+To test this function manually we would have to write a component that would fire our request and display API response, but we can also mock our axios and check if the app is working correctly.
 
 To mock our axios we have to create *\_\_mocks\_\_* folder inside our src folder. In this directory you can create mock functions depends on your needs. For now, we just need to create an axios.js file and put our mocks inside.
 
@@ -109,7 +109,7 @@ describe('Cat getter mock', () => {
 });
 ```
 
-And that's it! You have written your first test with mocked axios. This solution is fine and if tests like that make you confident that the app will not crash on this hook then you are free to go.
+And that's it! You have written your first test with mocked axios. This solution is fine and if tests like that make you confident that the app will not crash on this request then you are free to go.
 
 Tests with mocked axios will be fast, predictable and they are not going to hit the real API.
 
@@ -117,7 +117,7 @@ After that being said I have to go a little bit further and get you into the Moc
 
 ## MSW - the game changer
 
-[MSW](https://mswjs.io/docs/) stands for Mock the Service Worker. This library does literally what the name of it says. Instead of mocking one specific function, you can now mock a server that will intercept tested requests. 
+[MSW](https://mswjs.io/docs/) stands for Mock the Service Worker. This library does literally what the name of it says. Instead of mocking one specific function, you can now mock a server that will intercept requests during your tests. 
 
 How does it all work? Let me explain the next simple example. To do that we will have to modify our codebase a little bit. First of all, we no longer need \_\_mocks\_\_ directory so you have to delete it, otherwise, it may cause testing errors.
 
@@ -166,11 +166,11 @@ To set up your response you will have to create a unique handler for each specif
 2. res - response function which you trigger to get a response back
 3. ctx - context to build up responses
 
-From this function you will have to return the response with some context inside (ctx). For example you can return response status (ctx.status(200)) and the actual body of your response in our example we have returned JSON (ctx.json()) with some data. In the body of rthe esponse, you can return literally anything, but your JSON structure should be matching regular API call response, otherwise your tests may fail.
+From this function you will have to return the response with some context inside (ctx). For example you can return response status (ctx.status(200)) and the actual body of your response in our example we have returned JSON (ctx.json()) with some data. In the body of the response, you can return literally anything, but your JSON structure should be matching regular API call response, otherwise your tests may fail.
 
 #### Server
 
-After we have created come handlers, setting up the server will be a piece of cake.
+After we have created some handlers, setting up the server will be a piece of cake.
 
 Let start with creating another .js file in msw directory called server.js and fill it up with some msw functions:
 
@@ -183,7 +183,7 @@ const server = setupServer(...handlers);
 export {server};
 ```
 
-At this place we have to import setupServer function from 'msw/node' and our handlers that we have created in the previous step. We will use setupServer function to create a server and store it into a variable, which we can export from the file. To make sthe erver run correctly we have to pass to it a number of request handlers. Each of these handlers intercepts some specific request according to our handlers' configuration. From now on s erver can handle how it should respond rather than hitting regular API. The last thing left to do is running our the server during our tests. So let's jump quickly to the next step.
+At this place we have to import setupServer function from 'msw/node' and our handlers that we have created in the previous step. We will use setupServer function to create a server and store it into a variable, which we can export from the file. To make the server run correctly we have to pass to it a number of request handlers. Each of these handlers intercepts some specific request according to our handlers' configuration. From now on server can handle how it should respond rather than hitting regular API. The last thing left to do is running our the server during our tests. So let's jump quickly to the next step.
 
 #### Run the server
 
@@ -200,7 +200,7 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 ```
 
-At this point we have to import our server that has been created in pthe revious step.
+At this point we have to import our server that has been created in the previous step.
 
 In beforeAll we start the server to listen before all tests have been run.
 
@@ -231,7 +231,7 @@ describe('Cat getter mock', () => {
 
 ### Conclusion
 
-Let me just quickly point out why I think that this way of testing request is better than the old mock function:
+Let me just quickly point out why I think this way of testing request is better than the old mock function:
 
 1. You can test your request statuses
 2. You do not have to worry about providing details of fetch as headers etc.
@@ -242,4 +242,4 @@ If you are interested in going deep into the msw, check their [documentation](ht
 
 ##### THE END
 
-Thank you for reading! You can find codebase to our examples in [here](https://github.com/SkowyrnyMG/mock-fn-vs-msw/tree/msw-testing).
+Thank you for reading! You can find the codebase to our examples in [here](https://github.com/SkowyrnyMG/mock-fn-vs-msw/tree/msw-testing).
