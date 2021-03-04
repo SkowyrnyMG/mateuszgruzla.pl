@@ -12,6 +12,7 @@ const WrapperOuterLink = styled.a`
 `;
 
 const ButtonText = styled.span`
+  display: inline-block;
   margin-top: 2rem;
   position: relative;
   transition: color 0.25s;
