@@ -14,7 +14,7 @@ description: Cypress is a wonderful testing framework, but it won't be so useful
 
 Last week after my job interview I've decided to learn about some e2e testing environment and as you probably already noticed, I've chosen Cypress.
 
-So I've opened \[Cypress docs](https://docs.cypress.io/guides/getting-started/installing-cypress#npm-install) and I've followed all necessary steps to install their framework. After the installation process was finished, I just hopped to my project and I run:
+So I've opened [Cypress docs](https://docs.cypress.io/guides/getting-started/installing-cypress#npm-install) and I've followed all necessary steps to install their framework. After the installation process was finished, I just hopped to my project and I run:
 
 ```shell
 npx cypress open
@@ -34,7 +34,7 @@ Trust me I've looked in many stackoverflow and other community blog posts to fin
 
 You have to do few very easy steps to run successfully Cypress on your Windows PC if you have met this problem.
 
-First of all, you have to follow the whole installation process from \[DOCS](https://docs.cypress.io/guides/getting-started/installing-cypress#npm-install).
+First of all, you have to follow the whole installation process from [DOCS](https://docs.cypress.io/guides/getting-started/installing-cypress#npm-install).
 
 After installation is finished, go to the root of your project where you have installed cypress via command line and use the following command:
 
