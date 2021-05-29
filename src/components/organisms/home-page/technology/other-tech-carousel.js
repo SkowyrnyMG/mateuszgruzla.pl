@@ -73,7 +73,7 @@ const OtherTechCarousel = () => {
 
   return (
     <Wrapper>
-      <IconContainer ref={wrapper}>
+      <IconContainer ref={wrapper} data-testid="home-page-carousel">
         {iconArr.map((icon) => {
           return (
             <ImgBox key={JSON.stringify(icon)}>

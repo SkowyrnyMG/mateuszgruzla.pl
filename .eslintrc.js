@@ -1,10 +1,10 @@
 module.exports = {
   extends: ['airbnb', 'prettier', 'prettier/react', 'eslint:recommended', 'plugin:react/recommended'],
-  plugins: ['babel', 'react-hooks'],
+  plugins: ['babel', 'react-hooks', 'cypress'],
   parser: 'babel-eslint',
-  // env: {
-  //   jest: true,
-  // },
+  env: {
+    "cypress/globals": true
+  },
   globals: {
     window: true,
     document: true,
