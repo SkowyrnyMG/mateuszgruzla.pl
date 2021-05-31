@@ -111,7 +111,7 @@ const MainMenu = ({ location }) => {
   });
 
   return (
-    <Wrapper ref={wrapper}>
+    <Wrapper ref={wrapper} data-testid='main-menu'>
       <OutterField isMenuOpen={isMenuOpen} />
       <FloatingNav location={location} toggleMenu={() => setIsMenuOpen((state) => !state)} toggleSearch={() => setIsSearchOpen((state) => !state)} isMenuOpen={isMenuOpen} />
       <SearchMenu isSearchOpen={isSearchOpen} setIsSearchOpen={() => setIsSearchOpen(false)} />

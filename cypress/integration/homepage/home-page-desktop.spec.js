@@ -28,5 +28,34 @@ describe('Home page', () => {
     cy.get('[data-testid=home-page-blog-posts]').should('exist').and('be.visible');
   });
 
+  it('should change path after clicking on button links', () => {
+    cy.jumpToSection('bio');
+    cy.wait(500);
+    cy.get('a').contains(/full story/i).click()
+    .url().should('contain', 'about');
+    cy.go('back');
+
+    cy.jumpToSection('projects');
+    cy.wait(500);
+    cy.window().then((win) => {
+      cy.spy(win, 'open').as('redirect');
+    })
+
+    cy.checkExternalLinkStatus('view project', 200);
+    cy.checkExternalLinkStatus('code', 200);
+
+    cy.jumpToSection('show all projects', 'a');
+    cy.get('a').contains(/show all projects/i).click()
+    .url().should('contain', 'portfolio');
+    cy.go('back');
+
+    cy.jumpToSection('lastposts');
+    cy.get('[data-testid="home-page-blog-posts"]').within(() => {
+      cy.get('a').first().click();
+    })
+    .url().should('contain', '/blog/');
+    cy.go('back');
+  });
+
 })
 
