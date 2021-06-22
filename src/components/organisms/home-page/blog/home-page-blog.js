@@ -36,7 +36,7 @@ const HomePageBlog = () => {
   const lastPosts = useLastPosts();
   return (
     <Wrapper>
-      <PostWrapper>
+      <PostWrapper data-testid="home-page-blog-posts">
         {lastPosts ? (
           lastPosts.map(
             (

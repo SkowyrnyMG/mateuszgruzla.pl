@@ -73,8 +73,10 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
+    "cypress": "^7.4.0",
     "eslint": "7.2.0",
     "eslint-config-airbnb": "18.2.0",
+    "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-import": "2.21.2",
     "eslint-plugin-jsx-a11y": "6.3.0",
     "eslint-plugin-react": "7.20.0",
@@ -98,6 +100,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "e2e": "npx cypress open"
   }
 }
