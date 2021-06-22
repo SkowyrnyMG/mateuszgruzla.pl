@@ -139,7 +139,7 @@ const Popup = ({ isPopupActive, handleClosePopup }) => {
     return () => wrapperDOM.removeEventListener('click', watchClick);
   });
   return (
-    <Wrapper ref={popupWrapper} isPopupActive={isPopupActive}>
+    <Wrapper data-testid='popup-wrapper' ref={popupWrapper} isPopupActive={isPopupActive}>
       <PopupBox isPopupActive={isPopupActive}>
         <CloseButton onClick={handleClosePopup} />
         <Content>
